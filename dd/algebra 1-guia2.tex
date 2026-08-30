@@ -6,8 +6,8 @@
 % --- MEJORAS DE ESPACIADO ---
 \usepackage{parskip}           % Espacio automático entre párrafos sin sangría
 \usepackage{setspace}          % Control de interlineado
-\setstretch{1}              % Interlineado cómodo de 1.15
-\setlength{\jot}{8pt}          % Espaciado vertical interno en fórmulas y alineaciones
+\setstretch{1.15}              % Interlineado cómodo
+\setlength{\jot}{8pt}          % Espaciado vertical interno en fórmulas
 
 % --- PAQUETES PARA CAJAS DE COLOR ---
 \usepackage[most]{tcolorbox}
@@ -16,17 +16,16 @@
 \definecolor{mypurple}{HTML}{800055}      % Violeta oscuro
 \definecolor{mylightpurple}{HTML}{FBF0F6} % Violeta claro (fondo)
 
-% Entorno personalizado con aire arriba, abajo e internamente
+% Entorno personalizado
 \newtcolorbox{mynote}[1]{
   colframe=mypurple,
   colback=mylightpurple,
-  coltitle=white,
-  colbacktitle=mypurple,
-  fonttitle=\bfseries,
+  coltitle=mypurple,
+  fonttitle=\bfseries\itshape,
   title=#1,
   sharp corners,
   boxrule=0.8pt,
-  titlerule=0pt,
+  titlerule=0.5pt,
   before skip=12pt,
   after skip=12pt,
   boxsep=6pt,

@@ -1,0 +1,117 @@
+
+% ============================================================
+% preambulo.sty
+% Paquete propio con paquetes, colores, comandos y entornos
+% reutilizables. Se carga desde main.tex con \usepackage{preambulo}
+% ============================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% Nota: este motor de TeX no trae instalado el paquete de idioma
+% "spanish" de babel (faltan los patrones de silabeo). Para no
+% depender de eso, renombramos manualmente los textos automáticos.
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+
+\geometry{margin=2.5cm}
+
+% ----------------------------
+% Colores del documento
+% ----------------------------
+\definecolor{azulPrincipal}{HTML}{1F4E79}
+\definecolor{verdeEjercicio}{HTML}{2E7D32}
+\definecolor{naranjaNota}{HTML}{E65100}
+\definecolor{grisClaro}{HTML}{F2F2F2}
+
+% ----------------------------
+% Estilo de títulos de sección
+% ----------------------------
+\titleformat{\section}
+  {\color{azulPrincipal}\Large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}
+  {\color{azulPrincipal}\large\bfseries}{\thesubsection}{1em}{}
+
+% ----------------------------
+% Encabezado / pie de página
+% ----------------------------
+\renewcommand{\contentsname}{Índice}
+
+\pagestyle{fancy}
+\setlength{\headheight}{14pt}
+\fancyhf{}
+\fancyhead[L]{Guía de Álgebra}
+\fancyhead[R]{\leftmark}
+\fancyfoot[C]{\thepage}
+
+% ============================================================
+% COMANDOS reutilizables (evitan repetir fórmulas/estructuras)
+% ============================================================
+
+% Fracción rápida: \frac{a}{b} ya existe, pero acá un atajo
+% para mostrar una fracción "grande" con estilo display
+\newcommand{\fracd}[2]{\dfrac{#1}{#2}}
+
+% Resaltar un resultado final
+\newcommand{\resultado}[1]{\[\boxed{#1}\]}
+
+% Definición de una variable o término con formato uniforme
+\newcommand{\defterm}[1]{\textbf{\textcolor{azulPrincipal}{#1}}}
+
+% Fórmula general de la ecuación cuadrática (se usa en varios capítulos)
+\newcommand{\formulaCuadratica}{%
+  x = \fracd{-b \pm \sqrt{b^2 - 4ac}}{2a}
+}
+
+% ============================================================
+% ENTORNOS reutilizables (cajas de teoría, ejemplo, ejercicio, nota)
+% ============================================================
+
+% --- Caja de TEORÍA / DEFINICIÓN ---
+\newtcolorbox{teoria}[1][]{
+  colback=grisClaro, colframe=azulPrincipal,
+  fonttitle=\bfseries, coltitle=white,
+  colbacktitle=azulPrincipal,
+  title=Definición,
+  breakable, rounded corners, #1
+}
+
+% --- Caja de EJEMPLO resuelto ---
+\newtcolorbox{ejemplo}[1][]{
+  colback=white, colframe=azulPrincipal!60,
+  fonttitle=\bfseries, coltitle=azulPrincipal,
+  title=Ejemplo,
+  breakable, rounded corners, #1
+}
+
+% --- Entorno EJERCICIO (numerado automáticamente) ---
+\newcounter{numejercicio}[section]
+\newenvironment{ejercicio}{%
+  \refstepcounter{numejercicio}%
+  \par\noindent\textbf{\textcolor{verdeEjercicio}{Ejercicio \thesection.\thenumejercicio.}}\quad
+}{\par\vspace{0.4em}}
+
+% --- Entorno SOLUCION (para ocultar/mostrar respuestas) ---
+\newenvironment{solucion}{%
+  \par\noindent\textit{\textcolor{verdeEjercicio!70!black}{Solución:}}\quad
+}{\par\vspace{0.6em}}
+
+% --- Caja de NOTA / observación (título fijo) ---
+\newtcolorbox{nota}[1][]{
+  colback=naranjaNota!5, colframe=naranjaNota,
+  fonttitle=\bfseries, coltitle=black,
+  title=Nota, breakable, rounded corners, #1
+}
+
+% --- Caja de NOTA con título personalizado: \begin{mynote}{Mi título} ---
+\newtcolorbox{mynote}[1]{
+  colback=naranjaNota!5, colframe=naranjaNota,
+  fonttitle=\bfseries, coltitle=naranjaNota,
+  title=#1, breakable, rounded corners
+}
