@@ -1,0 +1,43 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage[margin=2.5cm]{geometry}
+
+% --- MEJORAS DE ESPACIADO ---
+\usepackage{parskip}           % Espacio automático entre párrafos sin sangría
+\usepackage{setspace}          % Control de interlineado
+\setstretch{1}              % Interlineado cómodo de 1.15
+\setlength{\jot}{8pt}          % Espaciado vertical interno en fórmulas y alineaciones
+
+% --- PAQUETES PARA CAJAS DE COLOR ---
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+
+\definecolor{mypurple}{HTML}{800055}      % Violeta oscuro
+\definecolor{mylightpurple}{HTML}{FBF0F6} % Violeta claro (fondo)
+
+% Entorno personalizado con aire arriba, abajo e internamente
+\newtcolorbox{mynote}[1]{
+  colframe=mypurple,
+  colback=mylightpurple,
+  coltitle=mypurple,
+  fonttitle=\bfseries\itshape,
+  title=#1,
+  sharp corners,
+  boxrule=0.8pt,
+  titlerule=0.5pt,
+  before skip=12pt,
+  after skip=12pt,
+  boxsep=6pt,
+  top=6pt,
+  bottom=6pt
+}
+
+\title{\textbf{Apuntes de Álgebra I}}
+\author{Ivan Ferreyra}
+\date{\today}
+
+\begin{document}
+\section{Induccion}
+
+\end{document}
