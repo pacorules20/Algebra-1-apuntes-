@@ -189,6 +189,103 @@ aca se puede ver que la ecuación cuadrática $k^2 - 3k - 3 = 0$ tiene dos raice
 solo nos queda verificar los casos $k=1,2,3$ de los cuales ya sabemos que $p(1)$ es verdadero, y verificando $p(2)$ y $p(3)$ se cumple que son verdaderos, por lo tanto queda demostrado que $p(n)$ es verdadero para todo $n \geq 1$.
 \end{solucion}
 
+\end{ejercicio}
 
+\begin{ejercicio}
+\[
+P(n): \sum_{i=1}^{n}\frac{n+i}{i+1} \leq 1+n(n-1)
+\]
+
+pruebo la proposición por inducción para todo $n\geq1$.
+\[
+\sum_{i=1}^{n}\frac{n+i}{i+1} \leq 1+n(n-1)
+\]
+
+\textbf{Caso Base:} $n=1$
+
+\[
+\sum_{i=1}^{1}\frac{1+1}{1+1} \leq 1+1(1-1)
+\]
+
+\[
+1 \leq 1 
+\]
+
+se cumple, por lo tanto el caso base es verdadero.
+
+\textbf{Paso Inductivo:}
+
+Supongamos que la proposición es verdadera para $n=h$, es decir:
+
+\textbf{Hipotesis Inductiva:}
+\[
+\sum_{i=1}^{h}\frac{h+i}{i+1} \leq 1+h(h-1)
+\]
+
+\textbf{Tesis Inductiva:}
+
+\[
+\sum_{i=1}^{h+1}\frac{h+1+i}{i+1} \leq 1+(h+1)(h)
+\]
+
+\begin{nota}{observación importante}
+    como podemos ver la sumatoria la vamos a separa en dos partes, pero ojo no hay que pensar que esto lo podemos aplicar a la productoria mas adelante.
+\end{nota}
+
+veamos:
+
+\[
+\sum_{i=1}^{h+1}\frac{h+1+i}{i+1} =  \sum_{i=1}^{h}\frac{h+1+i}{i+1} + \frac{h+1+(h+1)}{(h+1)+1}
+\]
+
+\[
+=  \textcolor{red}{\sum_{i=1}^{h}\frac{h+i}{i+1}}+ \sum_{i=1}^{h}\frac{1}{i+1} + \frac{h+1+(h+1)}{(h+1)+1}
+\]
+
+\[
+\stackrel{\text{HI}}{=} \textcolor{red}{1+h(h-1)}+ \sum_{i=1}^{h}\frac{1}{i+1} + \frac{h+1+(h+1)}{(h+1)+1}
+\]
+\begin{nota}{Cota}
+   aca podemos acotar por el valor mas pegado para que nos arregle los terminos mas feos, igual nos servira principalmente cuando el termino de abajo tienda a ser mas grande que el de arriba 
+\end{nota}
+
+\[
+\bullet \hspace{0,3 cm} \frac{1}{i+1} \leq \frac{1}{2}  \leftrightarrow i+1 \geq 2 \leftrightarrow i \geq 1 \rightarrow \sum_{i=1}^{h}\frac{1}{i+1} \leq \sum_{i=1}^{h}\frac{1}{2} = h *\frac{1}{2}=\frac{h}{2}
+\]
+
+\begin{nota}{Cota}
+    aca usaremos cota porque es un termino suelto esto no se puede apliar a sumatorias o productorias que no tengan denominadores mas grandes que los numeradores, porque si no se puede aplicar la cota y nos daria un resultado erroneo.
+\end{nota}
+
+\[
+\bullet \hspace{0,3 cm} \frac{2(k+1)}{k+2} \leq 2 \rightarrow  2(k+1) \leq 2(k+2) \rightarrow  k+1 \leq k+2 \rightarrow 1 \leq 2
+\]
+
+
+\[
+\stackrel{\text{HI}}{=} \textcolor{red}{1+h(h-1)}+ \frac{h}{2} + 2 \leq 1+(h+1)(h)
+\]
+
+\[
+\stackrel{\text{HI}}{=} k^2 +\frac{-k}{2} + 3 \leq k^2 + k + 1 
+\]
+
+se van las $k^2$ y los numeros natures se restan 
+
+\[
+\stackrel{\text{HI}}{=} \frac{-1}{2} k + 2 \leq  k  
+\]
+
+\[
+\stackrel{\text{HI}}{=} 2 \leq  \frac{3}{2} k  
+\]
+
+\[
+\stackrel{\text{HI}}{=} 4 \leq 3 k  \rightarrow k \geq \frac{4}{3}
+\]
+
+\begin{solucion}
+    bueno aca no queda demostrado para todo $n\geq1$ sino que para todo $n\geq2$, pero como ya sabemos que el caso base es verdadero, entonces queda demostrado por inducción que la proposición es verdadera para todo $n\geq1$.
+\end{solucion}
 
 \end{ejercicio}
