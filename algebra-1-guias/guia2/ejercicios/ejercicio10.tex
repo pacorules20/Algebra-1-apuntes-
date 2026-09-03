@@ -1,0 +1,194 @@
+\section{Ejercicios 10}
+
+\begin{ejercicio}
+\[
+3^n+5^n>2^{n+2}
+\]
+
+Probar por inducción la proposición para todo $n\geq2$.
+
+\textbf{Caso base:} $n=2$.
+
+\[
+3^2+5^2\geq2^{2+2}
+\]
+
+\[
+9+25\geq16
+\]
+
+\[
+34\geq16
+\]
+
+Por lo tanto, el caso base es verdadero.
+
+\textbf{Paso inductivo:}
+
+Supongamos que la proposición es verdadera para $n=k$, es decir:
+
+\textbf{Hipótesis inductiva:}
+
+\[
+3^k+5^k>2^{k+2}.
+\]
+
+Queremos demostrar que la proposición es verdadera para $n=k+1$.
+
+\textbf{Tesis inductiva:}
+
+\[
+3^{k+1}+5^{k+1}>2^{(k+1)+2}.
+\]
+
+Veamos:
+
+\[
+3^{k+1}+5^{k+1}
+=
+3\cdot3^k+5\cdot5^k.
+\]
+
+Como $3>2$ y $5>2$, tenemos:
+
+\[
+3\cdot3^k>2\cdot3^k
+\]
+
+y
+
+\[
+5\cdot5^k>2\cdot5^k.
+\]
+
+Por lo tanto,
+
+\[
+3\cdot3^k+5\cdot5^k
+>
+2\cdot3^k+2\cdot5^k.
+\]
+
+Entonces,
+
+\[
+3^{k+1}+5^{k+1}
+>
+2(3^k+5^k).
+\]
+
+Por la hipótesis inductiva,
+
+\[
+3^k+5^k>2^{k+2}.
+\]
+
+Como $2>0$, podemos multiplicar por $2$:
+
+\[
+2(3^k+5^k)>2\cdot2^{k+2}.
+\]
+
+Por lo tanto,
+
+\[
+3^{k+1}+5^{k+1}
+>
+2\cdot2^{k+2}.
+\]
+
+Finalmente,
+
+\[
+2\cdot2^{k+2}=2^{k+3}=2^{(k+1)+2}.
+\]
+
+Por lo tanto,
+
+\[
+3^{k+1}+5^{k+1}>2^{(k+1)+2}.
+\]
+
+Así, la tesis inductiva es verdadera.
+
+Como el caso base es verdadero y hemos demostrado que si la proposición es verdadera para $n=k$, entonces también lo es para $n=k+1$, queda demostrado por inducción que
+
+\[
+\boxed{3^n+5^n>2^{n+2}}
+\]
+
+para todo $n\geq2$.
+\end{ejercicio}
+
+\begin{ejercicio}
+\[
+p(n): 3^n \geq n^3 
+\]
+
+Entonces pruebo por inducción que $p(n)$ es verdadero para todo $n\geq 1$.
+
+\textbf{Caso base:} $p(1)$
+
+\[
+3^1 \geq 1^3
+\]
+
+\[
+3 \geq 1 
+\]
+
+verdadero.
+
+\textbf{Paso Inductivo:} $p(k)$
+
+\vspace{0.5cm}
+supongo que $p(k)$ es verdadero, es decir:
+
+\textbf{Hipótesis inductiva:} 
+
+\[
+3^k \geq k^3
+\]
+
+Quiero probar que $p(k+1)$ es verdadero:
+
+\textbf{Tesis inductiva:}
+
+\[
+3^{k+1} \geq (k+1)^3
+\]
+
+Veamos:
+
+\[ 
+3^{k+1} = 3 \cdot 3^k
+\]
+es igual termino de la hipótesis inductiva:
+\[ 
+HI \geq 3 \cdot k^3 \geq  (k+1)^3
+\]
+
+\[ 
+\geq 3 \cdot k^3 \geq k^3 + 3k^2 + 3k + 1
+\]
+
+\[ 
+\geq 3k^3 \geq k^3 + 3k^2 + 3k + 1
+\]
+
+\[ 
+\geq 2k^2 - 3k^1 - 3k \geq 1
+\]
+
+\[ 
+\geq k(k^2 - 3k - 3) \geq 1
+\]
+
+\begin{solucion}{raices de la ecuación cuadrática}
+aca se puede ver que la ecuación cuadrática $k^2 - 3k - 3 = 0$ tiene dos raices, una negativa y otra positiva, por lo tanto para todo $k \geq 4$ se cumple que $k^2 - 3k - 3 \geq 0$, entonces para todo $k \geq 4$ se cumple que $k(k^2 - 3k - 3) \geq 1$.
+solo nos queda verificar los casos $k=1,2,3$ de los cuales ya sabemos que $p(1)$ es verdadero, y verificando $p(2)$ y $p(3)$ se cumple que son verdaderos, por lo tanto queda demostrado que $p(n)$ es verdadero para todo $n \geq 1$.
+\end{solucion}
+
+
+
+\end{ejercicio}

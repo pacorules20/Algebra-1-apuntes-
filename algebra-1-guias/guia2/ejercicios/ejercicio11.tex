@@ -1,0 +1,156 @@
+\section{Ejercicios 11}
+
+\begin{ejercicio}
+Sea $(a_n)_{n \in \mathbb{N}}$ una sucesión de números reales todos del mismo signo y tales que $a_n > -1$ para todo $n \in \mathbb{N}$. Probar que
+
+\[
+\prod_{i=1}^{n} (1 + a_i) \geq 1 + \sum_{i=1}^{n} a_i
+\]
+
+Vamos a demostrarlo por inducción.
+
+Para $n=1$:
+
+\[
+\prod_{i=1}^{1}(1+a_i)=1+a_1
+\]
+
+y
+
+\[
+1+\sum_{i=1}^{1}a_i=1+a_1.
+\]
+
+Por lo tanto, se cumple la igualdad.
+
+Supongamos que para algún $n \in \mathbb{N}$ se cumple que
+
+\[
+\prod_{i=1}^{n}(1+a_i)
+\geq
+1+\sum_{i=1}^{n}a_i.
+\]
+
+Queremos demostrar que
+
+\[
+\prod_{i=1}^{n+1}(1+a_i)
+\geq
+1+\sum_{i=1}^{n+1}a_i.
+\]
+
+Tenemos que
+
+\[
+\prod_{i=1}^{n+1}(1+a_i)
+=
+\left(\prod_{i=1}^{n}(1+a_i)\right)(1+a_{n+1}).
+\]
+
+Como $a_{n+1}>-1$, entonces
+
+\[
+1+a_{n+1}>0.
+\]
+
+Por lo tanto, podemos multiplicar la desigualdad de la hipótesis inductiva por
+$1+a_{n+1}$ sin cambiar el sentido de la desigualdad:
+
+\[
+\left(\prod_{i=1}^{n}(1+a_i)\right)(1+a_{n+1})
+\geq
+\left(1+\sum_{i=1}^{n}a_i\right)(1+a_{n+1}).
+\]
+
+Desarrollando el segundo miembro:
+
+\[
+\left(1+\sum_{i=1}^{n}a_i\right)(1+a_{n+1})
+=
+1+\sum_{i=1}^{n}a_i+a_{n+1}
++a_{n+1}\sum_{i=1}^{n}a_i.
+\]
+
+Como todos los términos de la sucesión $(a_n)_{n\in\mathbb{N}}$
+tienen el mismo signo, se cumple que
+
+\[
+a_{n+1}\sum_{i=1}^{n}a_i \geq 0.
+\]
+
+Por lo tanto,
+
+\[
+1+\sum_{i=1}^{n}a_i+a_{n+1}
++a_{n+1}\sum_{i=1}^{n}a_i
+\geq
+1+\sum_{i=1}^{n+1}a_i.
+\]
+
+Entonces,
+
+\[
+\prod_{i=1}^{n+1}(1+a_i)
+\geq
+1+\sum_{i=1}^{n+1}a_i.
+\]
+
+Por inducción, queda demostrado que
+
+\[
+\boxed{
+\prod_{i=1}^{n}(1+a_i)
+\geq
+1+\sum_{i=1}^{n}a_i
+}
+\]
+
+para todo $n \in \mathbb{N}$.
+
+La condición $a_n>-1$ se utiliza cuando multiplicamos por
+$1+a_{n+1}$, ya que necesitamos que sea positivo.
+
+La condición de que todos los términos tengan el mismo signo se utiliza
+para asegurar que
+
+\[
+a_{n+1}\sum_{i=1}^{n}a_i\geq0.
+\]
+\end{ejercicio}
+
+\begin{ejercicio}
+Sea $a\in\mathbb{R}$ tal que $a>-1$.
+
+Tomamos en el ejercicio anterior
+
+\[
+a_1=a_2=\cdots=a_n=a.
+\]
+
+Como todos los términos tienen el mismo signo y $a>-1$, podemos aplicar
+el resultado del ejercicio anterior:
+
+\[
+\prod_{i=1}^{n}(1+a_i)
+\geq
+1+\sum_{i=1}^{n}a_i.
+\]
+
+Como $a_i=a$ para todo $i$, tenemos
+
+\[
+\prod_{i=1}^{n}(1+a_i)=(1+a)^n
+\]
+
+y
+
+\[
+\sum_{i=1}^{n}a_i=na.
+\]
+
+Por lo tanto,
+
+\[
+\boxed{(1+a)^n\geq1+na}.
+\]
+\end{ejercicio}
