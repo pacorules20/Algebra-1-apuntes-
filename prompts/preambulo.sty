@@ -114,3 +114,11 @@
   after skip=1.2em plus 0.2em,    % antes: 0.6em → ahora más notorio
   #1
 }
+
+% en el preámbulo, junto a los otros comandos/entornos
+\newlist{listapropiedades}{description}{1}
+\setlist[listapropiedades]{
+  style=nextline,
+  leftmargin=1.5em,
+  font=\bfseries\color{azulPrincipal}
+}
