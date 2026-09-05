@@ -1,0 +1,101 @@
+\chapter{Combinatoria de conjuntos, relaciones y funciones}
+
+\section{Cardinal de conjuntos y cantidad de relaciones}
+
+%\subsection{Principios de cardinal}
+\begin{teoria}[title=Definion de cardinal de un conjunto]
+    \textbf{sea A un conjunto, se llama cardinal de A a la cantidad de elementos distintos que tiene A, y se anota \#A. }
+\end{teoria}
+\begin{ejemplo}
+    \# $\emptyset$ = 0 , \#\{a, b, c\}= 3  
+\end{ejemplo}
+
+\begin{teoria}[title=Propiedades de los cardinales]
+    \textbf{sea A y B dos conjuntos} 
+    \begin{listapropiedades}
+  \item[1] Sea A un Conjuntos finitos y sea $B \subseteq A $ entonces $\#B \leq \#A $
+  \item[2] $(A\cup B)$ = $\#A + \#B - \#(A \cup B)$ 
+  \item[3] $\#\mu < \infty \rightarrow \#A^c = \#\mu - \#A$ 
+  \item[4] $\#(A-B) = \#A - \#(A\cap B) $
+  \item[5] $\# (A\Delta B) = \#A - \#B -2\#(A\cap B)$ 
+  \item[6] $\# (A X B) = \#A * \#B $
+  \item[7] $P(A) = 2^{\#A}$
+    \end{listapropiedades}
+\end{teoria}
+
+%\subsection{Cardinales y Funciones}
+\begin{teoria}[title= Cantidad de Funcion]
+    \textbf{Sean A y B conjuntos finitos}
+        \begin{listapropiedades}
+  \item[1] $\#(f: A\rightarrow B)$, f es funcion. Entonces $\#B^{\#A}$
+  \item[2] $\#(f: A\rightarrow B)$ f es una funcion Biyectiva. Entonces $n!$
+  \item[3] $\#(f: A\rightarrow B)$ f es una funcion Inyectiva. Entonces $\frac{k!}{(k-n)!}$
+    \end{listapropiedades}
+\end{teoria}
+
+
+\begin{teoria}[title= Cardinales y Funciones]
+    \textbf{Sean A y B conjuntos finitos}
+        \begin{listapropiedades}
+  \item[1] Sea $f: A\rightarrow B$ es una funcion Inyectiva. Entonces $\#A \leq \#B$
+  \item[2] Sea $f: A\rightarrow B$ es una funcion Sobreyectiva. Entonces $\#A \geq \#B$
+  \item[3] Sea $f: A\rightarrow B$ es una funcion Biyectiva. Entonces $\#A = \#B$
+    \end{listapropiedades}
+\end{teoria}
+
+\section{El factorial}
+
+\section{El Numero combinatorio}
+
+\begin{proposicion}[title=Teorema: Número Combinatorio]
+    Sea $n \in \mathbb{N}_0$ y sea $A_n$ un conjunto con $n$ elementos. Para $0 \leq k \leq n$, se nota con el símbolo $\binom{n}{k}$, que se llama \textbf{número combinatorio}, y representa la cantidad de subconjuntos con $k$ elementos de un conjunto de $n$ elementos, sin importar el orden interno de cada subconjunto, y es igual a:
+    \[
+    \binom{n}{k} = \frac{n!}{k!(n-k)!}
+    \]
+\end{proposicion}
+
+\begin{demostracion}
+    Para formar una lista ordenada de $k$ elementos extraídos de un conjunto de $n$ elementos, tenemos $n$ opciones para el primer elemento, $n-1$ para el segundo, y así sucesivamente, obteniendo un total de:
+    \[
+    n(n-1)(n-2)\cdots(n-k+1) = \frac{n!}{(n-k)!}
+    \]
+    formas ordenadas (variaciones simples). Como el orden interno de esos $k$ elementos no nos importa, y cada subconjunto de $k$ elementos puede ordenarse de $k!$ maneras distintas, dividimos el total anterior por $k!$ para eliminar las repeticiones debidas al orden. De este modo, la cantidad de subconjuntos sin importar el orden es:
+    \[
+    \binom{n}{k} = \frac{n!}{k!(n-k)!}
+    \]
+\end{demostracion}
+
+\begin{teoria}[title= Teorema del Binomio]
+
+\end{teoria}
+
+\begin{teoria}[title= Triangulo De Pascal]
+
+\end{teoria}
+
+\begin{demostracion}
+    Partimos de la expresión inicial aplicando la definición de número combinatorio:
+    \[
+    \binom{n-1}{k-1} + \binom{n-1}{k} = \frac{(n-1)!}{(k-1)!\,[(n-1)-(k-1)]!} + \frac{(n-1)!}{k!\,[(n-1)-k]!}
+    \]
+    Simplificamos los factoriales en los denominadores:
+    \[
+    = \frac{(n-1)!}{(k-1)!(n-k)!} + \frac{(n-1)!}{k!(n-1-k)!}
+    \]
+    Para sumar ambas fracciones, buscamos un denominador común, que es $k!(n-k)!$. Para ello, multiplicamos y dividimos el primer término por $k$ y el segundo por $(n-k)$:
+    \[
+    = \frac{(n-1)! \cdot k}{k!(n-k)!} + \frac{(n-1)! \cdot (n-k)}{k!(n-k)!}
+    \]
+    Agrupamos todo bajo un mismo denominador y sacamos factor común $(n-1)!$ en el numerador:
+    \[
+    = \frac{(n-1)! \cdot [k + (n - k)]}{k!(n-k)!}
+    \]
+    Operamos dentro del corchete ($k - k = 0$):
+    \[
+    = \frac{(n-1)! \cdot n}{k!(n-k)!}
+    \]
+    Como $(n-1)! \cdot n = n!$, obtenemos el resultado final:
+    \[
+    = \frac{n!}{k!(n-k)!} = \binom{n}{k}
+    \]
+\end{demostracion}
