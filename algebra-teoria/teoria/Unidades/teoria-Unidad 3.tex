@@ -3,9 +3,9 @@
 \section{Cardinal de conjuntos y cantidad de relaciones}
 
 %\subsection{Principios de cardinal}
-\begin{teoria}[title=Definion de cardinal de un conjunto]
+\begin{definicion}[title=Definion de cardinal de un conjunto]
     \textbf{sea A un conjunto, se llama cardinal de A a la cantidad de elementos distintos que tiene A, y se anota \#A. }
-\end{teoria}
+\end{definicion}
 \begin{ejemplo}
     \# $\emptyset$ = 0 , \#\{a, b, c\}= 3  
 \end{ejemplo}
@@ -45,7 +45,41 @@
 
 \section{El factorial}
 
-\section{El Numero combinatorio}
+\begin{definicion}[title={Definición de Factorial}]
+    Sea $n \in \mathbb{N}$. El factorial de $n$, que se denota como $n!$, es el número natural definido como:
+    \[
+    n! = n \cdot (n-1) \cdot \dots \cdot 2 \cdot 1 = \prod_{i=1}^{n} i
+    \]
+\end{definicion}
+
+\begin{proposicion}[title=Factorial y permutaciones]
+    La cantidad de funciones biyectivas entre dos conjuntos de $n$ elementos, es decir, la cantidad de permutaciones de un conjunto de $n$ elementos, es igual a $n!$.
+\end{proposicion}
+
+\begin{demostracion}
+    Es un caso particular de la proposición de funciones inyectivas, tomando $m=n$: la cantidad de funciones inyectivas de un conjunto de $n$ elementos en otro de $n$ elementos es
+    \[
+    \frac{n!}{(n-n)!} = \frac{n!}{0!} = n!
+    \]
+    Notar que en este caso ($m=n$), toda función inyectiva es también biyectiva (y viceversa), ya que ambos conjuntos tienen la misma cantidad de elementos.
+\end{demostracion}
+
+\begin{proposicion}[title= Cantidad de funciones inyectivas]
+    Sean $A_m$ y $B_n$ conjuntos finitos con $m$ y $n$ elementos respectivamente, donde $m \leq n$.
+    La cantidad de funciones inyectivas de $A_m$ en $B_n$ es:
+    \[
+        \frac{n!}{(n-m)!}
+    \]
+\end{proposicion}
+
+\begin{demostracion}
+    Para formar una lista ordenada de $m$ elementos extraídos de un conjunto de $n$ elementos, tenemos $n$ opciones para el primer elemento, $n-1$ para el segundo, y así sucesivamente, obteniendo un total de:
+    \[
+    n(n-1)(n-2)\cdots(n-m+1) = \frac{n!}{(n-m)!}
+    \]
+\end{demostracion}
+
+\section{El Número Combinatorio}
 
 \begin{proposicion}[title=Teorema: Número Combinatorio]
     Sea $n \in \mathbb{N}_0$ y sea $A_n$ un conjunto con $n$ elementos. Para $0 \leq k \leq n$, se nota con el símbolo $\binom{n}{k}$, que se llama \textbf{número combinatorio}, y representa la cantidad de subconjuntos con $k$ elementos de un conjunto de $n$ elementos, sin importar el orden interno de cada subconjunto, y es igual a:
@@ -55,22 +89,30 @@
 \end{proposicion}
 
 \begin{demostracion}
-    Para formar una lista ordenada de $k$ elementos extraídos de un conjunto de $n$ elementos, tenemos $n$ opciones para el primer elemento, $n-1$ para el segundo, y así sucesivamente, obteniendo un total de:
+    Contamos primero cuántas listas ordenadas de $k$ elementos distintos se pueden formar a partir de un conjunto de $n$ elementos. Por la proposición anterior (con $m=k$), esa cantidad de formas ordenadas (variaciones simples) es:
     \[
-    n(n-1)(n-2)\cdots(n-k+1) = \frac{n!}{(n-k)!}
+    \frac{n!}{(n-k)!}
     \]
-    formas ordenadas (variaciones simples). Como el orden interno de esos $k$ elementos no nos importa, y cada subconjunto de $k$ elementos puede ordenarse de $k!$ maneras distintas, dividimos el total anterior por $k!$ para eliminar las repeticiones debidas al orden. De este modo, la cantidad de subconjuntos sin importar el orden es:
+    Como el orden interno de esos $k$ elementos no nos importa, y cada subconjunto de $k$ elementos puede ordenarse de $k!$ maneras distintas, dividimos el total anterior por $k!$ para eliminar las repeticiones debidas al orden. De este modo, la cantidad de subconjuntos sin importar el orden es:
     \[
     \binom{n}{k} = \frac{n!}{k!(n-k)!}
     \]
 \end{demostracion}
 
-\begin{teoria}[title= Teorema del Binomio]
 
-\end{teoria}
+\begin{definicion}[title=Triángulo de Pascal]
+    El \textbf{triángulo de Pascal} es un arreglo triangular de números en el cual la fila $n$ (para $n \in \mathbb{N}_0$) está formada por los números combinatorios:
+    \[
+    \binom{n}{0}, \binom{n}{1}, \binom{n}{2}, \dots, \binom{n}{n}
+    \]
+\end{definicion}
 
-\begin{teoria}[title= Triangulo De Pascal]
-
+\begin{teoria}[title= Identidad de Stifel]
+    Sea $n \in \mathbb{N}$ y $1 \leq k \leq n-1$. Entonces:
+    \[
+    \binom{n-1}{k-1} + \binom{n-1}{k} = \binom{n}{k}
+    \]
+    Esta identidad muestra que cada número del triángulo de Pascal (salvo los bordes) es la suma de los dos números que están inmediatamente arriba en la fila anterior.
 \end{teoria}
 
 \begin{demostracion}
@@ -80,22 +122,51 @@
     \]
     Simplificamos los factoriales en los denominadores:
     \[
-    = \frac{(n-1)!}{(k-1)!(n-k)!} + \frac{(n-1)!}{k!(n-1-k)!}
+    = \frac{(n-1)!}{(k-1)!\,(n-k)!} + \frac{(n-1)!}{k!\,(n-k-1)!}
     \]
     Para sumar ambas fracciones, buscamos un denominador común, que es $k!(n-k)!$. Para ello, multiplicamos y dividimos el primer término por $k$ y el segundo por $(n-k)$:
     \[
-    = \frac{(n-1)! \cdot k}{k!(n-k)!} + \frac{(n-1)! \cdot (n-k)}{k!(n-k)!}
+    = \frac{(n-1)! \cdot k}{k!\,(n-k)!} + \frac{(n-1)! \cdot (n-k)}{k!\,(n-k)!}
     \]
     Agrupamos todo bajo un mismo denominador y sacamos factor común $(n-1)!$ en el numerador:
     \[
-    = \frac{(n-1)! \cdot [k + (n - k)]}{k!(n-k)!}
+    = \frac{(n-1)!\,\big[k + (n-k)\big]}{k!\,(n-k)!}
     \]
-    Operamos dentro del corchete ($k - k = 0$):
+    Operamos dentro del corchete ($k - k = 0$, quedando solo $n$):
     \[
-    = \frac{(n-1)! \cdot n}{k!(n-k)!}
+    = \frac{(n-1)! \cdot n}{k!\,(n-k)!}
     \]
     Como $(n-1)! \cdot n = n!$, obtenemos el resultado final:
     \[
-    = \frac{n!}{k!(n-k)!} = \binom{n}{k}
+    = \frac{n!}{k!\,(n-k)!} = \binom{n}{k}
     \]
 \end{demostracion}
+
+
+\begin{proposicion}[title= Teorema del Binomio]
+    Sean $a, b \in \mathbb{R}$ y $n \in \mathbb{N}_0$. Entonces:
+    \[
+    (a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k
+    \]
+\end{proposicion}
+
+\begin{demostracion}
+    Procedemos por inducción en $n$.
+
+    \textbf{Caso base ($n=0$):} $(a+b)^0 = 1$ y $\sum_{k=0}^{0} \binom{0}{k} a^{0-k}b^k = \binom{0}{0}a^0b^0 = 1$. Se cumple.
+
+    \textbf{Paso inductivo:} Supongamos que la fórmula vale para $n$, es decir:
+    \[
+    (a+b)^n = \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k
+    \]
+    Queremos ver que vale para $n+1$. Multiplicamos ambos lados por $(a+b)$:
+    \[
+    (a+b)^{n+1} = (a+b)\sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^k = \sum_{k=0}^{n} \binom{n}{k} a^{n-k+1} b^k + \sum_{k=0}^{n} \binom{n}{k} a^{n-k} b^{k+1}
+    \]
+    Reacomodando índices para que ambas sumas queden en términos de $a^{n+1-k}b^k$, y usando la identidad de Pascal (Stifel) $\binom{n}{k-1}+\binom{n}{k} = \binom{n+1}{k}$, se obtiene:
+    \[
+    (a+b)^{n+1} = \sum_{k=0}^{n+1} \binom{n+1}{k} a^{n+1-k} b^k
+    \]
+    Lo cual completa el paso inductivo, y por lo tanto la fórmula vale para todo $n \in \mathbb{N}_0$.
+\end{demostracion}
+

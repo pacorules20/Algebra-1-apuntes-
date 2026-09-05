@@ -4,46 +4,20 @@
 % reutilizables. Se carga desde main.tex con \usepackage{preambulo}
 %
 % CONVENCIÓN DE USO (léase antes de usar los entornos):
-%   Las 4 cajas (teoria, ejemplo, nota, proposicion) toman TODAS
-%   un único argumento opcional entre corchetes, que se pasa tal
-%   cual como opciones de tcolorbox. Esto significa:
-%
-%     \begin{teoria} ... \end{teoria}                 -> sin título
-%     \begin{teoria}[title=Definición] ... \end{teoria} -> con título
-%     \begin{nota} ... \end{nota}                     -> título "Nota"
-%     \begin{nota}[title=Nota: Cuidado] ... \end{nota} -> título custom
-%     \begin{ejemplo} ... \end{ejemplo}               -> título fijo "Ejemplo"
-%     \begin{proposicion} ... \end{proposicion}       -> numerada automática
-%
-%   El corchete también sirve para pisar cualquier otra opción de
-%   tcolorbox puntualmente, ej: \begin{teoria}[colframe=red]
-%
-%   IMPORTANTE: nunca se usan llaves {texto} para el título. Si
-%   escribís \begin{teoria}{Definición} por error, LaTeX NO tira
-%   error: "Definición" se cuela como texto suelto del cuerpo.
-%   Si querés título, siempre va con corchetes y "title=".
-%
-%   \label{...} funciona bien puesto justo después de \begin{...}
-%   tanto en "proposicion" como en "ejercicio": el contador avanza
-%   ANTES de abrir la caja/línea, así que \ref siempre apunta al
-%   número correcto (ej. "Proposición 1.2", no "1" ni el número
-%   de la sección).
+%   Las cajas toman TODAS un único argumento opcional entre corchetes,
+%   que se pasa tal cual como opciones de tcolorbox.
 % ============================================================
-
 
 % ============================================================
 % 1. PAQUETES
 % ============================================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-% Nota: este motor de TeX no trae instalado el paquete de idioma
-% "spanish" de babel (faltan los patrones de silabeo). Para no
-% depender de eso, renombramos manualmente los textos automáticos.
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{geometry}
 \geometry{margin=2.5cm}
 \usepackage{xcolor}
-\usepackage[many]{tcolorbox} % "many" ya incluye skins y breakable
+\usepackage[many]{tcolorbox}
 \usepackage{enumitem}
 \usepackage{titlesec}
 \usepackage{hyperref}
@@ -58,32 +32,25 @@
 \definecolor{naranjaNota}{HTML}{E65100}
 \definecolor{grisClaro}{HTML}{F2F2F2}
 \definecolor{moradoProposicion}{HTML}{6A1B9A}
+\definecolor{amarilloDemostracion}{HTML}{D4AC0D} % Amarillo/Ámbar elegante para demostraciones
+\definecolor{rojoDefinicion}{HTML}{C0392B}      % Rojo elegante para definiciones
 
 
 % ============================================================
 % 3. DISEÑO DE PÁGINA
 % ============================================================
 
-% --- Estilo de títulos de sección ---
 \titleformat{\section}
   {\color{azulPrincipal}\Large\bfseries}{\thesection}{1em}{}
 \titleformat{\subsection}
   {\color{azulPrincipal}\large\bfseries}{\thesubsection}{1em}{}
 
-% --- Textos automáticos (reemplazo manual de babel) ---
 \renewcommand{\contentsname}{Índice}
 
-% --- Encabezado / pie de página ---
-% Nota: en \chapter (report/book) la primera página de cada
-% capítulo usa \thispagestyle{plain} automáticamente y no muestra
-% este encabezado; es comportamiento normal de LaTeX, no un bug.
-% --- Encabezado / pie de página ---
 \pagestyle{fancy}
-% Aumentamos un poco el headheight por si el texto ocupa dos líneas
 \setlength{\headheight}{24pt} 
 \fancyhf{}
 \fancyhead[L]{Guía de Álgebra}
-% Usamos parbox para limitar el ancho al 65% de la página, achicamos la fuente y alineamos a la derecha
 \fancyhead[R]{\parbox{1\textwidth}{\raggedleft\small\leftmark}}
 \fancyfoot[C]{\thepage}
 
@@ -92,31 +59,21 @@
 % 4. COMANDOS REUTILIZABLES
 % ============================================================
 
-% Fracción rápida en estilo display: \fracd{a}{b}
 \newcommand{\fracd}[2]{\dfrac{#1}{#2}}
-
-% Resaltar un resultado final en una caja, en modo display.
-% Uso: \resultado{x = 2}
 \newcommand{\resultado}[1]{\[\boxed{#1}\]}
-
-% Definición de una variable o término con formato uniforme.
-% Uso: \defterm{Discriminante}
 \newcommand{\defterm}[1]{\textbf{\textcolor{azulPrincipal}{#1}}}
-
-% Fórmula general de la ecuación cuadrática (se usa en varios
-% capítulos). Ya viene en modo display, no hace falta envolverla
-% en $...$ ni en \[...\] al usarla.
 \newcommand{\formulaCuadratica}{%
   \[
     x = \fracd{-b \pm \sqrt{b^2 - 4ac}}{2a}
   \]
 }
 
+
 % ============================================================
-% ENTORNOS reutilizables (cajas de teoría, ejemplo, ejercicio, nota)
+% ENTORNOS reutilizables (cajas de teoría, ejemplo, ejercicio, nota, etc.)
 % ============================================================
 
-% --- Caja de TEORÍA / DEFINICIÓN ---
+% --- Caja de TEORÍA general ---
 \newtcolorbox{teoria}[1][]{
   colback=grisClaro, 
   colframe=azulPrincipal,
@@ -128,7 +85,24 @@
   rounded corners, 
   before skip=0.1cm, 
   after skip=0.1cm,
-  fontupper=\linespread{1.2}\selectfont, % <-- Ajusta el número para más o menos espacio
+  fontupper=\linespread{1.2}\selectfont,
+  #1
+}
+
+% --- Caja de DEFINICIÓN (en rojo, numerada opcionalmente o título fijo) ---
+\newcounter{numdefinicion}[section]
+\newtcolorbox{definicion}[1][]{
+  colback=rojoDefinicion!5, 
+  colframe=rojoDefinicion,
+  fonttitle=\bfseries, 
+  coltitle=white,
+  colbacktitle=rojoDefinicion,
+  title={Definición \thesection.\refstepcounter{numdefinicion}\thenumdefinicion},
+  breakable, 
+  rounded corners, 
+  before skip=0.1cm, 
+  after skip=0.1cm,
+  fontupper=\linespread{1.2}\selectfont,
   #1
 }
 
@@ -147,12 +121,12 @@
   \par\noindent\textbf{\textcolor{verdeEjercicio}{Ejercicio \thesection.\thenumejercicio.}}\quad
 }{\par\vspace{0.4em}}
 
-% --- Entorno SOLUCION (para ocultar/mostrar respuestas) ---
+% --- Entorno SOLUCION ---
 \newenvironment{solucion}{%
   \par\noindent\textit{\textcolor{verdeEjercicio!70!black}{Solución:}}\quad
 }{\par\vspace{0.6em}}
 
-% --- Caja de NOTA / observación (título fijo) ---
+% --- Caja de NOTA / observación ---
 \newtcolorbox{nota}[2][]{
   colback=naranjaNota!5,
   colframe=naranjaNota,
@@ -161,12 +135,11 @@
   title={Nota: #2},
   breakable,
   rounded corners,
-  before skip=1.2em plus 0.2em,   % antes: 0.6em → ahora más notorio
-  after skip=1.2em plus 0.2em,    % antes: 0.6em → ahora más notorio
+  before skip=1.2em plus 0.2em,
+  after skip=1.2em plus 0.2em,
   #1
 }
 
-% en el preámbulo, junto a los otros comandos/entornos
 \newlist{listapropiedades}{description}{1}
 \setlist[listapropiedades]{
   style=nextline,
@@ -184,16 +157,16 @@
   breakable, rounded corners, #1
 }
 
-% --- Entorno DEMOSTRACIÓN (sin caja, con filete lateral y QED) ---
-\newenvironment{demostracion}{%
-  \par\addvspace{0.6em}%
-  \noindent\textit{\textcolor{moradoProposicion!80!black}{Demostración.}}\quad
-  \itshape
-  \begin{quote}
-  \color{black!85}
-}{%
-  \hfill$\blacksquare$
-  \end{quote}
-  \normalfont
-  \par\addvspace{0.6em}%
+% --- Caja de DEMOSTRACIÓN (como la proposición pero en amarillo/ámbar, numerada o con título fijo) ---
+\newcounter{numdemostracion}[section]
+\newtcolorbox{demostracion}[1][]{
+  colback=amarilloDemostracion!5, 
+  colframe=amarilloDemostracion,
+  fonttitle=\bfseries, 
+  coltitle=black,
+  colbacktitle=amarilloDemostracion!40,
+  title={Demostración},
+  breakable, 
+  rounded corners, 
+  #1
 }
