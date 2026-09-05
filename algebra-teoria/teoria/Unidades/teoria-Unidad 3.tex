@@ -43,6 +43,12 @@
     \end{listapropiedades}
 \end{teoria}
 
+\begin{nota}{uso}
+    Este tipo de casos se utiliza para calcula el número de permutaciones u ordenamientos, lo que significa que el orden sí importa.
+    por ejemplo, el conjunto ordenado $(1, 2, 3, 4)$ se cuenta como algo completamente distinto de $(4, 3, 2, 1)$, $(2, 1, 4, 3)$, etc.
+    esto se usa para relaciones o funciones
+\end{nota}
+
 \section{El factorial}
 
 \begin{definicion}[title={Definición de Factorial}]
@@ -98,7 +104,13 @@
     \binom{n}{k} = \frac{n!}{k!(n-k)!}
     \]
 \end{demostracion}
-
+\begin{nota}{uso}
+Este tipo de casos se utiliza para calcula subconjunto, como son una agrupación que no importar el orden 
+(donde la llave $\{1, 2, 3, 4\}$ es exactamente la misma que $\{4, 3, 2, 1\}$),
+ la fórmula de permutaciones está sobrecontando cada subconjunto. 
+ Específicamente, cada grupo de 4 elementos se está contando $4!$ 
+ veces (todas las formas posibles de ordenar esos 4 elementos entre sí).
+\end{nota}
 
 \begin{definicion}[title=Triángulo de Pascal]
     El \textbf{triángulo de Pascal} es un arreglo triangular de números en el cual la fila $n$ (para $n \in \mathbb{N}_0$) está formada por los números combinatorios:
