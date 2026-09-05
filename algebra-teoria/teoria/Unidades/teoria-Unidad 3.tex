@@ -124,21 +124,25 @@
     \[
     = \frac{(n-1)!}{(k-1)!\,(n-k)!} + \frac{(n-1)!}{k!\,(n-k-1)!}
     \]
-    Para sumar ambas fracciones, buscamos un denominador común, que es $k!(n-k)!$. Para ello, multiplicamos y dividimos el primer término por $k$ y el segundo por $(n-k)$:
+    Escribimos $(n-k)! = (n-k)(n-k-1)!$ en el primer término y $k! = k(k-1)!$ en el segundo, para sacar como factor común $\dfrac{(n-1)!}{(k-1)!\,(n-k-1)!}$:
     \[
-    = \frac{(n-1)! \cdot k}{k!\,(n-k)!} + \frac{(n-1)! \cdot (n-k)}{k!\,(n-k)!}
+    = \frac{(n-1)!}{(k-1)!\,(n-k-1)!}\left(\frac{1}{n-k} + \frac{1}{k}\right)
     \]
-    Agrupamos todo bajo un mismo denominador y sacamos factor común $(n-1)!$ en el numerador:
+    Sumamos las fracciones dentro del paréntesis, buscando el común denominador $k(n-k)$:
     \[
-    = \frac{(n-1)!\,\big[k + (n-k)\big]}{k!\,(n-k)!}
+    = \frac{(n-1)!}{(k-1)!\,(n-k-1)!} \cdot \frac{k+(n-k)}{k(n-k)}
     \]
-    Operamos dentro del corchete ($k - k = 0$, quedando solo $n$):
+    Simplificamos el numerador ($k + n - k = n$):
     \[
-    = \frac{(n-1)! \cdot n}{k!\,(n-k)!}
+    = \frac{(n-1)!}{(k-1)!\,(n-k-1)!} \cdot \frac{n}{k(n-k)}
     \]
-    Como $(n-1)! \cdot n = n!$, obtenemos el resultado final:
+    Reagrupamos usando que $(n-1)!\cdot n = n!$, $(k-1)!\cdot k = k!$ y $(n-k-1)!\cdot(n-k) = (n-k)!$:
     \[
-    = \frac{n!}{k!\,(n-k)!} = \binom{n}{k}
+    = \frac{n!}{k!\,(n-k)!}
+    \]
+    Y por definición de número combinatorio, obtenemos el resultado final:
+    \[
+    = \binom{n}{k}
     \]
 \end{demostracion}
 
