@@ -1,1 +1,196 @@
-dddd
+\section*{Fermat}
+
+\[
+7x^2 + x - 5 = 0
+\]
+\[
+x^2 + y^2 = z^2
+\]
+\[
+x^3 + y^3 = z^3
+\]
+\[
+x^4 + x^4 = z^4
+\]
+
+Fermat comprobó que $(x,y,z)$ encuentra una cadena descendente cuya suma
+resulta más chica (método de descenso infinito de Fermat).
+
+Teoría de Diofanto:
+\[
+x^n + x^n = z^n
+\]
+
+\section*{Propiedades de la suma}
+
+El conjunto $\mathbb{Z}$ viene provisto de dos operaciones $+$ y $*$.
+
+\begin{itemize}
+    \item La suma es asociativa:
+    \[
+    (x+y)+z = x+(y+z)
+    \]
+    \[
+    (1+(4+7)+8) =
+    \]
+
+    \item La generalización de la conmutatividad es la siguiente:
+    \[
+    y+z = z+y
+    \]
+    \[
+    1+2+3+4 = 4+3+2+1
+    \]
+
+    \item Tiene a $0$ como neutro: $x+0=x$.
+
+    \item Todo entero tiene un opuesto: si existe $x \in \mathbb{Z}$
+    entonces hay un entero $y \in \mathbb{Z}$ tal que $x+(-x)=0$.
+\end{itemize}
+
+\textbf{Multiplicación:}
+
+\begin{itemize}
+    \item Es asociativa:
+    \[
+    x*(y*z) = (x*y)*z
+    \]
+
+    \item Es conmutativa:
+    \[
+    x*y = y*x
+    \]
+
+    \item Tiene a $1$ como neutro: $x*1 = x$.
+
+    \item Todo entero distinto de $0$ tiene un opuesto: si existe
+    $x \in \mathbb{Z}$ entonces hay
+\end{itemize}
+
+\textbf{Propiedad distributiva:}
+\[
+x*(y+z) = x*y + x*z
+\]
+\[
+((x+y)*z)*w = (x*z)*w + (y*z)*w
+\]
+
+$(\mathbb{Z},+,*)$ es un anillo conmutativo con unidad.
+
+$(R,+,*)$ es un cuerpo si todo elemento distinto de $0$ tiene un opuesto
+multiplicativo: si existe $x \in R$ entonces hay $y \in R$ tal que $x*y=1$.
+
+$\mathbb{Z}$ es un dominio de integridad:
+\[
+xy = 0 \rightarrow x=0 \text{ o } y=0
+\]
+
+$21$ es divisible por $7$.
+
+\section*{Divisibilidad}
+
+\begin{definicion}
+Sean $a,b \in R$. Decimos que $a$ es divisible a $b$ si hay otro entero
+$c$ tal que $b=ac$, y en ese caso escribimos $a\mid b$. Si $a$ no divide
+a $b$ escribimos $a \nmid b$.
+\end{definicion}
+
+\[
+R = \{ (a,b) \in \mathbb{Z} \times \mathbb{Z} : b \neq 0 \}
+\]
+es una relación en $\mathbb{Z}$.
+
+Sea $a \in \mathbb{Z}$. Como $a=a*1$, $a\mid a$, así que $(a,a) \in R$ y
+$R$ es reflexiva. $R$ no es simétrica porque $(3,9) \in R$ pero
+$(9,3) \notin R$. Falta ver que $(a,b),(b,c) \in R \rightarrow (a,c) \in R$.
+
+Supongamos que $(a,b),(b,c) \in R$, entonces hay enteros $x,y$ tales que
+$b=ax$ y $c=by$, entonces $c=by=axy$, así que $(a,c) \in R$ y $R$ es
+transitiva. Así que $a\mid c$ y $(a,c) \in R$.
+
+\textbf{Antisimétrica:} $(a,b) \in R$, $(b,a) \in R \rightarrow a=b$.
+
+Hay $x$ tal que $b=ax$. Hay $y$ tal que $a=by$.
+
+Contraejemplo: $a=1$, $b=-1$.
+
+Si $(a,b),(b,a) \in R$, entonces $a=b$ o $a=-b$.
+
+\begin{teoria}
+Si $(a,b),(b,a) \in R$, de manera que hay enteros $x$ e $y$ tales que
+$b=ax$ y $a=by$, tal que
+\[
+a = by = (ax)y = a(xy)
+\]
+así que
+\[
+0 = a - a(xy) = a(1-xy)
+\]
+y por lo tanto $a=0$ o $1-x=0$.
+
+Supongamos que $a=0$, entonces $b=ax=0x=0$.
+
+Supongamos que $a \neq 0$, así que $xy=1$, $x$ es invertible, así que
+$x=1$ o $x=-1$. Si $x=1$ entonces $b=ax=a$, y si $x=-1$ entonces
+$b=ax=a(-1)=-a$.
+
+$R$ no es antisimétrica.
+\end{teoria}
+
+\begin{teoria}
+La relación
+\[
+R' = \{ (a,b) \in \text{No} \times \text{No} : a \mid b \}
+\]
+es una relación de orden en $\text{No}$.
+
+$(a,b),(b,a) \in R' \rightarrow a=b$ (no se puede $a=-b$).
+\end{teoria}
+
+\begin{teoria}
+    fijemos un entero m , decimos que es un entero a es congruente modulo m con otro entero b si , m|a-b
+    y en ese caso escribi,os a (triple flecha) mod m 
+\end{teoria}
+
+sea R = {(a,b) in Z X Z : a== B mod m}
+R es una relacion en Z
+si a in Z , entonces m | 0 = a - a , asi que a== a y (a,a) in R . R es reflexiva
+
+(a,b) \rightarrow (b,a) in R 
+a== b , m|a-b 
+a - b = mx 
+b-a = -mx 
+= m(-x)
+
+b==a 
+m|b-a 
+b-a = m (-x)
+
+si (a,b) in R , entonces a== b asi que existe x in R talque a-b =mx entonces m(-x) = -mx = -(a-b) = b-a , asi que m|b-a , b==a , asi que (b,a) in R . R es simetrica
+
+(a,b),(b,c) e R -> (a,c) e R 
+a==b b==c a==c
+
+a-b= mx b-c=my a-c=mc
+
+a = b+mx
+c = b-my
+mz = a-c = (b+mx) -(b-my)
+mz = mx + my
+
+si que (a,b) y (b,c) esta en R, de manera que ahy entero x e y talque  a-b = mx y b-c=my 
+entonces m(x+y) = mx = my = (a-b) + (b-c)
+= a-b + b -c 
+= a-c
+
+
+asi que m|a-c
+y a==c , (a,c) in R
+
+
+== es una relacion de equivalencia en Z 
+
+
+
+
+
