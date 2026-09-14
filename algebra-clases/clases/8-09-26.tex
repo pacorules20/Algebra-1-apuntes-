@@ -1,4 +1,6 @@
-\section*{Fermat}
+
+
+\section{El último teorema de Fermat}
 
 \[
 7x^2 + x - 5 = 0
@@ -10,147 +12,217 @@ x^2 + y^2 = z^2
 x^3 + y^3 = z^3
 \]
 \[
-x^4 + x^4 = z^4
+x^4 + y^4 = z^4
 \]
 
-Fermat comprobó que $(x,y,z)$ encuentra una cadena descendente cuya suma
-resulta más chica (método de descenso infinito de Fermat).
+\begin{nota}{Descenso infinito}
+Fermat demostró que si $(x,y,z)$ es una solución en enteros positivos de
+$x^4+y^4=z^4$, entonces se puede construir otra solución con números
+más chicos, y así obtener una cadena infinita descendente de soluciones
+cada vez menores, lo cual es imposible en $\mathbb{N}$ (método de
+\textbf{descenso infinito} de Fermat). Esto prueba que la ecuación no
+tiene soluciones no triviales.
+\end{nota}
 
-Teoría de Diofanto:
+De manera más general, la ecuación de Fermat (o de Diofanto) es
 \[
-x^n + x^n = z^n
+x^n + y^n = z^n, \qquad n \geq 3,
 \]
+y el último teorema de Fermat afirma que no tiene soluciones enteras
+positivas.
 
-\section*{Propiedades de la suma}
+\section{Propiedades de la suma y el producto en $\mathbb{Z}$}
+\begin{teoria}
+El conjunto $\mathbb{Z}$ viene provisto de dos operaciones, $+$ y $*$.
 
-El conjunto $\mathbb{Z}$ viene provisto de dos operaciones $+$ y $*$.
+\textbf{Suma:}
+\begin{listapropiedades}
+    \item[Asociativa] $(x+y)+z = x+(y+z)$. Por ejemplo,
+    $(1+4)+7 = 1+(4+7) = 12$.
 
-\begin{itemize}
-    \item La suma es asociativa:
-    \[
-    (x+y)+z = x+(y+z)
-    \]
-    \[
-    (1+(4+7)+8) =
-    \]
+    \item[Conmutativa] $x+y = y+x$. La suma de varios términos se puede
+    reordenar libremente, por ejemplo $1+2+3+4 = 4+3+2+1$.
 
-    \item La generalización de la conmutatividad es la siguiente:
-    \[
-    y+z = z+y
-    \]
-    \[
-    1+2+3+4 = 4+3+2+1
-    \]
+    \item[Elemento neutro] Tiene a $0$ como neutro: $x+0=x$ para todo
+    $x \in \mathbb{Z}$.
 
-    \item Tiene a $0$ como neutro: $x+0=x$.
-
-    \item Todo entero tiene un opuesto: si existe $x \in \mathbb{Z}$
-    entonces hay un entero $y \in \mathbb{Z}$ tal que $x+(-x)=0$.
-\end{itemize}
+    \item[Elemento opuesto] Todo entero tiene un opuesto (inverso
+    aditivo): para cada $x \in \mathbb{Z}$ existe $-x \in \mathbb{Z}$
+    tal que $x+(-x)=0$.
+\end{listapropiedades}
 
 \textbf{Multiplicación:}
+\begin{listapropiedades}
+    \item[Asociativa] $x*(y*z) = (x*y)*z$.
 
-\begin{itemize}
-    \item Es asociativa:
-    \[
-    x*(y*z) = (x*y)*z
-    \]
+    \item[Conmutativa] $x*y = y*x$.
 
-    \item Es conmutativa:
-    \[
-    x*y = y*x
-    \]
+    \item[Elemento neutro] Tiene a $1$ como neutro: $x*1 = x$.
 
-    \item Tiene a $1$ como neutro: $x*1 = x$.
-
-    \item Todo entero distinto de $0$ tiene un opuesto: si existe
-    $x \in \mathbb{Z}$ entonces hay
-\end{itemize}
+    \item[Sin inverso general] En general, un entero $x \neq 0$
+    \emph{no} tiene inverso multiplicativo en $\mathbb{Z}$ (salvo
+    $x=\pm 1$): no siempre existe $y \in \mathbb{Z}$ tal que $x*y=1$.
+\end{listapropiedades}
 
 \textbf{Propiedad distributiva:}
 \[
-x*(y+z) = x*y + x*z
+x*(y+z) = x*y + x*z.
 \]
+De ahí se deduce, por ejemplo,
 \[
-((x+y)*z)*w = (x*z)*w + (y*z)*w
+(x+y)*z = x*z + y*z.
 \]
 
-$(\mathbb{Z},+,*)$ es un anillo conmutativo con unidad.
-
-$(R,+,*)$ es un cuerpo si todo elemento distinto de $0$ tiene un opuesto
-multiplicativo: si existe $x \in R$ entonces hay $y \in R$ tal que $x*y=1$.
-
-$\mathbb{Z}$ es un dominio de integridad:
-\[
-xy = 0 \rightarrow x=0 \text{ o } y=0
-\]
-
-$21$ es divisible por $7$.
-
-\section*{Divisibilidad}
+Con estas propiedades, $(\mathbb{Z},+,*)$ es un \textbf{anillo
+conmutativo con unidad}.
+\end{teoria}
 
 \begin{definicion}
-Sean $a,b \in R$. Decimos que $a$ es divisible a $b$ si hay otro entero
-$c$ tal que $b=ac$, y en ese caso escribimos $a\mid b$. Si $a$ no divide
-a $b$ escribimos $a \nmid b$.
+Un anillo conmutativo con unidad $(R,+,*)$ es un \textbf{cuerpo} si todo
+elemento distinto de $0$ tiene inverso multiplicativo: para cada
+$x \in R\setminus\{0\}$ existe $y \in R$ tal que $x*y=1$.
 \end{definicion}
 
+\begin{nota}{$\mathbb{Z}$ no es un cuerpo}
+$\mathbb{Z}$ no es un cuerpo (por ejemplo $2$ no tiene inverso
+multiplicativo entero), pero sí es un \textbf{dominio de integridad}:
+no tiene divisores de cero, es decir
 \[
-R = \{ (a,b) \in \mathbb{Z} \times \mathbb{Z} : b \neq 0 \}
+xy = 0 \;\Longrightarrow\; x=0 \text{ o } y=0.
 \]
-es una relación en $\mathbb{Z}$.
+\end{nota}
 
-Sea $a \in \mathbb{Z}$. Como $a=a*1$, $a\mid a$, así que $(a,a) \in R$ y
-$R$ es reflexiva. $R$ no es simétrica porque $(3,9) \in R$ pero
-$(9,3) \notin R$. Falta ver que $(a,b),(b,c) \in R \rightarrow (a,c) \in R$.
+\begin{ejemplo}
+$21$ es divisible por $7$, ya que $21 = 7\cdot 3$.
+\end{ejemplo}
 
-Supongamos que $(a,b),(b,c) \in R$, entonces hay enteros $x,y$ tales que
-$b=ax$ y $c=by$, entonces $c=by=axy$, así que $(a,c) \in R$ y $R$ es
-transitiva. Así que $a\mid c$ y $(a,c) \in R$.
+\section{Divisibilidad}
 
-\textbf{Antisimétrica:} $(a,b) \in R$, $(b,a) \in R \rightarrow a=b$.
+\begin{definicion}
+Sean $a,b \in \mathbb{Z}$. Decimos que $a$ \textbf{divide} a $b$ si
+existe un entero $c$ tal que $b=ac$, y en ese caso escribimos $a\mid b$.
+Si $a$ no divide a $b$ escribimos $a \nmid b$.
+\end{definicion}
 
-Hay $x$ tal que $b=ax$. Hay $y$ tal que $a=by$.
-
-Contraejemplo: $a=1$, $b=-1$.
-
-Si $(a,b),(b,a) \in R$, entonces $a=b$ o $a=-b$.
-
-\begin{teoria}
-Si $(a,b),(b,a) \in R$, de manera que hay enteros $x$ e $y$ tales que
-$b=ax$ y $a=by$, tal que
+\begin{proposicion}
+Consideremos la relación
 \[
-a = by = (ax)y = a(xy)
+R = \{ (a,b) \in \mathbb{Z} \times \mathbb{Z} : a \mid b \}.
 \]
-así que
+
+
+$R$ es reflexiva y transitiva, pero no es antisimétrica (y por lo tanto
+no es una relación de orden en $\mathbb{Z}$).
+\end{proposicion}
+
+\begin{demostracion}
+\textbf{Reflexiva.} Sea $a \in \mathbb{Z}$. Como $a=a\cdot 1$, se tiene
+$a\mid a$, así que $(a,a) \in R$.
+
+\textbf{No simétrica.} $R$ no es simétrica: $(3,9) \in R$ (pues
+$3\mid 9$) pero $(9,3) \notin R$ (pues $9 \nmid 3$).
+
+\textbf{Transitiva.} Supongamos que $(a,b),(b,c) \in R$, es decir
+$a\mid b$ y $b \mid c$. Entonces existen enteros $x,y$ tales que $b=ax$
+y $c=by$. Luego
 \[
-0 = a - a(xy) = a(1-xy)
+c = by = (ax)y = a(xy),
 \]
-y por lo tanto $a=0$ o $1-x=0$.
+así que $a \mid c$, es decir $(a,c) \in R$. Por lo tanto $R$ es
+transitiva.
 
-Supongamos que $a=0$, entonces $b=ax=0x=0$.
+\textbf{No antisimétrica.} Supongamos que $(a,b),(b,a) \in R$, es decir
+que hay enteros $x,y$ tales que $b=ax$ y $a=by$. Entonces
+\[
+a = by = (ax)y = a(xy),
+\]
+de donde
+\[
+0 = a - a(xy) = a(1-xy),
+\]
+así que $a=0$ o $xy=1$.
 
-Supongamos que $a \neq 0$, así que $xy=1$, $x$ es invertible, así que
-$x=1$ o $x=-1$. Si $x=1$ entonces $b=ax=a$, y si $x=-1$ entonces
-$b=ax=a(-1)=-a$.
+\begin{itemize}
+    \item Si $a=0$, entonces $b=ax=0$, luego $a=b$.
+    \item Si $a\neq 0$, entonces $xy=1$ con $x,y \in \mathbb{Z}$, así
+    que $x$ es invertible en $\mathbb{Z}$, es decir $x=1$ o $x=-1$.
+    Si $x=1$, entonces $b=ax=a$. Si $x=-1$, entonces $b=ax=-a$.
+\end{itemize}
 
-$R$ no es antisimétrica.
-\end{teoria}
+En conclusión, $(a,b),(b,a)\in R$ implica $a=b$ o $a=-b$, pero no
+necesariamente $a=b$: por ejemplo $a=1$, $b=-1$ satisface $1\mid -1$ y
+$-1\mid 1$, pero $a\neq b$. Por lo tanto $R$ \textbf{no} es
+antisimétrica en $\mathbb{Z}$.
+\end{demostracion}
 
-\begin{teoria}
+\begin{proposicion}
 La relación
 \[
-R' = \{ (a,b) \in \text{No} \times \text{No} : a \mid b \}
+R' = \{ (a,b) \in \mathbb{N} \times \mathbb{N} : a \mid b \}
 \]
-es una relación de orden en $\text{No}$.
+sí es una relación de orden (parcial) en $\mathbb{N}$.
+\end{proposicion}
 
-$(a,b),(b,a) \in R' \rightarrow a=b$ (no se puede $a=-b$).
-\end{teoria}
+\begin{demostracion}
+En $\mathbb{N}$ el caso $a=-b$ no puede ocurrir (salvo $a=b=0$), así que
+de $(a,b),(b,a) \in R'$ se deduce $a=b$, y $R'$ resulta antisimétrica,
+además de reflexiva y transitiva (por el mismo argumento de la
+demostración anterior).
+\end{demostracion}
+
+\section{Congruencia módulo $m$}
+
+\begin{definicion}
+Fijemos un entero $m$. Decimos que un entero $a$ es \textbf{congruente
+módulo $m$} con otro entero $b$ si $m \mid a-b$, y en ese caso
+escribimos
+\[
+a \equiv b \pmod m.
+\]
+\end{definicion}
 
 \begin{teoria}
-    fijemos un entero m , decimos que es un entero a es congruente modulo m con otro entero b si , m|a-b
-    y en ese caso escribi,os a (triple flecha) mod m 
+Sea
+\[
+R = \{ (a,b) \in \mathbb{Z}\times\mathbb{Z} : a \equiv b \pmod m \}.
+\]
+$R$ es una relación en $\mathbb{Z}$.
+
+La relación de congruencia módulo $m$ es una relación de equivalencia
+en $\mathbb{Z}$.
 \end{teoria}
+
+\begin{demostracion}
+\textbf{Reflexiva.} Sea $a \in \mathbb{Z}$. Como $m \mid 0 = a-a$, se
+tiene $a \equiv a \pmod m$, así que $(a,a) \in R$.
+
+\textbf{Simétrica.} Supongamos $(a,b) \in R$, es decir $a\equiv b
+\pmod m$. Entonces existe $x \in \mathbb{Z}$ tal que $a-b=mx$. Luego
+\[
+b-a = -(a-b) = -mx = m(-x),
+\]
+así que $m \mid b-a$, es decir $b \equiv a \pmod m$ y $(b,a)\in R$.
+
+\textbf{Transitiva.} Supongamos $(a,b),(b,c) \in R$, es decir
+$a\equiv b \pmod m$ y $b \equiv c \pmod m$. Entonces existen enteros
+$x,y$ tales que
+\[
+a-b=mx, \qquad b-c=my.
+\]
+Sumando ambas igualdades,
+\[
+(a-b)+(b-c) = mx+my,
+\]
+es decir
+\[
+a-c = m(x+y).
+\]
+Como $x+y \in \mathbb{Z}$, se tiene $m \mid a-c$, así que
+$a \equiv c \pmod m$ y $(a,c) \in R$.
+
+Por lo tanto $R$ es reflexiva, simétrica y transitiva, es decir, es una
+relación de equivalencia en $\mathbb{Z}$.
+\end{demostracion}
 
 sea R = {(a,b) in Z X Z : a== B mod m}
 R es una relacion en Z
