@@ -1,5 +1,4 @@
-
-
+\chapter{8-9-26}
 \section{El último teorema de Fermat}
 
 \[
@@ -31,7 +30,7 @@ x^n + y^n = z^n, \qquad n \geq 3,
 y el último teorema de Fermat afirma que no tiene soluciones enteras
 positivas.
 
-\section{Propiedades de la suma y el producto en $\mathbb{Z}$}
+\section{Propiedades de la suma y el producto en \texorpdfstring{$\mathbb{Z}$}{Z}}
 \begin{teoria}
 El conjunto $\mathbb{Z}$ viene provisto de dos operaciones, $+$ y $*$.
 
@@ -170,7 +169,7 @@ además de reflexiva y transitiva (por el mismo argumento de la
 demostración anterior).
 \end{demostracion}
 
-\section{Congruencia módulo $m$}
+\section{Congruencia módulo \texorpdfstring{$m$}{m}}
 
 \begin{definicion}
 Fijemos un entero $m$. Decimos que un entero $a$ es \textbf{congruente
@@ -202,6 +201,7 @@ tiene $a \equiv a \pmod m$, así que $(a,a) \in R$.
 b-a = -(a-b) = -mx = m(-x),
 \]
 así que $m \mid b-a$, es decir $b \equiv a \pmod m$ y $(b,a)\in R$.
+Por lo tanto $R$ es simétrica.
 
 \textbf{Transitiva.} Supongamos $(a,b),(b,c) \in R$, es decir
 $a\equiv b \pmod m$ y $b \equiv c \pmod m$. Entonces existen enteros
@@ -218,36 +218,8 @@ es decir
 a-c = m(x+y).
 \]
 Como $x+y \in \mathbb{Z}$, se tiene $m \mid a-c$, así que
-$a \equiv c \pmod m$ y $(a,c) \in R$.
+$a \equiv c \pmod m$ y $(a,c) \in R$. Por lo tanto $R$ es transitiva.
 
-Por lo tanto $R$ es reflexiva, simétrica y transitiva, es decir, es una
-relación de equivalencia en $\mathbb{Z}$.
+Como $R$ es reflexiva, simétrica y transitiva, es una relación de
+equivalencia en $\mathbb{Z}$.
 \end{demostracion}
-
-sea R = {(a,b) in Z X Z : a== B mod m}
-R es una relacion en Z
-si a in Z , entonces m | 0 = a - a , asi que a== a y (a,a) in R . R es reflexiva
-$
-(a,b) \rightarrow (b,a) in R 
-a== b , m|a-b 
-a - b = mx 
-b-a = -mx 
-= m(-x)
-b==a 
-m|b-a 
-b-a = m (-x)
-si (a,b) in R , entonces a== b asi que existe x in R talque a-b =mx entonces m(-x) = -mx = -(a-b) = b-a , asi que m|b-a , b==a , asi que (b,a) in R . R es simetrica
-(a,b),(b,c) e R -> (a,c) e R 
-a==b b==c a==c
-a-b= mx b-c=my a-c=mc
-a = b+mx
-c = b-my
-mz = a-c = (b+mx) -(b-my)
-mz = mx + my
-si que (a,b) y (b,c) esta en R, de manera que ahy entero x e y talque  a-b = mx y b-c=my 
-entonces m(x+y) = mx = my = (a-b) + (b-c)
-= a-b + b -c 
-= a-c
-asi que m|a-c
-y a==c , (a,c) in R
-== es una relacion de equivalencia en Z$
