@@ -1,0 +1,181 @@
+\section{la relacion de divisibilidad}
+
+\begin{definicion}
+a|b $\rightarrow$ hay un entero c tql b=ac
+
+a == b mod m $\rightarrow$ m | a-b 
+
+es reflexica transitiva , no es antisimetrica a|b , b|a $\rightarrow$ a=b o a=-b
+
+== mod n es una relacion de equivalencia en z 
+
+$\rightarrow$ una relacion de orden que fijamos el modulo n z queda partido en clases de equivalencia
+\end{definicion}
+$Z_n es las clases de equivalencia de n$
+\begin{ejemplo}
+ejemplo sup n=1 
+a == b mod m es cierto cualesquier sea a y b en z
+$z_1 = {0}$
+ejemplo sup m=0 
+a==b mod 0 <-> 0|a-b 
+hay c $\in$ z tal que a-b = 0.c
+a= b 
+ejemplo sup que n = 2
+a== b mod 2 -> 2 | a -b 
+hay un c e Z tal que a-b = 2 c 
+a-b es par 
+[0] = {num pares}
+[1] = {num impares}
+$Z_2$ = {[0],[1]}
+ejemplo supongamos que n = 3 
+a == b mod 3 -> 3|a-b 
+a - b es multiplo de 3
+a = b + 3c para algun c e Z
+[a]= {b*a == b mod 3}
+{a+3c , c e Z}
+[0] = {3c : c e Z}
+[1] = {1+3c : ceZ}
+son disjuntas y me faltan enteros, cual? el 2 
+2 = 3c 
+2/3 not= c
+2 = 1+3c
+1 = 3c 
+[2] = {2+3c : ceZ}
+[3] = [0]
+[4] = [1]
+[5] = [2]
+
+\end{ejemplo}
+
+\begin{demostracion}
+sea n e N quiero que [n] e {[0][1][2]}
+p0 , p1, p2 son ciertas 
+supongamos que tengo n e N que se pn
+de modo que [n] = [0]o[1]o[2]
+asi que hay un entero c talque n=3c o =3c+1 o =3c+2
+1- si n=3c entonces n+1 = 3c+1 y [n+1] = [1]
+2 - si n = 3c+1, entonces n+1 = 3c+2 y [n+1] = [2]
+3 - si n = 3c+2 ,entonces n+1 = 3c+3 y [n+1] = [0] porque sacas factor comun 3
+entonces en cualquier de los 3 casos tenemos que [n+1] e {[0],[1],[2]} asi que pn+1 vale 
+\end{demostracion}
+
+\begin{ejemplo}
+    mostrar que para todo neN vale que [-n] e {[1][2][0]}
+    para todo entero n e Z [n]e{[0],[1],[2]}
+    Z3 = {[n]: neZ} = {[0][1][2]}
+    Z2 = {[0][1]}
+    prop : si n es un entero positivo , entonces Zn = {[0][1],,[n-1]}
+    y tiene exactamente n elementos
+
+    vamos a utilizar el algoritmo de la difivison
+\end{ejemplo}
+
+\begin{proposicion}
+teorea de la division
+sea n un entero positivo si a es un entero, entonces hay entero q y r talque a = qn+r , 0<=r<n
+y estan determinados por a 
+\end{proposicion}
+\begin{demostracion}
+primero voy para hacerlo para numeros positivos,
+supongamos que a>0
+y consideramos el conj
+q = {beN0 : a < bm}
+notemos que aeQ  para a < a+1.n
+hay un numero b0 que es el menor elemento de Q
+a < b0.m
+a >= (b0-1)m
+(b0-1).m < a < b0.m 
+a = qm+r
+(b0-1)m<qmar<b0m
+0<=(qm+r)-(b0-1)m<b0m -(b0-1)
+0<= (q-b0+1)m+r< m 
+para que eso sea = 0 
+pongamos q=b0-1
+r= 2-qm
+r= a-(b-1)m
+entonces 
+qm+r = (b0-1)m+(a-(b0-1)m)
+= (b0-1)m+a-(b0-1)m
+= a 
+sabemos que (b0-1) n <= a< b0m
+0<= a -(b0-1) < b0m -(b0-1)m 
+asi que 0<= r<m
+supongamos ahora que a<=0 entonces -a<=0
+entonces lo que hicimos nos dice que  hay enteros q1,r1 talque -a = q1m+r1 , 0 <= r1 <m
+notemos que a= -(-a)= -(q1m +r1)
+= -q1m -r1
+= (-q1)m + (-r1)
+el problema es que -r1 tiene que estar entre 0 y m 
+sabemos que 0<= r1 <m 
+0>= -r1 > -m 
+m >= m-r1> 0 
+(-q1)m - m + m + (-r1)
+(-q1-1)m + (m-r1)
+y eso lo probamos con la desigualdad dada vuelta anterior para r1 distinto de 0
+(-q1)m + 0 
+
+para ver la unicidad, supongamos de que, q' , r' son enteros talque 
+a = qm + r
+0 <= r < m
+
+a = q'm + r'
+0 <= r' < m
+
+entonces r = a-qm  r'=a-q'm
+r - r' = (a-qm) - (a-q'm) = a-qm-a+q'm 
+= (q'-q)m
+-m< 0-r'<= r-r' < m-r' <= m - 0 = m
+entonces -m < r-r' < m
+asi que -m <(q'-q)m < m 
+como m>0 = -1 < q'-q < 1 
+entonces q= q'
+ademas r = a-qm = a-q'm  = r'
+entonces q= q' y r = r'
+
+\end{demostracion}
+
+\begin{demostracion}
+    sea x un elemento de Zm , entonces hay un enteor a talque n=[a]
+    por el algo de la division hay q,r
+    talque a= qn+r y 0 <= r < m
+    entonces a-r = qm asi que  a == r mod m
+    aso que x = [a]=[r] e {[0][1],,[n-1]}
+    sea r,r' en {0,1,,,,n-1}
+    si [r]=[r'] es porque son congruentes , r == r' mod m 
+    entonces r = r' mq para algun entero q 
+    voy a suponer r<r'
+    por el agoritmo de la division hay exactamente hay una 
+    forma de elegir q1 y r1 talque , r-r' = q1m + r1 
+    r'<= r
+    0 <= r -r' <=r < m 
+    0.m +(r-r')
+    entocnes q=q1 = 0 
+    entonces r = r'
+    consecuencias : sup a e Z y que s e{0,..,n-1} talque [a]= [s]
+    tal que q,r e Z talque a = qm+r 0<r<m
+    [s]=[a]=[r]
+    entonces s = r 
+\end{demostracion}
+\begin{ejemplo}
+    tema = si a , a' ,b,b' son entero s y a == a' y b == b' entonces
+    a+b == a'+b'y a.b == a'.b'  
+\end{ejemplo}
+\begin{demostracion}
+    tengo un entero c, d tal que a-a' =cm 
+    b-b' = dm 
+    (a+b)-(a'+b') = a - a' + b + b' = cm + dm = (c+d)m
+    ab - a'b'= ab - a'b + a'b - a'b' 
+    = (a-a')b + (b-b')a' 
+    = cmb + a'dm
+    = m(cb+ad)
+    ab == a'b' 
+\end{demostracion}
+
+\begin{ejemplo}
+    $resto de dividir 3^10 por 10 
+    3^2 == -1 mod 10 
+    3^2 == -1 
+    3^2 * 3^2 + 3^2 = -1 * -1 == 1
+    3^8 = 3^4 + 3^4 == 1 
+    3^10 -1 es congruente con 3^2 == 9$
+\end{ejemplo}
