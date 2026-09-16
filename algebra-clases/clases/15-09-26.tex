@@ -1,0 +1,138 @@
+\chapter{15-09-26}
+
+en Z tenemos la relacion de divisibilidad | y la relacion == mod m 
+
+algoritmo de la division
+si m es un entero positivo entonces para cada entero a hay exactamente una forma de elegir enteros ej y r de mirar que a = qm+r , 0 <= r < m 
+
+consecuencia de esto el conjunto Zn de las clases de quivalencia de la recion == mod m son exactamente n , a saber
+[0],[1],[2],..,[m-1]
+
+si a e Z entonces hay q, r tal que a = qm+r y 0<=r<m . como a - r = qm , asi que m | a - r , y a== r mod m 
+entonces [a] = [r]
+
+supongamos que hay 2 numeros i y j en {0 ,-, m-1}
+tal que i < j y [i] = [j]
+entonces i == j mod m , m | i - j 
+-m<-j<= i-j < n-j <= m
+0< j < m 
+entonces -m< mx < m
+-1 < x < 1 
+i - j = mx = 0 
+
+obs = si a e Zz y s e {0,,n-1}
+talque [a]= [s] , a == s mod m entonces s es el resto de la division de a por m 
+
+\begin{demostracion}
+    sea q y r (.) , de manera que , a = qm+r y 0<= r < m 
+    entonces r == a == s mod m , asi que [r] = [s] 
+    entonces s = r   
+\end{demostracion}
+
+lema : si a == a' y b == b' 
+entonces a + a' == b + b' 
+a*a' == b*b'
+
+\begin{ejemplo}
+resto de dividir $7^n$ por 6
+7 == 1 mod 6    
+$7^2$= 7*7 = 1 + 1 = 1 mod 6
+$7^10$= 7*7*7----*7 = 1*1*1-----*1 == 1 mod 6
+$5^n$ = 5*5*5*-----*5 == (-1)*(-1)*-----*(-1) = $(-1)^n$ mod 6 
+r6($5^n$) = 1 si n es par , =5 si n es impar
+\end{ejemplo}
+
+Fn = 0 , 1, 1 , 2 , 3 , 5, 8 , 13, 21 \\
+R5 Fn = 0 , 1, 1, 2 , 3 , 0 , 3, 3 , 1, 4 \\
+
+\begin{nota}
+    todo numero es congruente con su modulo 
+\end{nota}
+
+fn = fn-1 + fn+2 ==   $_fn-1 + _fn-2 == _fn$ 
+
+$_fn$ = 0 , 1, 1, 2, 3 , 0 ,3, 3,1,4,0,4,4,3
+
+si se calcular el numero de m y conzco sus restos de a entonces determina el numero a 
+
+
+
+\textbf{criterios de divisibilidad}
+
+abcd = a*$10^3$ + b*$10^2$ + c*10 + d 
+
+\text{divisibilidad 9}\\
+10 == 1 mod 9 
+$10^3$ = 1*1*1 = 1 
+== a + b + c + d 
+1+2+3+4+5+6 = 21 == 3 
+
+\text{divisibilidad 11}\\
+10 == -1 
+$10^2$ == 1 
+$10^3$ == -1
+$10^4$ == 1 
+10== $-1^n$
+a-b+c-d+e mod 11 
+123456 == 6-5+4-3+2-1 = 3 mod 11 
+
+\text{divisibilidad 7}\\
+$10^0$== 1 
+$10^1$== 3
+$10^2$== 9 = 2
+$10^3$== 6    
+$10^4$== 4 
+$10^5$== 5 
+despues las siguientes se repiten en ciclo
+
+a*$10^4$ + b $10^3$ + c $10^2$ + d 10 + e
+== a*4 + b*6 + c*2 + d3 + e
+
+\textbf{maximo comun divisor}
+
+tengo dos enteros a y b div(a,b) = {c e Z c|a, c|b}
+
+1 e Div (a,b) asi que div(a,b) not $\in$ vacio
+
+div >=0 (a,b) = {c e N0 c|a , c|b}
+a not = 0 c|a hay d talque a=cd y entonces |c| = |a|/|b| <= |b| 
+entonces 0<= c<= |a| 
+entonces c e {0,1,...,|a|}
+si a not = 0 div >0 (a,b) <= {0,1,2,---,|a|}
+si b not = 0 div >0 (a,b) <= {0,---,|b|}
+si algun de a o b es not = 0 , entonces div>=0 (a,b) es infinito
+div >= 0 (0,0) = N0 
+
+\begin{definicion}[title= maximo comun divisor]
+    si alguno de a o b es no nulo, enotnces el maximo comun. divisor de a y b es el numero 
+    (a:b) = mod(a,b) = max div >= 0 (a,b)
+    mcd(0,0) = 0 %por unico caso que sea cero%
+\end{definicion}
+
+\begin{teoria}
+    a not = 0 mcd(a,0) max div (a,0)
+    dib >= 0 (a,0) ={ceN0 c|a , c|0}
+    = {ceN c|a}
+    mcd(a,0) = |a| 
+
+
+    c e div >0 (a,b) 
+    c>= 0 , c|a , c|b entonces c|b-a
+    es div >= 0 (b-a,a)
+
+    sea c e div>= 0 (b-a,a)
+    entonces c>= 0 , c | b-a , c|a
+    asi que c|b = (b-a) + a 
+    por lo tanto c e div >= 0 (a,b)
+\end{teoria}
+
+
+lema: si a,b e Z no los dos nulos, entonces div >= 0 (a,b) = div>=0 (a,b-a)
+
+\begin{ejemplo}
+    (15,20) = (15,5) = (10,5) = (5,5) = (0,5) = 5
+    (108 ,18) = (90,18) = (72,18) = (54,18) = (36,18) = (18,18) = (0,18) = 18
+    (a,b) 
+    = 0 si a = b = 0 ,
+    = si a <= b entonces b - a y si b> a entonces a-b  
+\end{ejemplo}
