@@ -1,0 +1,86 @@
+\chapter{22-09-26}
+
+hipotesis de rimman 
+primo de meisent = P  = 2^r -1 
+gimps 
+
+* lema de gauss: un numero p e N, es primo si y solo si tiene h la siguiente propiedad
+si p divide un prodcuto ab, entonces p divide a a uno de los dos factores a o b 
+
+6|2.3 y 6 no divide a 2 y 6 no divide a 3 entonces 6 no es primo
+
+si 2| ab entoncs 2|a o 2|b 
+
+\begin{demostracion}[title= demostracion del teorema de euclides?lema de gauss?]
+    -> tengo que mostrar que si p es primo entonces p tiene la propiedad * 
+    supongamos que p es primo , que p|ab , u wur p no divide a.
+    como p no divide a , entonces mod (p,a) = 1 , 
+    por el lema de bezout , hay enteros x e y talques xp+ya = 1 
+    p | xpb +yab = b 
+    si es un numero primo p que no divide a entonces necesariamente tiene que dividir a b 
+    <- supongamos que p tiene la propiedade * 
+    y mostremos que entonces es primo. supongamos que no es primo. 
+    de manera que hay un numero entoer a talquer 1<a<p talque a | p asi que
+    hay otro entero b tal que p = a.b 
+    ivan ivanivanivanivanandresagustin
+    como p tiene la prop * , p divide a a o a b 
+    como 1 <a<p p no divide a 
+    como p>b>1 , entonces p no divide a b 
+    esta contradiccion probino de haber supuesto que p no es primo po lo que tiene que serlo
+\end{demostracion}
+
+corolario sea un n un numero primo 
+si p divide a un producto a1 a2....an , entonces p divide a algun factor ar 
+
+p1 vale p2 vale pk -> pk+1 vn>2 
+
+\begin{definicion}
+    el teorema fundamental de la aritmetica 
+    prop : todo elemento n admite una factorizacion como producto de n primos 
+    demostracion sea pn = n  es igual a un producto de numeros primos 
+    mostremos que pn vale para tod neN por induccion
+    p1 vale porque 1 es igual al producto de cero factoreo primos 
+    sea n e N , tal que n>=2 y supongamos que as afirmaciones p1,p2, pn-1 valen
+    el numero n o es primo o bien es divisible por un numero primo p<n 
+    si n es primo entonces n = n es un producto de numeros primos asi que pn vale en ese caso
+    supongamos que n no es primo.entonces un numero primo p menor que n u un entero m talque n = pm
+    m < n/p < n/2 < n porque p> 2. entonces la hip inductiva que pm vale 
+    esto nos dice que hay numeros primos p1,p2,pk tal que m= p1....pk 
+    entonces n = pm = p.p1...pk 
+    entocnes es un produjcto de primo
+    entonces pn vale tambien en este caso
+    en cualquier caso pn vale esto completo la induccion
+\end{definicion}
+
+\begin{definicion}
+    propiedades: si p1,..., pn y q1,... qn son numeros primos y el producto de todos los p1. ....pn = q1 .... qn
+    entonces n = m y las listas p1............pn y q1........qm difieren solamente en el orden
+    obs: si p y q spm dos primos y p|q , entonces p = q 
+\end{definicion}
+\begin{demostracion}
+    supongamos que p1......pn = q1........qm
+    entonces p1 | p1......pn y este producto es igual q1........qm
+    asi que p1 divide a alguno de los q-es ,asi que p1 es igual a el 
+    sin perdida de generalidad podemos suponer que p1=q1
+    entonces p1 p2 .... pn = q1 q2 .. qm = p1 q2 qm 
+    asi que p2......pn = q2 ...qm
+    asi que p3 ...pn = q3 .... qm 
+    entonces  esto lo puedo hacer n veces .¿
+    al terminar q1 = p1 , q2 = p2 qm=pn 
+    si tacho n terminos me quedan m-n terminos 
+    me quedo de un lado 1 = qn+1 qm {m-n terminos}
+    qn+1.... qm> 2 * 2 .... 2=2^m-n
+    asi que m-n <= 0 asi que m <= n 
+\end{demostracion}
+
+\begin{ejemplo}
+    12 = 2*2*3 = 2^2 * 3
+\end{ejemplo}
+
+i n es un entero , entonces hay una unica forma de elegir un numero natural , numeros primos p1<p2<.....<pr
+
+talques que p1^a1 p2^a2 pn^an (lo mismo que en el ejemplo)
+
+si n= p1^a1 p2^a2 pr^ar p1< --- <pr 
+
+supongamos m es un divisor de n.  m = q1^b1 , ... qs^bs 
