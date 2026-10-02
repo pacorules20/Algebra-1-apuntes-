@@ -1,18 +1,73 @@
 \chapter{Numeros naturales e Induccion}
+
+\section{Sucesiones}
+
 \begin{definicion}[title= Definicion de sucesion]
-    Una sucesion es una lista de ordenada de elementos que siguen una regla de " patron"
+    Una sucesion es una lista ordenada de elementos que siguen una regla o "patron".
 \end{definicion}
+
 \begin{definicion}[title= Definicion de serie]
-    Una serie es la suma de todos los elementos de una sucesion infinita
+    Una serie es la suma de todos los elementos de una sucesion infinita.
 \end{definicion}
 
 \begin{definicion}[title= Definicion de serie geometrica]
-    Es la serie que toma las n+1 primeras potencias de un numero (q) \\
-    tiene si aplicamos la logica de la suma de gauss nos queda algo de la forma:
-    \[
-    Q = \frac{q^{n+1}-1}{q-1}, si \hspace{0.3 cm} q\neq 1     \]
-    \[
-    Q = n+1, si \hspace{0.3cm} q=1 
-    \]
+    Es la serie que toma las $n+1$ primeras potencias de un numero ($q$). \\
+    Si aplicamos la logica de la suma de Gauss nos queda algo de la forma:
+\[
+    \sum_{k=0}^{n} q^k = \frac{q^{n+1}-1}{q-1}, \quad \text{si } q\neq 1
+\]
+\[
+    \sum_{k=0}^{n} q^k = n+1, \quad \text{si } q=1
+\]
 \end{definicion}
-\
+
+\begin{definicion}[title= Definicion de serie telescopica]
+    Es una serie donde cada termino se puede escribir como una diferencia $a_k - a_{k+1}$, de modo que casi todos los terminos se cancelan entre si:
+\[
+    \sum_{k=1}^{n} (a_k - a_{k+1}) = a_1 - a_{n+1}
+\]
+\end{definicion}
+
+\begin{definicion}[title= Definicion suma de Gauss]
+    Es la suma de los primeros $n$ numeros naturales. Se obtiene sumando el primero con el ultimo, el segundo con el anteultimo, etc.:
+\[
+    \sum_{k=1}^{n} k = \frac{n(n+1)}{2}
+\]
+\end{definicion}
+
+\begin{definicion}[title= Definicion sucesion de Lucas]
+    Es la sucesion definida por recurrencia con la misma regla que Fibonacci pero con otros valores iniciales:
+\[
+    L_0 = 2, \quad L_1 = 1, \quad L_{n} = L_{n-1} + L_{n-2} \ \text{ para } n\geq 2
+\]
+    Sus primeros terminos son $2, 1, 3, 4, 7, 11, 18, \dots$
+\end{definicion}
+
+\section{Induccion}
+
+\begin{definicion}[title= Principio de induccion 1]
+    Sea $P(n)$ una proposicion sobre $n\in\mathbb{N}$. Si se cumple que:
+    \begin{itemize}
+        \item (Caso base) $P(n_0)$ es verdadera.
+        \item (Paso inductivo) Para todo $k\geq n_0$: $P(k) \Rightarrow P(k+1)$.
+    \end{itemize}
+    Entonces $P(n)$ es verdadera para todo $n\geq n_0$.
+\end{definicion}
+
+\begin{definicion}[title= Principio de induccion 2]
+    Sea $P(n)$ una proposicion sobre $n\in\mathbb{N}$. Si se cumple que:
+    \begin{itemize}
+        \item (Casos base) $P(n_0)$ y $P(n_0+1)$ son verdaderas.
+        \item (Paso inductivo) Para todo $k\geq n_0$: $P(k) \wedge P(k+1) \Rightarrow P(k+2)$.
+    \end{itemize}
+    Entonces $P(n)$ es verdadera para todo $n\geq n_0$. Es util para recurrencias de dos terminos (Fibonacci, Lucas).
+\end{definicion}
+
+\begin{definicion}[title= Induccion fuerte]
+    Sea $P(n)$ una proposicion sobre $n\in\mathbb{N}$. Si se cumple que:
+    \begin{itemize}
+        \item (Caso base) $P(n_0)$ es verdadera.
+        \item (Paso inductivo) Para todo $k\geq n_0$: si $P(j)$ es verdadera para todo $n_0\leq j\leq k$, entonces $P(k+1)$ es verdadera.
+    \end{itemize}
+    Entonces $P(n)$ es verdadera para todo $n\geq n_0$.
+\end{definicion}

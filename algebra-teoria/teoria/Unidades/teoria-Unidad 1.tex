@@ -1,9 +1,9 @@
 \chapter{conjuntos, relaciones y funciones}
 
 
-\textbf{Relaciones:}
+\section{Relaciones:}
 
-\begin{definicion}[title=Definicion]
+\begin{definicion}
     \textbf {si A y B son dos conjuntos, una relación $R$ de $A$ en $B$ es un subconjunto cualquiera R del producto cartesiano $A \times B$. Es decir, $R \subseteq A \times B$ o $R \in P (A \times B)$.}
 \end{definicion}
 
@@ -27,12 +27,35 @@
   \end{listapropiedades}
 \end{teoria}
 
+\section{Funciones}
 
+\begin{definicion}
+  Sea $A$ y $B$ dos conjuntos y sea $R$ una relación de $A$ en $B$.
+  Decimos que $R$ es una \textbf{función} si:
+  \begin{itemize}
+    \item Para cada $a \in A$ existe un $b \in B$ tal que $(a,b) \in R$.
+    \item Ningún $a \in A$ se relaciona con dos elementos distintos de $B$
+      (es decir, si $(a,b_1)\in R$ y $(a,b_2)\in R$, entonces $b_1 = b_2$).
+  \end{itemize}
+\end{definicion}
 
-%\begin{proposicion}
-%  Para todo $a, b \in \mathbb{R}$, se cumple que $(a+b)^2 = a^2 + 2ab + b^2$.
-%\end{proposicion}
+\begin{teoria}[title= Prop Funciones]
+  \begin{listapropiedades}
+    \item[Inyectiva] para cada y $\in$ B que se relaciona ,existe un unico x $\in$ A
+    \item[sobreyectiva] la imagen de im (f) = B
+    \item[biyectiva] que sea sobrectiva e inyectiva 
+  \end{listapropiedades}
+\end{teoria}
 
-%\begin{demostracion}
-%  Desarrollando el producto $(a+b)(a+b)$ y aplicando la propiedad distributiva...
-%\end{demostracion}
+\begin{teoria}[title= Clases de equivalencia]
+    Sea $\sim$ una relacion de equivalencia sobre un conjunto $A$ (reflexiva, simetrica y transitiva). La \textbf{clase de equivalencia} de $a\in A$ es el conjunto de todos los elementos relacionados con $a$:
+\[
+    [a] = \{ x\in A : x\sim a \}
+\]
+    Propiedades:
+    \begin{itemize}
+        \item $a\in[a]$, por lo tanto ninguna clase es vacia.
+        \item $a\sim b \iff [a]=[b]$.
+        \item Dos clases o son iguales o son disjuntas: si $[a]\neq[b]$ entonces $[a]\cap[b]=\emptyset$.
+    \end{itemize}
+\end{teoria}

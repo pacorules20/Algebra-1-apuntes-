@@ -1,0 +1,80 @@
+\chapter{Enteros}
+
+
+\section{Divisibilidad }
+
+\section{Resto y Algoritmo de la División}
+
+\begin{definicion}
+    El \textbf{Algoritmo de la División} establece que dados dos enteros $a, d \in \mathbb{Z}$ con $d > 0$, existen únicos enteros $q$ (cociente) y $r$ (resto) tales que:
+    \[ a = d \cdot q + r \]
+    donde la condición de oro es que $0 \le r < d$. Al resto se lo suele denotar formalmente como $r_d(a) = r$.
+\end{definicion}
+
+\begin{teoria}[title=Propiedades aritméticas del Resto]
+La conexión principal con las congruencias es que $a \equiv r \pmod{d}$ si y solo si $r_d(a) = r$. Gracias a esto, la relación de congruencia se comporta de manera compatible con las operaciones básicas, permitiendo reemplazar números grandes por sus restos antes de operar.
+\begin{listapropiedades}
+  \item[Suma] El resto de una suma es congruente a la suma de los restos: 
+  \[ r_d(a + b) = r_d(r_d(a) + r_d(b)) \]
+  \item[Producto] El resto de un producto es congruente al producto de los restos: 
+  \[ r_d(a \cdot b) = r_d(r_d(a) \cdot r_d(b)) \]
+  \item[Potencias] Si elevamos un número a la $n$, podemos cambiar la base por su resto antes de calcular la potencia (fundamental para ciclos y restos de números gigantes): 
+  \[ r_d(a^n) = r_d(r_d(a)^n) \]
+\end{listapropiedades}
+\end{teoria}
+
+\section{Congruencia}
+\begin{definicion}
+    recordamos que a b c d $\in$ Z , a es congruente a b modulo d si d| a-b . se nota a $\equiv$ b (d) 
+\end{definicion}
+
+\section{Primos} 
+\begin{teoria}[title=Propiedades de los primos]
+\begin{listapropiedades}
+  \item[lema euclides] Si asumimos que el primo $p$ divide a la multiplicación $a \cdot b$, pero no divide a $a$, entonces necesariamente $p$ divide a $b$
+  \item[corolario del lema de euclides] $p$ divide a un producto de dos enteros 
+  ($p \mid a \cdot b$), entonces $p$ tiene que dividir obligatoriamente a 
+  $a$ o dividir a $b$. Si extendemos esto a una potencia, 
+  que no es más que multiplicar el mismo número varias veces ($a^n = a \cdot a \cdot \dots \cdot a$), concluimos que si el primo $p$ divide a todo ese bloque ($p \mid a^n$), necesariamente tiene que dividir a la base ($p \mid a$).
+\end{listapropiedades}
+\end{teoria}
+
+\begin{teoria}[title=El Teorema Fundamental de la Aritmética (TFA)]
+\begin{listapropiedades}
+  \item[Existencia]Todo número se puede descomponer en primos. Esto suele demostrarse con el Principio del Buen Orden (asumiendo que existe un conjunto de números "rebeldes" que no se pueden factorizar, se toma el más chico de ellos y rápidamente se llega a una contradicción al ver que se puede seguir dividiendo).
+  \item[Unicidad]La factorización es una sola. se prueba con Lema de Euclides 
+\end{listapropiedades}
+\end{teoria}
+
+\begin{teoria}[title=Coprimizar]
+"Coprimizar" es el procedimiento de tomar dos números enteros 
+$a$ y $b$ (que comparten divisores) y dividirlos simultáneamente por su 
+Máximo Común Divisor (MCD) para generar un nuevo par de enteros que sean 
+completamente coprimos entre sí, es decir, cuyo único divisor común 
+positivo sea el 1.
+\end{teoria}
+
+\begin{demostracion}
+    La prueba de por qué esto funciona siempre se apoya en la identidad de Bézout.
+
+    Sea $d = \gcd(a, b)$ el máximo común divisor entre dos enteros $a$ y $b$.
+
+    Definimos los nuevos números coprimizados como
+    \[
+        a' = \frac{a}{d}, \qquad b' = \frac{b}{d}.
+    \]
+
+    Por el teorema de Bézout, sabemos que existen enteros $s$ y $t$ que cumplen la combinación lineal
+    \[
+        a \cdot s + b \cdot t = d.
+    \]
+
+    Si dividimos ambos lados de la ecuación por el máximo común divisor $d$, obtenemos
+    \[
+        \frac{a}{d} \cdot s + \frac{b}{d} \cdot t = \frac{d}{d},
+    \] 
+    es decir,
+    \[
+        a' \cdot s + b' \cdot t = 1.
+    \]
+\end{demostracion}
