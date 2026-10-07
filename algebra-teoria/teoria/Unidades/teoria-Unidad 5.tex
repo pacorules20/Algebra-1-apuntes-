@@ -1,0 +1,67 @@
+\chapter{Enteros parte 2}
+
+\section{Simplificación en congruencias}
+
+\begin{proposicion}[{title={Regla 1: simplificar un factor en toda la congruencia (incluido el módulo)}}]
+Sean $a,b,k,m\in\mathbb{Z}$ con $k\neq 0$ y $m\ge 1$. Entonces
+\[
+ak\equiv bk \pmod{mk} \iff a\equiv b \pmod m.
+\]
+Es decir, si los dos lados y el módulo comparten un divisor común $k$, se lo
+puede cancelar de los tres.
+\end{proposicion}
+
+\begin{demostracion}
+Por definición, $ak\equiv bk \pmod{mk}$ si y sólo si $mk\mid ak-bk=(a-b)k$,
+es decir, existe $t\in\mathbb{Z}$ con $(a-b)k=mk\,t$. Como $k\neq 0$, esto es
+equivalente a $a-b=mt$, o sea $m\mid a-b$, que es $a\equiv b \pmod m$.
+\end{demostracion}
+
+\begin{ejemplo}
+Resolver $6x\equiv 8 \pmod{10}$.
+
+Los tres números $6$, $8$ y $10$ son divisibles por $2$, así que podemos
+``cancelar'' el $2$ dividiendo todo, incluido el módulo:
+\[
+\frac{6}{2}x\equiv \frac{8}{2} \pmod{\frac{10}{2}} \iff 3x\equiv 4 \pmod 5.
+\]
+Para terminar, como $3\cdot 2=6\equiv 1 \pmod 5$, multiplicamos por $2$ (que es
+coprimo con $5$): $x\equiv 8\equiv 3 \pmod 5$. Chequeo: $6\cdot 3=18\equiv 8 \pmod{10}$. $\checkmark$
+\end{ejemplo}
+
+\begin{proposicion}[{title={Regla 2: simplificar un factor sólo a los lados (si es coprimo con el módulo)}}]
+Sean $a,b,k,m\in\mathbb{Z}$ con $m\ge 1$. Si $(k:m)=1$, entonces
+\[
+ak\equiv bk \pmod m \iff a\equiv b \pmod m.
+\]
+Es decir, si queremos dividir sólo los números de la izquierda y la derecha por
+$k$, el módulo no cambia \textbf{sólo si} $k$ y $m$ son coprimos.
+\end{proposicion}
+
+\begin{demostracion}
+($\Leftarrow$) Es la compatibilidad del producto con la congruencia.
+
+($\Rightarrow$) Si $ak\equiv bk \pmod m$, entonces $m\mid k(a-b)$. Como $(k:m)=1$,
+por Bézout existen $x,y\in\mathbb{Z}$ con $xm+yk=1$. Multiplicando por $a-b$:
+\[
+a-b=xm(a-b)+y\,k(a-b).
+\]
+Como $m\mid xm(a-b)$ y $m\mid y\,k(a-b)$, resulta $m\mid a-b$.
+\end{demostracion}
+
+\begin{ejemplo}
+Resolver $6x\equiv 12 \pmod 5$.
+
+Como $(6:5)=1$, podemos dividir $6x$ y $12=6\cdot 2$ por $6$ sin tocar el
+módulo $5$:
+\[
+6x\equiv 6\cdot 2 \pmod 5 \iff x\equiv 2 \pmod 5.
+\]
+\end{ejemplo}
+
+\begin{nota}
+Si $(k:m)\neq 1$ no se puede dividir sólo a los lados sin cambiar el módulo. Por
+ejemplo $2\cdot 3\equiv 2\cdot 1 \pmod 4$ (pues $6\equiv 2$), pero
+$3\not\equiv 1 \pmod 4$. Lo correcto en ese caso es la Regla 1, que también
+divide el módulo: $3\equiv 1 \pmod 2$.
+\end{nota}

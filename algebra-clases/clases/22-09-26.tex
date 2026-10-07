@@ -1,86 +1,177 @@
 \chapter{22-09-26}
 
-hipotesis de rimman 
-primo de meisent = P  = 2^r -1 
-gimps 
+\section{Primos: lema de Gauss y factorización}
 
-* lema de gauss: un numero p e N, es primo si y solo si tiene h la siguiente propiedad
-si p divide un prodcuto ab, entonces p divide a a uno de los dos factores a o b 
+\begin{nota}
+Se mencionaron de pasada la hipótesis de Riemann y los \textbf{primos de
+Mersenne}, que son los primos de la forma $2^r-1$ (para que $2^r-1$ sea primo,
+$r$ tiene que ser primo). El proyecto GIMPS busca primos de Mersenne cada vez
+más grandes.
+\end{nota}
 
-6|2.3 y 6 no divide a 2 y 6 no divide a 3 entonces 6 no es primo
+\begin{proposicion}[{title={Lema de Gauss (lema de Euclides)}}]
+Sea $p\in\mathbb{N}$, $p\ge 2$. Entonces $p$ es primo si y sólo si cumple la
+siguiente propiedad $(\ast)$:
+\[
+(\ast)\qquad p \mid ab \implies p\mid a \ \text{ o } \ p\mid b.
+\]
+\end{proposicion}
 
-si 2| ab entoncs 2|a o 2|b 
+\begin{ejemplo}
+$6 \mid 2\cdot 3$, pero $6\nmid 2$ y $6\nmid 3$. Luego $6$ no cumple $(\ast)$,
+así que $6$ no es primo.
 
-\begin{demostracion}[title= demostracion del teorema de euclides?lema de gauss?]
-    -> tengo que mostrar que si p es primo entonces p tiene la propiedad * 
-    supongamos que p es primo , que p|ab , u wur p no divide a.
-    como p no divide a , entonces mod (p,a) = 1 , 
-    por el lema de bezout , hay enteros x e y talques xp+ya = 1 
-    p | xpb +yab = b 
-    si es un numero primo p que no divide a entonces necesariamente tiene que dividir a b 
-    <- supongamos que p tiene la propiedade * 
-    y mostremos que entonces es primo. supongamos que no es primo. 
-    de manera que hay un numero entoer a talquer 1<a<p talque a | p asi que
-    hay otro entero b tal que p = a.b 
-    ivan ivanivanivanivanandresagustin
-    como p tiene la prop * , p divide a a o a b 
-    como 1 <a<p p no divide a 
-    como p>b>1 , entonces p no divide a b 
-    esta contradiccion probino de haber supuesto que p no es primo po lo que tiene que serlo
+En cambio, si $2\mid ab$, entonces $2\mid a$ o $2\mid b$.
+\end{ejemplo}
+
+\begin{demostracion}
+($\Rightarrow$) Supongamos que $p$ es primo y que $p\mid ab$. Veamos que si
+$p\nmid a$ entonces $p\mid b$.
+
+Como $p$ es primo, sus únicos divisores positivos son $1$ y $p$. Como
+$p\nmid a$, se tiene $(p:a)=1$. Por el lema de Bézout existen $x,y\in\mathbb{Z}$
+tales que
+\[
+xp+ya=1.
+\]
+Multiplicando por $b$:
+\[
+xpb+yab=b.
+\]
+Como $p\mid xpb$ y $p\mid yab$ (pues $p\mid ab$), resulta $p\mid b$.
+
+($\Leftarrow$) Supongamos que $p$ cumple $(\ast)$ y probemos que es primo.
+Supongamos, por el absurdo, que $p$ no es primo. Entonces existe un entero $a$
+con $1<a<p$ tal que $a\mid p$, así que existe otro entero $b$ con $p=ab$, y
+además $1<b<p$.
+
+Como $p=ab$, en particular $p\mid ab$. Por $(\ast)$, $p\mid a$ o $p\mid b$.
+Pero $0<a<p$ implica $p\nmid a$, y $0<b<p$ implica $p\nmid b$. Esto es una
+contradicción, que provino de suponer que $p$ no es primo. Por lo tanto $p$ es
+primo.
 \end{demostracion}
 
-corolario sea un n un numero primo 
-si p divide a un producto a1 a2....an , entonces p divide a algun factor ar 
+\begin{proposicion}[{title={Corolario}}]
+Sea $p$ un número primo. Si $p\mid a_1a_2\cdots a_n$, entonces $p\mid a_r$ para
+algún $r\in\{1,\dots,n\}$.
+\end{proposicion}
 
-p1 vale p2 vale pk -> pk+1 vn>2 
-
-\begin{definicion}
-    el teorema fundamental de la aritmetica 
-    prop : todo elemento n admite una factorizacion como producto de n primos 
-    demostracion sea pn = n  es igual a un producto de numeros primos 
-    mostremos que pn vale para tod neN por induccion
-    p1 vale porque 1 es igual al producto de cero factoreo primos 
-    sea n e N , tal que n>=2 y supongamos que as afirmaciones p1,p2, pn-1 valen
-    el numero n o es primo o bien es divisible por un numero primo p<n 
-    si n es primo entonces n = n es un producto de numeros primos asi que pn vale en ese caso
-    supongamos que n no es primo.entonces un numero primo p menor que n u un entero m talque n = pm
-    m < n/p < n/2 < n porque p> 2. entonces la hip inductiva que pm vale 
-    esto nos dice que hay numeros primos p1,p2,pk tal que m= p1....pk 
-    entonces n = pm = p.p1...pk 
-    entocnes es un produjcto de primo
-    entonces pn vale tambien en este caso
-    en cualquier caso pn vale esto completo la induccion
-\end{definicion}
-
-\begin{definicion}
-    propiedades: si p1,..., pn y q1,... qn son numeros primos y el producto de todos los p1. ....pn = q1 .... qn
-    entonces n = m y las listas p1............pn y q1........qm difieren solamente en el orden
-    obs: si p y q spm dos primos y p|q , entonces p = q 
-\end{definicion}
 \begin{demostracion}
-    supongamos que p1......pn = q1........qm
-    entonces p1 | p1......pn y este producto es igual q1........qm
-    asi que p1 divide a alguno de los q-es ,asi que p1 es igual a el 
-    sin perdida de generalidad podemos suponer que p1=q1
-    entonces p1 p2 .... pn = q1 q2 .. qm = p1 q2 qm 
-    asi que p2......pn = q2 ...qm
-    asi que p3 ...pn = q3 .... qm 
-    entonces  esto lo puedo hacer n veces .¿
-    al terminar q1 = p1 , q2 = p2 qm=pn 
-    si tacho n terminos me quedan m-n terminos 
-    me quedo de un lado 1 = qn+1 qm {m-n terminos}
-    qn+1.... qm> 2 * 2 .... 2=2^m-n
-    asi que m-n <= 0 asi que m <= n 
+Por inducción en $n$.
+
+\textbf{Caso base.} Para $n=1$ es trivial.
+
+\textbf{Paso inductivo.} Supongamos que vale para $n-1$ factores y que
+$p\mid a_1\cdots a_n=(a_1\cdots a_{n-1})\,a_n$. Por el lema de Gauss,
+$p\mid a_1\cdots a_{n-1}$ o $p\mid a_n$. En el segundo caso listo; en el primero,
+por hipótesis inductiva $p\mid a_r$ para algún $r\le n-1$.
+\end{demostracion}
+
+\begin{nota}
+Si $p$ y $q$ son primos y $p\mid q$, entonces $p=q$: los únicos divisores
+positivos de $q$ son $1$ y $q$, y $p>1$.
+\end{nota}
+
+\section{Teorema fundamental de la aritmética}
+
+\begin{proposicion}[{title={Teorema fundamental de la aritmética: existencia}}]
+Todo $n\in\mathbb{N}$ se escribe como producto de números primos (el $1$ es el
+producto de cero primos).
+\end{proposicion}
+
+\begin{demostracion}
+Sea $P(n)$ la afirmación ``$n$ es un producto de números primos''. Probamos
+$P(n)$ para todo $n\in\mathbb{N}$ por inducción fuerte.
+
+\textbf{Caso base.} $P(1)$ vale, porque $1$ es el producto de cero factores primos.
+
+\textbf{Paso inductivo.} Sea $n\ge 2$ y supongamos que $P(1),P(2),\dots,P(n-1)$
+valen. El número $n$ es primo o no lo es.
+
+\begin{itemize}
+    \item Si $n$ es primo, entonces $n=n$ es un producto de un solo primo, así
+    que $P(n)$ vale.
+    \item Si $n$ no es primo, entonces es divisible por un número primo
+    $p<n$, así que existe un entero $m$ tal que $n=pm$. Como $p\ge 2$,
+    \[
+    m=\frac{n}{p}\le \frac{n}{2}<n,
+    \]
+    y $m\ge 1$. Por hipótesis inductiva vale $P(m)$: existen primos
+    $p_1,\dots,p_k$ con $m=p_1\cdots p_k$. Entonces
+    \[
+    n=pm=p\,p_1\cdots p_k
+    \]
+    es un producto de primos, y $P(n)$ vale.
+\end{itemize}
+
+En cualquier caso $P(n)$ vale, lo que completa la inducción.
+\end{demostracion}
+
+\begin{proposicion}[{title={Teorema fundamental de la aritmética: unicidad}}]
+Si $p_1,\dots,p_n$ y $q_1,\dots,q_m$ son números primos tales que
+\[
+p_1p_2\cdots p_n=q_1q_2\cdots q_m,
+\]
+entonces $n=m$ y las listas $p_1,\dots,p_n$ y $q_1,\dots,q_m$ difieren sólo en
+el orden.
+\end{proposicion}
+
+\begin{demostracion}
+Por inducción en $n$.
+
+\textbf{Caso base.} $n=0$: el lado izquierdo es $1$, así que $q_1\cdots q_m=1$.
+Como todo primo es $\ge 2$, si fuera $m\ge 1$ el producto sería $\ge 2$. Luego
+$m=0$.
+
+\textbf{Paso inductivo.} Sea $n\ge 1$ y supongamos que vale para $n-1$ factores.
+Como $n\ge 1$, el producto es $>1$, así que $m\ge 1$. Ahora
+$p_1\mid p_1\cdots p_n=q_1\cdots q_m$, así que por el corolario $p_1\mid q_j$
+para algún $j$, y por la observación anterior $p_1=q_j$. Reordenando, podemos
+suponer $p_1=q_1$. Entonces
+\[
+p_1p_2\cdots p_n=q_1q_2\cdots q_m=p_1q_2\cdots q_m,
+\]
+y cancelando $p_1$ (que es distinto de $0$),
+\[
+p_2\cdots p_n=q_2\cdots q_m.
+\]
+Del lado izquierdo hay $n-1$ primos, así que por hipótesis inductiva $n-1=m-1$
+y las listas $p_2,\dots,p_n$ y $q_2,\dots,q_m$ difieren sólo en el orden.
+Entonces $n=m$ y las listas completas también.
 \end{demostracion}
 
 \begin{ejemplo}
-    12 = 2*2*3 = 2^2 * 3
+$12=2\cdot 2\cdot 3=2^2\cdot 3$.
 \end{ejemplo}
 
-i n es un entero , entonces hay una unica forma de elegir un numero natural , numeros primos p1<p2<.....<pr
+\begin{nota}
+Agrupando los primos repetidos, el teorema dice: si $n\in\mathbb{N}$, $n\ge 2$,
+hay una única forma de elegir primos $p_1<p_2<\dots<p_r$ y exponentes
+$a_1,\dots,a_r\in\mathbb{N}$ tales que
+\[
+n=p_1^{a_1}p_2^{a_2}\cdots p_r^{a_r}.
+\]
+\end{nota}
 
-talques que p1^a1 p2^a2 pn^an (lo mismo que en el ejemplo)
+\begin{proposicion}
+Sea $n=p_1^{a_1}\cdots p_r^{a_r}$ con $p_1<\dots<p_r$ primos. Si $m$ es un
+divisor positivo de $n$, entonces
+\[
+m=p_1^{b_1}\cdots p_r^{b_r}, \qquad 0\le b_i\le a_i \ \text{ para todo } i.
+\]
+\end{proposicion}
 
-si n= p1^a1 p2^a2 pr^ar p1< --- <pr 
+\begin{demostracion}
+Escribimos $m=q_1^{c_1}\cdots q_s^{c_s}$ con $q_1<\dots<q_s$ primos. Cada $q_j$
+divide a $m$, y $m\mid n$, así que $q_j\mid n=p_1^{a_1}\cdots p_r^{a_r}$. Por
+el corolario, $q_j\mid p_i$ para algún $i$, y entonces $q_j=p_i$. Luego todos
+los primos de $m$ están entre los $p_i$, y podemos escribir
+$m=p_1^{b_1}\cdots p_r^{b_r}$ con $b_i\ge 0$.
 
-supongamos m es un divisor de n.  m = q1^b1 , ... qs^bs 
+Sea $k$ tal que $n=mk$, y escribamos $k=p_1^{d_1}\cdots p_r^{d_r}$ (por el mismo
+argumento). Entonces
+\[
+p_1^{a_1}\cdots p_r^{a_r}=p_1^{b_1+d_1}\cdots p_r^{b_r+d_r},
+\]
+y por unicidad $a_i=b_i+d_i$, así que $b_i\le a_i$.
+\end{demostracion}

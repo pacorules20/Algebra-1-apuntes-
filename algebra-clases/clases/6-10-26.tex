@@ -1,0 +1,295 @@
+\chapter{06-10-26}
+
+\section{Sistemas de ecuaciones de congruencia}
+
+\begin{proposicion}[{title={Teorema chino del resto}}]
+Dado un sistema de ecuaciones de congruencia en $\mathbb{Z}$
+\[
+\begin{cases}
+x\equiv c_1 \pmod{m_1}\\
+x\equiv c_2 \pmod{m_2}\\
+\quad\vdots\\
+x\equiv c_n \pmod{m_n}
+\end{cases}
+\]
+si $(m_i:m_j)=1$ para todo $i\neq j$ (los módulos son coprimos dos a dos),
+entonces el sistema tiene una única solución $x_0$ tal que
+\[
+0\le x_0<m_1m_2\cdots m_n.
+\]
+Más aún, en $\mathbb{Z}$ hay infinitas soluciones, y el conjunto de soluciones es
+\[
+S=\{x\in\mathbb{Z} : x\equiv x_0 \pmod{m_1m_2\cdots m_n}\}.
+\]
+\end{proposicion}
+
+\begin{demostracion}
+\textbf{Existencia.} Por inducción en $n$; el caso $n=1$ es trivial. Veamos cómo
+juntar dos ecuaciones $x\equiv c_1 \pmod{m_1}$ y $x\equiv c_2 \pmod{m_2}$ con
+$(m_1:m_2)=1$. Las soluciones de la primera son $x=c_1+m_1t$, $t\in\mathbb{Z}$.
+Reemplazando en la segunda queda $m_1t\equiv c_2-c_1 \pmod{m_2}$, que tiene
+solución porque $(m_1:m_2)=1$ divide a todo, y sus soluciones forman una clase
+$t\equiv t_0 \pmod{m_2}$. Entonces $x=c_1+m_1t_0+m_1m_2 j$, es decir, las dos
+ecuaciones equivalen a una sola: $x\equiv x_1 \pmod{m_1m_2}$. Como $m_1m_2$ es
+coprimo con $m_3,\dots,m_n$, se repite el argumento.
+
+\textbf{Unicidad.} Si $x$ y $x'$ son soluciones, entonces $m_i\mid x-x'$ para
+todo $i$. Como los $m_i$ son coprimos dos a dos, $m_1\cdots m_n\mid x-x'$. En
+particular, dos soluciones entre $0$ y $m_1\cdots m_n-1$ son iguales.
+\end{demostracion}
+
+\begin{ejemplo}
+Hallar todas las soluciones del sistema
+\[
+\begin{cases}
+x\equiv 2 \pmod{10}\\
+x\equiv 0 \pmod{3}
+\end{cases}
+\]
+Como $(10:3)=1$, por el teorema chino del resto existe una única solución $x_0$
+con $0\le x_0<3\cdot 10=30$.
+
+\textbf{Primera forma.} A ojo: si encuentro un $x$ que verifica las dos
+ecuaciones, listo. $x=12$ sirve ($12\equiv 2 \pmod{10}$ y $12\equiv 0 \pmod 3$).
+Luego
+\[
+S=\{x\in\mathbb{Z} : x\equiv 12 \pmod{30}\}=\{30k+12 : k\in\mathbb{Z}\}.
+\]
+
+\textbf{Segunda forma.} $x\equiv 2 \pmod{10} \iff x=10k+2$ con $k\in\mathbb{Z}$.
+Reemplazando en la segunda ecuación y buscando $k$:
+\[
+10k+2\equiv 0 \pmod 3 \iff k+2\equiv 0 \pmod 3 \iff k\equiv -2\equiv 1 \pmod 3
+\iff k=3j+1,\ j\in\mathbb{Z}.
+\]
+Juntando todo:
+\[
+x=10k+2=10(3j+1)+2 \iff x=30j+12, \quad j\in\mathbb{Z}.
+\]
+\end{ejemplo}
+
+\section{Módulos no coprimos}
+
+\begin{teoria}
+¿Qué pasa si los módulos no son coprimos? El teorema chino del resto no asegura
+nada: puede que no haya solución. Cuando los módulos no son coprimos, podemos
+\textbf{quebrar} las ecuaciones en otras con módulos coprimos y ver si hay
+compatibilidad.
+\end{teoria}
+
+\begin{proposicion}
+Si $(m:n)=1$, entonces
+\[
+x\equiv a \pmod{mn} \iff
+\begin{cases}
+x\equiv a \pmod m\\
+x\equiv a \pmod n.
+\end{cases}
+\]
+\end{proposicion}
+
+\begin{demostracion}
+($\Rightarrow$) Si $mn\mid x-a$, como $m\mid mn$ y $n\mid mn$, entonces
+$m\mid x-a$ y $n\mid x-a$.
+
+($\Leftarrow$) Si $m\mid x-a$ y $n\mid x-a$, como $(m:n)=1$ se tiene
+$mn\mid x-a$.
+\end{demostracion}
+
+\begin{ejemplo}
+Decidir si el sistema tiene solución y, en caso afirmativo, hallarlas todas:
+\[
+S:\ \begin{cases}
+x\equiv 6 \pmod{10}\\
+x\equiv 2 \pmod{5}\\
+x\equiv 3 \pmod{7}
+\end{cases}
+\]
+Como $(10:5)\neq 1$, no sabemos todavía si hay solución. Quebramos la primera
+ecuación, usando $10=2\cdot 5$ con $(2:5)=1$:
+\[
+x\equiv 6 \pmod{10} \iff
+\begin{cases}
+x\equiv 6 \pmod 5\\
+x\equiv 6 \pmod 2
+\end{cases}
+\iff
+\begin{cases}
+x\equiv 1 \pmod 5\\
+x\equiv 0 \pmod 2.
+\end{cases}
+\]
+Entonces el sistema es equivalente a
+\[
+\begin{cases}
+x\equiv 1 \pmod 5\\
+x\equiv 0 \pmod 2\\
+x\equiv 2 \pmod 5\\
+x\equiv 3 \pmod 7.
+\end{cases}
+\]
+Esto es absurdo: la primera y la tercera ecuación son incompatibles, porque por
+el algoritmo de la división el resto de dividir $x$ por $5$ es único (no puede
+ser $1$ y $2$ a la vez). \textbf{Respuesta:} el sistema no tiene solución.
+\end{ejemplo}
+
+\begin{ejemplo}
+Resolver
+\[
+S:\ \begin{cases}
+x\equiv 6 \pmod{10}\\
+x\equiv 1 \pmod{5}\\
+x\equiv 3 \pmod{7}
+\end{cases}
+\]
+Quebrando la primera ecuación como antes:
+\[
+\begin{cases}
+x\equiv 1 \pmod 5\\
+x\equiv 0 \pmod 2\\
+x\equiv 1 \pmod 5\\
+x\equiv 3 \pmod 7.
+\end{cases}
+\]
+Ahora no hay incompatibilidad: la ecuación $x\equiv 1 \pmod 5$ aparece repetida.
+Nos queda
+\[
+\begin{cases}
+x\equiv 1 \pmod 5\\
+x\equiv 0 \pmod 2\\
+x\equiv 3 \pmod 7.
+\end{cases}
+\]
+Como $(2:5)=(2:7)=(5:7)=1$, por el teorema chino del resto existe una única
+solución $x_0$ con $0\le x_0<2\cdot 5\cdot 7=70$.
+
+Para resolverlo, volvemos a juntar las dos primeras ecuaciones
+($x\equiv 1 \pmod 5$ y $x\equiv 0 \pmod 2$ equivalen a $x\equiv 6 \pmod{10}$):
+\[
+\begin{cases}
+x\equiv 6 \pmod{10}\\
+x\equiv 3 \pmod 7.
+\end{cases}
+\]
+Ahora $x\equiv 6 \pmod{10} \iff x=10k+6$ con $k\in\mathbb{Z}$. Reemplazando:
+\[
+10k+6\equiv 3 \pmod 7 \iff 3k+6\equiv 3 \pmod 7 \iff 3k\equiv 4 \pmod 7.
+\]
+Como $5\cdot 3=15\equiv 1 \pmod 7$ y $(5:7)=1$, multiplicamos por $5$:
+\[
+15k\equiv 20 \pmod 7 \iff k\equiv 6 \pmod 7 \iff k=7j+6,\ j\in\mathbb{Z}.
+\]
+Juntando: $x=10(7j+6)+6=70j+66$. Luego
+\[
+S=\{70j+66 : j\in\mathbb{Z}\}=\{x\in\mathbb{Z} : x\equiv 66 \pmod{70}\}.
+\]
+\textbf{Chequeo:} $66\equiv 6 \pmod{10}$, $66\equiv 1 \pmod 5$ y
+$66=63+3\equiv 3 \pmod 7$. $\checkmark$
+\end{ejemplo}
+
+\begin{ejemplo}
+Hallar, si existen, las soluciones del sistema
+\[
+\begin{cases}
+7x\equiv 9 \pmod{12}\\
+4x\equiv 9 \pmod{15}\\
+3x\equiv 13 \pmod{10}.
+\end{cases}
+\]
+\textbf{Estrategia.}
+\begin{enumerate}
+    \item Quebrar en módulos coprimos.
+    \item Reducir y revisar si hay incompatibilidad.
+    \item Resolver, a ojo o a mano, usando el teorema chino del resto.
+\end{enumerate}
+
+\textbf{Paso 1: quebrar.} Usando $12=4\cdot 3$, $15=3\cdot 5$ y $10=2\cdot 5$:
+\[
+7x\equiv 9 \pmod{12} \iff
+\begin{cases} 7x\equiv 9 \pmod 4\\ 7x\equiv 9 \pmod 3 \end{cases}
+\qquad
+4x\equiv 9 \pmod{15} \iff
+\begin{cases} 4x\equiv 9 \pmod 5\\ 4x\equiv 9 \pmod 3 \end{cases}
+\]
+\[
+3x\equiv 13 \pmod{10} \iff
+\begin{cases} 3x\equiv 13 \pmod 2\\ 3x\equiv 13 \pmod 5. \end{cases}
+\]
+
+\textbf{Paso 2: reducir.}
+\begin{itemize}
+    \item $7x\equiv 9 \pmod 4 \iff 3x\equiv 1 \pmod 4 \iff -x\equiv 1 \iff x\equiv -1\equiv 3 \pmod 4$.
+    \item $7x\equiv 9 \pmod 3 \iff x\equiv 0 \pmod 3$.
+    \item $4x\equiv 9 \pmod 5 \iff 4x\equiv 4 \pmod 5 \iff x\equiv 1 \pmod 5$.
+    \item $4x\equiv 9 \pmod 3 \iff x\equiv 0 \pmod 3$.
+    \item $3x\equiv 13 \pmod 2 \iff x\equiv 1 \pmod 2$.
+    \item $3x\equiv 13 \pmod 5 \iff 3x\equiv 3 \pmod 5 \iff x\equiv 1 \pmod 5$.
+\end{itemize}
+Eliminando repetidas queda
+\[
+\begin{cases}
+x\equiv 3 \pmod 4\\
+x\equiv 0 \pmod 3\\
+x\equiv 1 \pmod 5\\
+x\equiv 1 \pmod 2.
+\end{cases}
+\]
+¿Es compatible? Si $x\equiv 3 \pmod 4$ entonces $x=4k+3$, y
+$4k+3\equiv 0+1\equiv 1 \pmod 2$. Luego $x\equiv 3 \pmod 4$ implica
+$x\equiv 1 \pmod 2$, y la última ecuación es redundante. El sistema queda
+\[
+\begin{cases}
+x\equiv 3 \pmod 4\\
+x\equiv 0 \pmod 3\\
+x\equiv 1 \pmod 5.
+\end{cases}
+\]
+
+\textbf{Paso 3: resolver.} Los módulos $4,3,5$ son coprimos dos a dos, así que
+por el teorema chino del resto existe una única solución módulo $60$. Juntando
+las dos primeras (como $(4:3)=1$), $x\equiv 3 \pmod{12}$. Entonces
+$x=12t+3$ y
+\[
+12t+3\equiv 1 \pmod 5 \iff 2t\equiv -2\equiv 3 \pmod 5 \iff t\equiv 4 \pmod 5,
+\]
+de donde $x=12\cdot 4+3=51$ es la solución $x_0$ (a ojo también se ve). Luego
+\[
+S=\{60k+51 : k\in\mathbb{Z}\}.
+\]
+\textbf{Chequeo:} $7\cdot 51=357=12\cdot 29+9$, $4\cdot 51=204=15\cdot 13+9$ y
+$3\cdot 51=153\equiv 3\equiv 13 \pmod{10}$. $\checkmark$
+\end{ejemplo}
+
+\begin{ejemplo}
+Hallar los posibles restos de dividir a $x$ por $180$ y por $1800$, sabiendo que
+$x$ es solución del sistema anterior.
+
+Recién resolvimos ese sistema y llegamos a que $x=60k+51$ con $k\in\mathbb{Z}$.
+
+\textbf{Resto por $180$.} Como $180=3\cdot 60$, los restos se repiten cada $3$
+valores de $k$:
+\begin{itemize}
+    \item $k=0$: $x=51$, $r_{180}(x)=51$.
+    \item $k=1$: $x=111$, $r_{180}(x)=111$.
+    \item $k=2$: $x=171$, $r_{180}(x)=171$.
+    \item $k=3$: $x=180+51$, $r_{180}(x)=51$, y así se repite.
+\end{itemize}
+Formalmente, para que $60k+51$ sea el resto pedimos $0\le 60k+51<180$:
+\[
+-51\le 60k<129 \iff -\tfrac{51}{60}\le k<\tfrac{129}{60}\approx 2{,}15
+\iff k\in\{0,1,2\}.
+\]
+\textbf{Respuesta:} los posibles restos de dividir a $x$ por $180$ son $51$,
+$111$ y $171$.
+
+\textbf{Resto por $1800$.} Como $1800=30\cdot 60$, buscamos $k\in\mathbb{Z}$ tal
+que $0\le 60k+51<1800$:
+\[
+-51\le 60k<1749 \iff -\tfrac{51}{60}\le k<\tfrac{1749}{60}\approx 29{,}15
+\iff 0\le k\le 29.
+\]
+Hay $30$ posibles restos de dividir a $x$ por $1800$.
+
+\textbf{Respuesta:} $r_{1800}(x)=60j+51$ con $0\le j<30$ (es decir,
+$j=0,1,\dots,29$).
+\end{ejemplo}

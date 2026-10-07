@@ -1,4 +1,291 @@
-\chapter{.clase 02-10-26}
+\chapter{02-10-26}
 
-\section{ecuaciones diofanticas / de congruencia}
+\section{Ecuaciones diofánticas}
 
+\begin{definicion}
+Una \textbf{ecuación diofántica lineal} es una ecuación de la forma
+\[
+aX + bY = c, \qquad a,b,c \in \mathbb{Z},
+\]
+de la cual buscamos soluciones enteras $(x,y)\in\mathbb{Z}\times\mathbb{Z}$.
+\end{definicion}
+
+\begin{proposicion}
+La ecuación $aX+bY=c$ tiene solución entera si y sólo si $(a:b) \mid c$.
+\end{proposicion}
+
+\begin{demostracion}
+($\Rightarrow$) Si $ax+by=c$ con $x,y\in\mathbb{Z}$, como $(a:b)\mid a$ y
+$(a:b)\mid b$, entonces $(a:b)\mid ax+by=c$.
+
+($\Leftarrow$) Por Euclides existen $s,t\in\mathbb{Z}$ con $as+bt=(a:b)$. Si
+$c=(a:b)\,k$, multiplicando por $k$ se obtiene $a(sk)+b(tk)=c$.
+\end{demostracion}
+
+\begin{ejemplo}
+¿Tiene soluciones enteras $3X+6Y=5$? No, porque
+\[
+3X+6Y = 3(X+2Y) = 5 \implies 3 \mid 5,
+\]
+lo cual es absurdo. Luego no existe $(x,y)\in\mathbb{Z}^2$ tal que $3x+6y=5$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Hallar todas las soluciones enteras de $6x+15y=12$, y decidir si hay
+soluciones en $\mathbb{N}$.
+
+\textbf{Paso 1: existencia y simplificación.} Como $(6:15)=3 \mid 12$, hay
+solución. Dividiendo por $3$:
+\[
+6x+15y=12 \iff 3(2x+5y)=3\cdot 4 \iff 2x+5y=4,
+\]
+y ambas ecuaciones tienen las mismas soluciones.
+
+\textbf{Paso 2: solución particular $S_p$.}
+
+\begin{enumerate}
+    \item[a)] A ojo: $2\cdot(-3)+5\cdot 2=4$, así que $(-3,2)$ es una
+    solución particular.
+    \item[b)] Usando que $(2:5)=1$ y Euclides: $5=2\cdot 2+1$, es decir
+    $1=2\cdot(-2)+5\cdot 1$. Multiplicando por $4$:
+    \[
+    4 = 2\cdot(-8)+5\cdot 4,
+    \]
+    así que $(-8,4)$ también es solución particular.
+\end{enumerate}
+Usamos $S_p=(-8,4)$.
+
+\textbf{Paso 3: homogéneo asociado $S_0$.} Resolvemos $2x+5y=0$:
+\[
+2x=-5y \implies 2\mid 5y \iff 2\mid y \quad (\text{pues } (2:5)=1),
+\]
+o sea $y=2k$. Entonces $2x=-10k$, es decir $x=-5k$. Luego
+\[
+(x,y)\in S_0 \iff (x,y)=(-5k,2k), \quad k\in\mathbb{Z}.
+\]
+
+\textbf{Paso 4: solución general.} $S=S_0+S_p$:
+\[
+(x,y)=(-5k-8,\;2k+4), \qquad k\in\mathbb{Z}.
+\]
+
+\textbf{Paso 5: chequeo.}
+\[
+2(-5k-8)+5(2k+4) = -10k-16+10k+20 = 4. \checkmark
+\]
+
+\textbf{Soluciones en $\mathbb{N}$.} Pedimos $x\ge 1$ e $y\ge 1$:
+\[
+x=-5k-8\ge 1 \iff -5k\ge 9 \iff k\le -\tfrac95 \iff k\le -2,
+\]
+\[
+y=2k+4\ge 1 \iff 2k\ge -3 \iff k\ge -\tfrac32 \iff k\ge -1.
+\]
+Pero $k\le -2$ y $k\ge -1$ es absurdo. Luego no existe $(x,y)\in\mathbb{N}\times\mathbb{N}$
+que sea solución.
+\end{ejemplo}
+
+\section{Ecuaciones de congruencia}
+
+\begin{ejemplo}
+Hallar todos los $x\in\mathbb{Z}$ tales que $15x\equiv 35 \pmod{40}$.
+
+Por definición de congruencia,
+\[
+15x\equiv 35 \pmod{40} \iff 40 \mid 15x-35 \iff 15x-35=40k \text{ para algún } k\in\mathbb{Z},
+\]
+\[
+\iff \exists\, k\in\mathbb{Z} : 15x-40k=35,
+\]
+que es una ecuación diofántica. Como $(15:-40)=5\mid 35$, tiene solución.
+
+\textbf{Paso 1.} Simplificando: $15x-40k=35 \iff 3x-8k=7$.
+
+\textbf{Paso 2.} $3\cdot 5-8\cdot 1=7$, así que $(x,k)=(5,1)$ es solución particular.
+
+\textbf{Paso 3.} Homogéneo $3x-8k=0$: $3x=8k \implies 3\mid 8k \iff 3\mid k$, o sea
+$k=3j$. Entonces $3x=24j$, es decir $x=8j$. Luego $S_0=\{(8j,3j) : j\in\mathbb{Z}\}$.
+
+\textbf{Paso 4.}
+\[
+S=\{(x,k)=(8j+5,\;3j+1) : j\in\mathbb{Z}\}.
+\]
+
+\textbf{Paso 5.} Chequeo: $3(8j+5)-8(3j+1)=24j+15-24j-8=7$. $\checkmark$
+
+El valor de $k$ no nos interesa. \textbf{Respuesta:} todos los $x\in\mathbb{Z}$ que
+cumplen $15x\equiv 35 \pmod{40}$ son $x=8j+5$ con $j\in\mathbb{Z}$, es decir
+\[
+x\equiv 5 \pmod 8.
+\]
+\end{ejemplo}
+
+\begin{nota}{}
+¿Hacía falta resolver la ecuación diofántica? Es una opción, pero también se
+puede trabajar directamente con la congruencia, usando las siguientes
+propiedades.
+\end{nota}
+
+\begin{proposicion}
+Sean $a,b,c,d\in\mathbb{Z}$ con $c\ge 1$ y $d\neq 0$.
+\begin{enumerate}
+    \item $aX\equiv b \pmod c$ tiene solución si y sólo si $(a:c)\mid b$.
+    \item $ax\equiv b \pmod c \iff dax\equiv db \pmod{dc}$.
+    \item Si $(c:d)=1$, entonces $ax\equiv b \pmod c \iff dax\equiv db \pmod c$.
+\end{enumerate}
+\end{proposicion}
+
+\begin{demostracion}
+(1) $ax\equiv b \pmod c \iff c\mid ax-b \iff ax-b=ck \iff ax-ck=b$ para algún
+$k\in\mathbb{Z}$. Esta es una ecuación diofántica, que tiene solución si y sólo
+si $(a:-c)=(a:c)\mid b$.
+
+(2) $c\mid ax-b \iff dc\mid d(ax-b)=dax-db$.
+
+(3) ($\Rightarrow$) Es consecuencia de la compatibilidad con el producto. ($\Leftarrow$)
+Si $c\mid d(ax-b)$ y $(c:d)=1$, entonces $c\mid ax-b$.
+\end{demostracion}
+
+\begin{ejemplo}
+Resolvamos de nuevo $15x\equiv 35 \pmod{40}$ con las propiedades.
+Por (2) con $d=5$:
+\[
+5\cdot 3x\equiv 5\cdot 7 \pmod{5\cdot 8} \iff 3x\equiv 7 \pmod 8.
+\]
+Ahora podemos hacer una tabla de restos módulo $8$, o buscar un entero $d$ con
+$3d\equiv 1 \pmod 8$. Tomamos $d=3$ (pues $9\equiv 1$). Como $(3:8)=1$, por (3)
+\[
+3x\equiv 7 \pmod 8 \iff 3(3x)\equiv 3\cdot 7 \pmod 8 \iff x\equiv 21 \pmod 8 \iff x\equiv 5 \pmod 8.
+\]
+Luego los $x\in\mathbb{Z}$ buscados son $x\equiv 5 \pmod 8$, o sea $x=8j+5$ con
+$j\in\mathbb{Z}$.
+\end{ejemplo}
+
+\begin{ejemplo}
+Hallar todos los $x\in\mathbb{Z}$ tales que $14x^2\equiv 31 \pmod 5$.
+
+Como $14\equiv 4\equiv -1$ y $31\equiv 1 \pmod 5$:
+\[
+14x^2\equiv 31 \pmod 5 \iff -x^2\equiv 1 \pmod 5 \iff x^2\equiv -1\equiv 4 \pmod 5.
+\]
+Sabemos cómo tiene que ser $x^2$, queremos conocer $x$.
+
+\textbf{Con tabla de restos.}
+\[
+\begin{array}{c|ccccc}
+r_5(x) & 0 & 1 & 2 & 3 & 4 \\ \hline
+r_5(x^2) & 0 & 1 & 4 & 4 & 1
+\end{array}
+\]
+Se tiene $x^2\equiv 4$ sólo para $r_5(x)=2$ o $r_5(x)=3$.
+
+\textbf{Usando que $5$ es primo.}
+\[
+x^2\equiv 4 \iff x^2-4\equiv 0 \iff (x+2)(x-2)\equiv 0 \pmod 5
+\iff 5\mid x+2 \ \text{ o } \ 5\mid x-2,
+\]
+es decir $x\equiv -2\equiv 3 \pmod 5$ o $x\equiv 2 \pmod 5$.
+
+\textbf{Respuesta:} $x\equiv 2 \pmod 5$ o $x\equiv 3 \pmod 5$.
+\end{ejemplo}
+
+\section{Sistemas con una condición de divisibilidad}
+
+\begin{ejemplo}
+Hallar todos los $(x,y)\in\mathbb{Z}\times\mathbb{Z}$ que son solución de
+$69x+33y=21$ y tales que $17\mid x-2y$.
+
+Una opción es encontrar todas las soluciones enteras de la ecuación y luego ver
+cuáles cumplen la segunda condición.
+
+\textbf{Paso 1: existencia y simplificación.} $(69:33)=3\mid 21$, así que hay
+solución, y
+\[
+69x+33y=21 \iff 23x+11y=7.
+\]
+
+\textbf{Paso 2: solución particular} (a ojo no sale). Como $(23:11)=1$, por
+Euclides buscamos $1=23s+11t$: $23\cdot 1+11\cdot(-2)=1$. Como queremos que dé
+$7$, multiplicamos toda la expresión por $7$:
+\[
+23\cdot 7+11\cdot(-14)=7,
+\]
+así que $S_p=(7,-14)$.
+
+\textbf{Paso 3: homogéneo.} $23x+11y=0 \implies 23x=-11y \implies 11\mid x$
+(pues $(23:11)=1$), o sea $x=-11k$ e $y=23k$.
+
+\textbf{Paso 4: solución general.}
+\[
+(x,y)=(-11k+7,\;23k-14), \qquad k\in\mathbb{Z}.
+\]
+
+\textbf{Paso 5: chequeo.} $23(-11k+7)+11(23k-14)=161-154=7$. $\checkmark$
+Luego todas las soluciones de $69x+33y=21$ son
+\[
+x=-11k+7, \qquad y=23k-14.
+\]
+
+\textbf{Segunda condición.} $17\mid x-2y$:
+\[
+x-2y=-11k+7-2(23k-14)=-57k+35,
+\]
+así que buscamos los $k\in\mathbb{Z}$ tales que
+\[
+17\mid -57k+35 \iff 57k\equiv 35 \pmod{17}.
+\]
+Como $57\equiv 6$ y $35\equiv 1 \pmod{17}$, queda $6k\equiv 1 \pmod{17}$.
+Como $(6:17)=1\mid 1$, hay solución. Además $(3:17)=1$, así que multiplicando por $3$:
+\[
+3\cdot 6k\equiv 3\cdot 1 \pmod{17} \iff 18k\equiv 3 \iff k\equiv 3 \pmod{17},
+\]
+es decir $k=17j+3$, $j\in\mathbb{Z}$.
+
+\textbf{Respuesta.} Reemplazando en la solución general:
+\[
+x=-11(17j+3)+7=-187j-26, \qquad y=23(17j+3)-14=391j+55, \qquad j\in\mathbb{Z}.
+\]
+\end{ejemplo}
+
+\begin{ejemplo}
+analizar los posibles valores de (5a+1:2a+3) en la funcion de los calores de a $\in \mathbb{Z}$
+
+llamamos d = (5a+1:2a+3) y buscamos los valores para d : 
+
+\[
+d \mid 5a+1 \hspace{0.5cm} d\mid 2a+3 \iff d\mid -13  \implies 1 \text{ o } 13
+\]
+
+\[
+13 \mid 5a+1 \text{  y  } 13 \mid 2a+3  \iff 5a+1 \equiv 0 (13) \text{  y  } 2a+3 \equiv 0 (13) \iff 5a\equiv 12 (13) \text{  y  } 2a \equiv 10 (13)
+\]
+
+\textbf{Paso 1:}
+
+\[
+5a \equiv 12(13) \text{  como (5:13)= 1| 12 hay sol!}
+\]
+
+\[
+5.5 a \equiv  5.12 (13) \iff -a \equiv -5
+\]
+
+\textbf{Paso 2:}
+veamos si a$\equiv$ 5(13) resuelve la 2da ecuacion:
+\[
+2a \equiv -3(13) \text{ ? } 2.5 \equiv 10 (13) \iff -3(13)
+\]
+
+\textbf{Rta:}
+\[
+\text{ luego d = 13 }\iff a \equiv 5(13)  
+\]
+\[
+\text{ si } a \equiv 5 (13) \iff d = 13  
+\]
+\[
+\text{ si } a \text{ not } \equiv 5 (13) \iff d = 1  
+\]
+
+
+\end{ejemplo}
