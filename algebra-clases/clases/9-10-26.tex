@@ -1,0 +1,72 @@
+\begin{definicion}
+    a, b, c $\in \mathbb{Z}$ 
+    ax + by = c 
+    a = b = 0 
+    algun de a o b no nulo 
+    hay soluciones si y solo si d = mcd (a,b) d|c 
+    a' x + b' y = c'
+    va' + vb'= 1 
+    c'u a' + cv'.b' = c'
+    x0 = c'u so = cv'
+    y en ese caso , si u,v in Z tq 
+    u-(a/d)+v(b/d) = 1 , hay una sol
+    particular que tiene (xo,yo) = (a/d u, b/d v)
+    mas aun, el conj de las sols de la ecuacion 
+    {
+        (x,y) = (xo -k(b/d) .k , yo + k(a/d)) 
+        k in Z
+    }
+
+\end{definicion}
+
+\textbf{"ecuaciones de congruencia"}
+\begin{definicion}
+    a·x ≡ 0 (mod m)
+    supongo que hay una sol x0 in  Z 
+    axo $\equiv$ 0 (mod m)
+    m|a xo
+
+    sup m|a entonces ax $\equiv$ 0 mod m 
+    cualquier sea x in Z 
+    rta : sols = Z
+
+    15| 6x <-> 15|6x <-> 15|3*2x <-> 5|2x <-> 5|x 
+    ax == 0 mod m <-> m|ax = da' x 
+    d = mcd(a,m)
+    a' = a/d , m' = m/d 
+    m'|a'x <-> m'|x <-> x = k m' , k in Z
+
+\end{definicion}
+\begin{ejemplo}
+    sean a in Z, m in Z
+    la ec ax== 0 mod m 
+    siempre tiene sols as aun , si d = mcd (a,m) y m' = m/d
+    entonces el conj de todas alas sols es {km' : k in Z} 
+\end{ejemplo}
+\begin{observacion}
+    sup que x es una sol y que y in Z tal que y == x mod m 
+    entonces y tambien es solcion ay == ax == 0 mod m
+\end{observacion}
+\begin{ejemplo}
+    3x == 0 mod 15 
+    m' = 15/3 = 5
+    el conj de soluciones es {5k : k in Z}
+    las clases de congruencia de mod 15 son sol son solo 3
+    la clase de [0], la clase de [5] y la clase de [10]
+
+    5x == 0 mod 15 m' = 15/5 = 3
+    el conj de soluciones es {3k : k in Z}
+    [0], [3], [6], [9], [12] son las clases de congruencia de mod 15 que son soluciones
+
+    2x == 0 mod 16 m' = 16/2 = 8
+    el conj de soluciones es {8k : k in Z}
+    [0], [8] son las clases de congruencia de mod 16 que son soluciones
+
+    mas aun las sols se organizan en d clases 
+    [0], [m'], [2m'], ... , [(d-1)m']
+    sup que k in Z de manera que km' es una sol de la ec
+    sea q, r talque km' = qm + r , 0 <= r < m-1
+    ent [km'] = [r] como m'|km'-qm = r 
+    km' = _m+_ 
+
+\end{ejemplo}
