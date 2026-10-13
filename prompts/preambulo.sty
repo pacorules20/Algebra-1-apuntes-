@@ -156,17 +156,18 @@
   title={Proposición \thesection.\refstepcounter{numproposicion}\thenumproposicion},
   breakable, rounded corners, #1
 }
-
-% --- Caja de DEMOSTRACIÓN (como la proposición pero en amarillo/ámbar, numerada o con título fijo) ---
+% --- DEMOSTRACIÓN (discreta, con cuadradito final) ---
 \newcounter{numdemostracion}[section]
 \newtcolorbox{demostracion}[1][]{
-  colback=amarilloDemostracion!5, 
-  colframe=amarilloDemostracion,
-  fonttitle=\bfseries, 
+  colback=white,
+  colframe=amarilloDemostracion!60,
+  boxrule=0pt, leftrule=1.5pt, titlerule=0pt,
+  sharp corners,
+  fonttitle=\bfseries\itshape,
   coltitle=black,
-  colbacktitle=amarilloDemostracion!40,
+  colbacktitle=white,
   title={Demostración},
-  breakable, 
-  rounded corners, 
+  breakable,
+  after upper={\nopagebreak\hspace*{\fill}\ensuremath{\square}},
   #1
 }

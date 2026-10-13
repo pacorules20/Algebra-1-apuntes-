@@ -1,0 +1,176 @@
+\chapter{Números complejos}
+
+\section{Cuerpos}
+
+\begin{definicion}
+Sea $K$ un conjunto y sean $+,\cdot : K\times K\to K$ dos operaciones en $K$.
+Se dice que $(K,+,\cdot)$ es un \textbf{cuerpo} si se cumple:
+\begin{enumerate}
+    \item $+$ y $\cdot$ son asociativas y conmutativas.
+    \item Existe un elemento neutro para la suma, $0\in K$, tal que $x+0=x$
+    para todo $x\in K$.
+    \item Existe un elemento neutro para el producto, $1\in K$, con $1\neq 0$,
+    tal que $x\cdot 1=x$ para todo $x\in K$.
+    \item Cualquiera sea $x\in K$, existe un inverso aditivo u \textbf{opuesto}
+    $-x\in K$ tal que $x+(-x)=0$.
+    \item Cualquiera sea $x\in K$ con $x\neq 0$, existe un inverso
+    multiplicativo $x^{-1}\in K$ tal que $x\cdot x^{-1}=1$.
+    \item El producto es distributivo sobre la suma:
+    $x\cdot(a+b)=x\cdot a+x\cdot b$ para todos $x,a,b\in K$.
+\end{enumerate}
+\end{definicion}
+
+\begin{ejemplo}
+$\mathbb{Q}$, $\mathbb{R}$ y $\mathbb{C}$ son cuerpos con la suma y el producto
+usuales. $\mathbb{Z}$ no lo es: por ejemplo $2\in\mathbb{Z}$ no tiene inverso
+multiplicativo en $\mathbb{Z}$.
+\end{ejemplo}
+
+\section{Números complejos}
+
+\subsection{Forma binomial}
+
+\begin{definicion}
+El conjunto de los \textbf{números complejos} es
+\[
+\mathbb{C}=\{a+bi : a,b\in\mathbb{R}\},
+\]
+donde $i$ es un símbolo que cumple $i^2=-1$, con la suma y el producto
+usuales (distribuyendo y usando $i^2=-1$).
+\end{definicion}
+
+\begin{definicion}
+Dado $z\in\mathbb{C}$, la expresión $z=a+bi$ con $a,b\in\mathbb{R}$ se llama la
+\textbf{forma binomial} de $z$. Su \textbf{parte real} es $\operatorname{Re}(z)=a$
+y su \textbf{parte imaginaria} es $\operatorname{Im}(z)=b$.
+
+Dado $z=a+bi$ con $a,b\in\mathbb{R}$:
+\begin{itemize}
+    \item el \textbf{conjugado} de $z$ es $\overline{z}=a-bi\in\mathbb{C}$;
+    \item el \textbf{módulo} de $z$ es $|z|=\sqrt{a^2+b^2}\in\mathbb{R}_{\ge 0}$.
+\end{itemize}
+\end{definicion}
+
+\begin{proposicion}
+Sea $z\in\mathbb{C}$. Entonces:
+\begin{enumerate}
+    \item $z\cdot\overline{z}=|z|^2$.
+    \item Si $z\neq 0$, entonces $z^{-1}=\dfrac{\overline{z}}{|z|^2}$.
+\end{enumerate}
+\end{proposicion}
+
+\begin{demostracion}
+Sea $z=a+bi$ con $a,b\in\mathbb{R}$.
+
+(1) $z\overline{z}=(a+bi)(a-bi)=a^2-abi+abi-b^2i^2=a^2+b^2=|z|^2$, usando $i^2=-1$.
+
+(2) Si $z\neq 0$ entonces $|z|^2=a^2+b^2\neq 0$, y por (1)
+\[
+z\cdot\frac{\overline{z}}{|z|^2}=\frac{z\overline{z}}{|z|^2}=\frac{|z|^2}{|z|^2}=1,
+\]
+así que $\overline{z}/|z|^2$ es el inverso multiplicativo de $z$.
+\end{demostracion}
+
+\begin{ejemplo}
+Calcular $\dfrac{1}{3+4i}$. Como $|3+4i|^2=9+16=25$,
+\[
+(3+4i)^{-1}=\frac{3-4i}{25}=\frac{3}{25}-\frac{4}{25}i.
+\]
+\end{ejemplo}
+
+\begin{proposicion}[{title={Propiedades del conjugado y del módulo}}]
+Sean $z,w\in\mathbb{C}$. Entonces:
+
+\textbf{Conjugado.}
+\begin{enumerate}
+    \item $\overline{z+w}=\overline{z}+\overline{w}$.
+    \item $\overline{zw}=\overline{z}\,\overline{w}$. En particular,
+    $\overline{z^n}=\overline{z}^{\,n}$ para todo $n\in\mathbb{N}$.
+    \item $\overline{\overline{z}}=z$.
+    \item $z=\overline{z}\iff z\in\mathbb{R}$.
+    \item $\operatorname{Re}(z)=\dfrac{z+\overline{z}}{2}$ y
+    $\operatorname{Im}(z)=\dfrac{z-\overline{z}}{2i}$.
+\end{enumerate}
+
+\textbf{Módulo.}
+\begin{enumerate}
+    \setcounter{enumi}{5}
+    \item $|z|\ge 0$, y $|z|=0\iff z=0$.
+    \item $|\overline{z}|=|z|$.
+    \item $|zw|=|z|\,|w|$. En particular, si $z\neq 0$, $|z^{-1}|=\dfrac{1}{|z|}$.
+    \item $|\operatorname{Re}(z)|\le|z|$ y $|\operatorname{Im}(z)|\le|z|$.
+    \item (Desigualdad triangular) $|z+w|\le|z|+|w|$.
+\end{enumerate}
+\end{proposicion}
+
+
+
+\begin{proposicion}[{title={Parte real e imaginaria del inverso}}]
+Sea $z=a+bi\neq 0$ con $a,b\in\mathbb{R}$. Entonces
+\[
+z^{-1}=\frac{\overline{z}}{|z|^2}=\frac{a-bi}{a^2+b^2},
+\]
+y por lo tanto
+\[
+\operatorname{Re}(z^{-1})=\frac{a}{a^2+b^2},
+\qquad
+\operatorname{Im}(z^{-1})=-\frac{b}{a^2+b^2}.
+\]
+\end{proposicion}
+
+\begin{demostracion}
+Es la fórmula $z^{-1}=\overline{z}/|z|^2$ vista antes (multiplicar arriba y abajo
+por $\overline{z}$ para sacar la $i$ del denominador), escribiendo
+$\overline{z}=a-bi$ y $|z|^2=a^2+b^2$ y separando parte real e imaginaria.
+\end{demostracion}
+
+\begin{proposicion}[{title={Multiplicar por $i$}}]
+Sea $z=a+bi$ con $a,b\in\mathbb{R}$. Entonces
+\[
+i\cdot z=-b+ai,
+\]
+y por lo tanto
+\[
+\operatorname{Re}(iz)=-\operatorname{Im}(z),
+\qquad
+\operatorname{Im}(iz)=\operatorname{Re}(z).
+\]
+\end{proposicion}
+
+\begin{demostracion}
+$i\cdot z=i(a+bi)=ai+bi^2=-b+ai$, usando $i^2=-1$. Como $-b$ y $a$ son reales,
+$\operatorname{Re}(iz)=-b=-\operatorname{Im}(z)$ e $\operatorname{Im}(iz)=a=\operatorname{Re}(z)$.
+\end{demostracion}
+
+\begin{nota}{}
+Geométricamente, multiplicar por $i$ gira al punto $(a,b)$ un ángulo de
+$90^\circ$ alrededor del origen, y lo manda a $(-b,a)$.
+\end{nota}
+
+\begin{proposicion}[{title={Potencias de $i$}}]
+Las potencias de $i$ se repiten en un ciclo de $4$ resultados:
+\[
+i^1=i,\qquad i^2=-1,\qquad i^3=-i,\qquad i^4=1.
+\]
+Más aún, para todo $n\in\mathbb{N}_0$,
+\[
+i^n=i^{r_4(n)},
+\]
+donde $r_4(n)\in\{0,1,2,3\}$ es el resto de dividir $n$ por $4$.
+\end{proposicion}
+
+\begin{demostracion}
+$i^2=-1$ por definición, $i^3=i^2\cdot i=-i$ e $i^4=i^2\cdot i^2=(-1)(-1)=1$.
+
+Por el algoritmo de la división, $n=4q+r$ con $r=r_4(n)$ y $0\le r<4$. Entonces
+\[
+i^n=i^{4q+r}=(i^4)^q\, i^r=1^q\, i^r=i^r.
+\]
+\end{demostracion}
+
+\begin{ejemplo}
+Calcular $i^{2026}$. Como $2026=4\cdot 506+2$, se tiene $r_4(2026)=2$ y
+\[
+i^{2026}=i^2=-1.
+\]
+\end{ejemplo}

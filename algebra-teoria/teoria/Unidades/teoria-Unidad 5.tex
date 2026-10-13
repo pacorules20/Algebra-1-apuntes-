@@ -65,3 +65,119 @@ ejemplo $2\cdot 3\equiv 2\cdot 1 \pmod 4$ (pues $6\equiv 2$), pero
 $3\not\equiv 1 \pmod 4$. Lo correcto en ese caso es la Regla 1, que también
 divide el módulo: $3\equiv 1 \pmod 2$.
 \end{nota}
+
+\section{Teorema chino del resto}
+\begin{proposicion}
+Dado un sistema de ecuaciones de congruencia en $\mathbb{Z}$
+\[
+\begin{cases}
+x\equiv c_1 \pmod{m_1}\\
+x\equiv c_2 \pmod{m_2}\\
+\quad\vdots\\
+x\equiv c_n \pmod{m_n}
+\end{cases}
+\]
+si $(m_i:m_j)=1$ para todo $i\neq j$ (los módulos son coprimos dos a dos),
+entonces el sistema tiene una única solución $x_0$ tal que
+\[
+0\le x_0<m_1m_2\cdots m_n.
+\]
+Más aún, en $\mathbb{Z}$ hay infinitas soluciones, y el conjunto de soluciones es
+\[
+S=\{x\in\mathbb{Z} : x\equiv x_0 \pmod{m_1m_2\cdots m_n}\}.
+\]
+\end{proposicion}
+
+\begin{demostracion}
+\textbf{Existencia.} Por inducción en $n$; el caso $n=1$ es trivial. Veamos cómo
+juntar dos ecuaciones $x\equiv c_1 \pmod{m_1}$ y $x\equiv c_2 \pmod{m_2}$ con
+$(m_1:m_2)=1$. Las soluciones de la primera son $x=c_1+m_1t$, $t\in\mathbb{Z}$.
+Reemplazando en la segunda queda $m_1t\equiv c_2-c_1 \pmod{m_2}$, que tiene
+solución porque $(m_1:m_2)=1$ divide a todo, y sus soluciones forman una clase
+$t\equiv t_0 \pmod{m_2}$. Entonces $x=c_1+m_1t_0+m_1m_2 j$, es decir, las dos
+ecuaciones equivalen a una sola: $x\equiv x_1 \pmod{m_1m_2}$. Como $m_1m_2$ es
+coprimo con $m_3,\dots,m_n$, se repite el argumento.
+
+\textbf{Unicidad.} Si $x$ y $x'$ son soluciones, entonces $m_i\mid x-x'$ para
+todo $i$. Como los $m_i$ son coprimos dos a dos, $m_1\cdots m_n\mid x-x'$. En
+particular, dos soluciones entre $0$ y $m_1\cdots m_n-1$ son iguales.
+\end{demostracion}
+
+\section{Pequeño teorema de Fermat}
+
+\begin{proposicion}[{title={Pequeño teorema de Fermat}}]
+Sea $p$ un número primo y sea $a\in\mathbb{Z}$. Entonces:
+\begin{enumerate}
+    \item $a^p\equiv a \pmod p$.
+    \item Si $p\nmid a$, entonces $a^{p-1}\equiv 1 \pmod p$.
+\end{enumerate}
+\end{proposicion}
+
+\begin{demostracion}
+\textbf{Prueba de (2).} Supongamos $p\nmid a$. Consideramos los $p-1$ números
+\[
+a,\ 2a,\ 3a,\ \dots,\ (p-1)a.
+\]
+\begin{itemize}
+    \item Ninguno es múltiplo de $p$: si $p\mid ia$ con $1\le i\le p-1$, por el
+    lema de Gauss $p\mid i$ o $p\mid a$, pero $0<i<p$ y $p\nmid a$.
+    \item Sus restos módulo $p$ son todos distintos: si $ia\equiv ja \pmod p$
+    con $1\le i,j\le p-1$, como $(a:p)=1$ podemos cancelar $a$ (Regla 2) y
+    queda $i\equiv j \pmod p$, así que $i=j$ por ser ambos menores que $p$.
+\end{itemize}
+Entonces los restos de $a,2a,\dots,(p-1)a$ son $p-1$ valores distintos en
+$\{1,\dots,p-1\}$, es decir, son exactamente $1,2,\dots,p-1$ en algún orden.
+Multiplicándolos:
+\[
+a\cdot 2a\cdots (p-1)a\equiv 1\cdot 2\cdots (p-1) \pmod p
+\iff a^{p-1}(p-1)!\equiv (p-1)! \pmod p.
+\]
+Como $p$ es primo y no divide a ninguno de los factores $1,\dots,p-1$, por el
+corolario del lema de Gauss $p\nmid (p-1)!$, o sea $((p-1)!:p)=1$. Cancelando
+$(p-1)!$ (Regla 2) queda
+\[
+a^{p-1}\equiv 1 \pmod p.
+\]
+
+\textbf{Prueba de (1).} Hay dos casos.
+\begin{itemize}
+    \item Si $p\nmid a$: por (2), $a^{p-1}\equiv 1 \pmod p$, y multiplicando por
+    $a$ se obtiene $a^p\equiv a \pmod p$.
+    \item Si $p\mid a$: entonces $a\equiv 0 \pmod p$ y $a^p\equiv 0 \pmod p$,
+    así que $a^p\equiv a \pmod p$.
+\end{itemize}
+\end{demostracion}
+
+\begin{proposicion}[{title={Corolario}}]
+Sea $p$ un número primo y sea $a\in\mathbb{Z}$ con $p\nmid a$. Si $n\in\mathbb{N}_0$,
+entonces
+\[
+a^n\equiv a^{r_{p-1}(n)} \pmod p,
+\]
+donde $r_{p-1}(n)$ es el resto de dividir $n$ por $p-1$.
+\end{proposicion}
+
+\begin{demostracion}
+Por el algoritmo de la división, $n=q(p-1)+r$ con $r=r_{p-1}(n)$ y
+$0\le r<p-1$. Como $p\nmid a$, por Fermat $a^{p-1}\equiv 1 \pmod p$, así que
+\[
+a^n=a^{q(p-1)+r}=\left(a^{p-1}\right)^q a^r\equiv 1^q\, a^r=a^r \pmod p.
+\]
+\end{demostracion}
+
+\begin{nota}{}
+El corolario requiere $p\nmid a$. Si $p\mid a$, no se puede reducir el exponente
+de esta forma: por ejemplo, con $p=3$, $a=3$ y $n=2$ se tiene $r_2(2)=0$, pero
+$3^0=1\not\equiv 0\equiv 3^2 \pmod 3$.
+\end{nota}
+
+\begin{ejemplo}
+Calcular el resto de dividir $3^{100}$ por $7$.
+
+Como $7$ es primo y $7\nmid 3$, por Fermat $3^6\equiv 1 \pmod 7$. Como
+$100=6\cdot 16+4$, es decir $r_6(100)=4$, por el corolario
+\[
+3^{100}\equiv 3^{r_6(100)}=3^4=81\equiv 4 \pmod 7,
+\]
+pues $81=77+4$. El resto es $4$.
+\end{ejemplo}
