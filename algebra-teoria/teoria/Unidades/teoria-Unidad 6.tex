@@ -174,3 +174,158 @@ Calcular $i^{2026}$. Como $2026=4\cdot 506+2$, se tiene $r_4(2026)=2$ y
 i^{2026}=i^2=-1.
 \]
 \end{ejemplo}
+
+
+ 
+\subsection{Forma trigonométrica}
+ 
+\begin{nota}
+\textbf{Periodicidad.} Las funciones seno y coseno son periódicas de período
+$2\pi$: al sumarle a un ángulo $\theta$ cualquier cantidad de vueltas completas
+$2k\pi$ (con $k\in\mathbb{Z}$), el valor no cambia:
+\[
+\cos\theta=\cos(\theta+2k\pi), \qquad
+\operatorname{sen}\theta=\operatorname{sen}(\theta+2k\pi), \qquad \forall k\in\mathbb{Z}.
+\]
+\end{nota}
+ 
+\begin{definicion}
+Sea $z\in\mathbb{C}$, $z\neq 0$. Una escritura de la forma
+\[
+z=r(\cos\theta+i\operatorname{sen}\theta), \qquad r\in\mathbb{R}_{>0},\ \theta\in\mathbb{R},
+\]
+se llama una \textbf{forma trigonométrica} (o \textbf{polar}) de $z$. Aquí $r$ es
+el \textbf{módulo} de $z$ (la distancia al origen, por eso es estrictamente
+positivo) y $\theta$ es un \textbf{argumento} de $z$ (un ángulo en radianes).
+\end{definicion}
+ 
+\begin{proposicion}
+Sea $z=a+bi\in\mathbb{C}$ con $z\neq 0$. Entonces $z$ admite una forma
+trigonométrica $z=r(\cos\theta+i\operatorname{sen}\theta)$, y necesariamente
+$r=|z|$.
+\end{proposicion}
+ 
+\begin{demostracion}
+\textbf{El módulo.} Si $z=r(\cos\theta+i\operatorname{sen}\theta)$ con $r>0$, entonces
+\[
+|z|=r\sqrt{\cos^2\theta+\operatorname{sen}^2\theta}=r.
+\]
+ 
+\textbf{Existencia.} Tomamos $r=|z|>0$. Como
+$\left(\tfrac{a}{r}\right)^2+\left(\tfrac{b}{r}\right)^2=\tfrac{a^2+b^2}{r^2}=1$,
+el punto $\left(\tfrac{a}{r},\tfrac{b}{r}\right)$ está en la circunferencia
+unitaria, así que existe $\theta\in\mathbb{R}$ con $\cos\theta=\tfrac{a}{r}$ y
+$\operatorname{sen}\theta=\tfrac{b}{r}$. Entonces
+$r(\cos\theta+i\operatorname{sen}\theta)=a+bi=z$.
+\end{demostracion}
+ 
+\begin{proposicion}[{title={Igualdad en forma trigonométrica}}]
+Sean $z,w\in\mathbb{C}$ no nulos con
+\[
+z=r(\cos\theta+i\operatorname{sen}\theta), \qquad
+w=s(\cos\varphi+i\operatorname{sen}\varphi),
+\]
+donde $r,s\in\mathbb{R}_{>0}$ y $\theta,\varphi\in\mathbb{R}$. Entonces
+\[
+w=z \iff
+\begin{cases}
+r=s\\
+\varphi=\theta+2k\pi \ \text{ para algún } k\in\mathbb{Z}.
+\end{cases}
+\]
+\end{proposicion}
+ 
+\begin{demostracion}
+($\Leftarrow$) Si $r=s$ y $\varphi=\theta+2k\pi$, por la periodicidad
+$\cos\varphi=\cos\theta$ y $\operatorname{sen}\varphi=\operatorname{sen}\theta$,
+así que $w=z$.
+ 
+($\Rightarrow$) Si $w=z$, entonces $|w|=|z|$, es decir $s=r$. Cancelando $r>0$ en
+$r(\cos\theta+i\operatorname{sen}\theta)=r(\cos\varphi+i\operatorname{sen}\varphi)$
+e igualando partes real e imaginaria queda
+\[
+\cos\varphi=\cos\theta, \qquad \operatorname{sen}\varphi=\operatorname{sen}\theta.
+\]
+Entonces
+\[
+\cos(\varphi-\theta)=\cos\varphi\cos\theta+\operatorname{sen}\varphi\operatorname{sen}\theta
+=\cos^2\theta+\operatorname{sen}^2\theta=1,
+\]
+y como $\cos x=1$ si y sólo si $x=2k\pi$ con $k\in\mathbb{Z}$, resulta
+$\varphi=\theta+2k\pi$ para algún $k\in\mathbb{Z}$.
+\end{demostracion}
+ 
+\begin{definicion}
+Por la proposición anterior, los argumentos de un $z\neq 0$ están determinados
+salvo múltiplos de $2\pi$, y hay exactamente uno con $0\le\theta<2\pi$. Ese
+único valor se llama el \textbf{argumento} de $z$ y se anota $\arg(z)$.
+\end{definicion}
+ 
+\begin{nota}
+\textbf{Valores notables.}
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+$\theta$ & $0$ & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$ & $\pi$ \\
+\hline
+$\cos\theta$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-1$ \\
+\hline
+$\operatorname{sen}\theta$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$ & $0$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{nota}
+ 
+\begin{ejemplo}
+Escribir en forma trigonométrica $z=1+i$ y $w=1+\sqrt{3}\,i$.
+ 
+Para $z$: $|z|=\sqrt{1+1}=\sqrt{2}$, y buscamos $\theta$ con
+$\cos\theta=\tfrac{1}{\sqrt{2}}=\tfrac{\sqrt{2}}{2}$ y
+$\operatorname{sen}\theta=\tfrac{\sqrt{2}}{2}$, que es $\theta=\tfrac{\pi}{4}$. Luego
+\[
+1+i=\sqrt{2}\left(\cos\tfrac{\pi}{4}+i\operatorname{sen}\tfrac{\pi}{4}\right),
+\qquad \arg(z)=\tfrac{\pi}{4}.
+\]
+ 
+Para $w$: $|w|=\sqrt{1+3}=2$, con $\cos\theta=\tfrac{1}{2}$ y
+$\operatorname{sen}\theta=\tfrac{\sqrt{3}}{2}$, que es $\theta=\tfrac{\pi}{3}$. Luego
+\[
+1+\sqrt{3}\,i=2\left(\cos\tfrac{\pi}{3}+i\operatorname{sen}\tfrac{\pi}{3}\right),
+\qquad \arg(w)=\tfrac{\pi}{3}.
+\]
+\end{ejemplo}
+ 
+\begin{proposicion}[{title={Conjugado e inverso en forma trigonométrica}}]
+Sea $z=r(\cos\theta+i\operatorname{sen}\theta)$ con $r>0$ y $\theta\in\mathbb{R}$.
+Entonces:
+\begin{enumerate}
+    \item $\overline{z}=r\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr)$.
+    \item $z^{-1}=\dfrac{1}{r}\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr)$.
+\end{enumerate}
+\end{proposicion}
+ 
+\begin{demostracion}
+(1) Por definición de conjugado,
+\[
+\overline{z}=r(\cos\theta-i\operatorname{sen}\theta)
+=r\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr),
+\]
+pues el coseno es par ($\cos(-\theta)=\cos\theta$) y el seno es impar
+($\operatorname{sen}(-\theta)=-\operatorname{sen}\theta$).
+ 
+(2) Como $|z|=r$, por la fórmula $z^{-1}=\overline{z}/|z|^2$ y por (1),
+\[
+z^{-1}=\frac{\overline{z}}{|z|^2}
+=\frac{r\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr)}{r^2}
+=\frac{1}{r}\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr).
+\]
+\end{demostracion}
+ 
+\begin{nota}
+Geométricamente, $\overline{z}$ es el simétrico de $z$ respecto del eje real: tiene
+el mismo módulo $r$ y el argumento opuesto $-\theta$. Si $\theta\in(0,2\pi)$,
+el argumento de $\overline{z}$ en $[0,2\pi)$ es $2\pi-\theta$. Y $z^{-1}$ tiene
+módulo $1/r$ y también argumento $-\theta$.
+\end{nota}
+ 
