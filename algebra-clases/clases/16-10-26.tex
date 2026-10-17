@@ -1,0 +1,133 @@
+ejercicio represetanr en el plano complejo el conjunto 
+a { z e C : |z| > 1 , arg (z^3) < pi/2}
+si z = Re^iθ 
+z^3 = R^3 e^i3θ
+arg(z^3) = 3θ +2kpi para algun k in Z
+0<= 3θ +2kpi < 2π   
+luego z in A si arg(z^3) < pi/2
+3θ + 2kpi < pi/2
+-2kpi < 3θ < pi/2 - 2kpi
+-2kpi/3 < θ < pi/6 - 2kpi/3
+0 < θ < 2pi
+0 <= -2kpi/3 
+0 >= k
+pi/2 - 2kpi/3 < 2pi 
+-2kpi < 6pi - pi/2 
+k> 6-1/2 /-2 = -11/4
+-11/4 < k <= 0
+k = 0 , -1 , -2 
+con k = -2 
+-2*(-2)pi/3 < θ < 3/2 pi 
+con k = -1
+-2*(-1)pi/3 < θ < pi/2 - 2(-1)pi/3
+2pi/3 < θ < 5pi/6
+con k = 0
+0 < θ < pi/6
+
+ejercicio : hallar todos los n in N /
+arg((raiz3 -i)^5n+1) = pi y arg((2+2i)^n+1) = 3/2pi
+(5n+1)arg(raize -i) +2kpi = pi -> = 11/6 pi
+(n+i) arg (2+2i) +2kpi = 3/2pi -> = pi/4
+luego busco n /(5n+1) 11/6 pi + 2kpi = pi y (n+1)pi/4 +2kpi = 3/2 pi
+truco : multiplico las ecucaciones por lo necesssario p tener ecuacuiones z 
+(5n+1)11 + 12k = 6   y (n+1) +8k = 6 
+
+(5n+1) 11 == 6 (12)
+(n+1) 6 == (8)
+
+-(5n+1) == 6(12) -> -5n == 7(12)
+n == 5(8)
+-25n == 35 (12)
+-n == -1(12)
+n == 1 (12)
+
+section teorica 
+
+numeros complejos 
+
+son una extension de los numeros reales
+
+ejemplo:
+sea p un numero primo zp = {[0],[1],,[p-1]} tiene exactamente p elementos 
+tiene operaciones + u * y haces de zm un anillo
+
+sea que alfa y beta som dos elementos de zp
+alfa + beta = [n+m]
+alfa * beta = [n*m]
+hay enteros = n y m talqque alfa = [n] y beta = [m]
+
+alfa + beta [a+b]
+beta + alfa [b+a]
+es conmutativa para la multiplicacion tambien lo es 
+
+(alfa + beta) + gamma = [a+b] + gamma = [(a+b)+c]
+es asociativa la suma de enteros 
+
+s+ alfa = alfa -> [0]+[a]
+tine un neutro
+
+alfa = [a]
+-alfa = [-a] 
+sumo clase
+[a+(-a)] = [0] elemento neutro
+
+[1] * alfa = [1*a] = [a] = alfa
+
+los numeros [n] tiene su inverso multiplicativo que da la clase del [1] 
+[n]*[n] = [1]
+es un cuerpo si zm es primo
+
+si zm no es primo se rompe el cuerpo y no funciona
+lema = si m >= a y no es primo . entonces zm no es un cuerpo 
+
+demosttracion com m no es primo se puede factorizar en a y b talque 1<a,b < m
+taq m = ab [a][b] = [ab] = [m] = [0]
+[a] != [0] != [b]
+
+lema = si p es primo , ent zp es un cuerpo 
+dem tiene que que todo elemento alfa de zp distinto de [0] tiene un inverso es decir que hay un elemnto b en zp tq alfa*beta[1]
+
+sea alfa un elemento de zp distinto de [0] y alfa{1,,p-1} un representante de alfa ,es decir , tq alfa = [a]
+busco un entero b tq alfa[b] = [1]
+es decir , [a*b] = [1] es decir 
+ab ==  1 mod p y sabemos que (a,p) | 1 sabequemos que podemos encontrarlo
+
+ej : el inverso de [7] es z11 
+7b == 1 mod 11 
+b = 8 es una sol, asi que [7]*[8]=[1]
+sol [7]^-1 = [8]
+
+numeros complejos 
+
+empezando con R construimos c 
+c = RxR 
+(a,b) + (c,d) = (a+c, b+d)
+(a,b) * (c,d) = (ac-bd , ad+bc)
+(1,0) - (c,d) = (c,d)
+c , + y * es un anillo
+(1,0) = (2,0) * (c,d) = (2c,2a)
+c = a^-1 d = 0
+
+si a in R , (a,0) -> a 
+i = (0,1) 
+
+si a,b in R , (a,b) = (a,0) + (0,b)
+= a + (b,0) (0,1) 
+a + bi 
+
+y de hecho podemos olvidarnos como se anotan las ecucaiones 
+(a+ib)  + (c + id) = 
+a+ib+c+id 
+(a+c) + i (b+d)
+(a+ib)* (C+id)  = 
+ac + cib+ ibc + ibid 
+ac+i(cb+ad)-(bd)
+ii = (0,1)(0,1) = (-1,0) = -1
+RXRXRXR richard hamilton
+frobenius -> los unicos cuerpos son de RxR y RXRXRXR
+
+def si z = a+ib in C , entcones
+z^- = a-bi 
+|z| = raiz{a^2+b^2} >= 0 
+
+qaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaassaaa
