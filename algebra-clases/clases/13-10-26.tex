@@ -1,72 +1,174 @@
-\textbf{ecuacuines de congruencua}
+\chapter{13-10-26}
 
-\begin{definicion}
-    ax $\equiv$ b mod m 
-    tiene sols si y solo si (m,a) | b.
-    bhskc ua + vm = d = mcd(a,m)
-    x0 = ub/d 
-    clase de congruencia
-    [x0] = {x0 + km/d : k in Z}
-    ejemplo
-    ax $\equiv$ b mod m 
-    a'x $\equiv$ b' mod m'
-    tiene una sols y de hecho tiene una sola clase de congruencia modulo (mm')  
-    como conj de sols
-\end{definicion}
+\section{La ecuación de congruencia $ax\equiv b \pmod m$}
 
-ax == b mod m
-ua == 1 mod m 
-x == ux == b mod m 
-{x in Z : ax == b mod m} = {x int Z : x == ub mod m}
+\begin{proposicion}
+Sean $a,b,m\in\mathbb{Z}$ con $m\ge 1$, y sea $d=(a:m)$. La ecuación
+\[
+ax\equiv b \pmod m
+\]
+tiene solución si y sólo si $d\mid b$.
 
-sea x in Z talque x== ub mod m 
-entonces ax == a(ub) == 1b == b mod m
-4x == 4 mod 8 
-coprimizo 4
-x == 1 mod 2
+En ese caso, si $u,v\in\mathbb{Z}$ cumplen $ua+vm=d$ (Bézout) y
+$x_0=\dfrac{ub}{d}$, entonces $x_0$ es una solución y el conjunto de todas las
+soluciones es una única clase de congruencia módulo $m/d$:
+\[
+[x_0]=\left\{x_0+k\frac{m}{d} : k\in\mathbb{Z}\right\}
+=\left\{x\in\mathbb{Z} : x\equiv x_0 \pmod{\tfrac{m}{d}}\right\}.
+\]
+Módulo $m$ son exactamente $d$ clases.
+\end{proposicion}
 
-ax == b  mod m 
-a'x == b' mod m'
-(a,m) = d | b y (a',m') = d' |b'
+\begin{demostracion}
+Tenemos
+\[
+ax\equiv b \pmod m \iff m\mid ax-b \iff ax-b=mk \text{ para algún }k\in\mathbb{Z}
+\iff ax+m(-k)=b,
+\]
+que es una ecuación diofántica en $(x,-k)$ con coeficientes $a$ y $m$, cuyo
+mcd es $d$. Por la proposición del 9-10-26, tiene solución si y sólo si $d\mid b$.
 
-d = (a,m) , ax == b mod m 
-a1 = a/d , b1 = b/d , m1 = m/d
-entonces a1 x == b1 mod m1
-d' = (a',m') 
-a'1 = a'/d' , b'1 = b'/d' , m'1 = m'/d'
-entonces a'1 x == b'1 mod m'1
-busco el inverso de a1 llamado u como (a1,m1) = 1
-tql a1 u == 1 mod m1
-tal que 1,2 es el conj de todas las sols de la ecuacion ax == b mod m
-x == ub2 mod m2
-solo si x 
+En ese caso, de $ua+vm=d$ resulta
+\[
+a\cdot\frac{ub}{d}+m\cdot\left(-\frac{vb}{d}\right)=\frac{b(ua+vm)}{d}=b,
+\]
+así que $x_0=ub/d$ es solución. Por la fórmula general, los $x$ de las soluciones
+son $x=x_0+k\,\tfrac{m}{d}$ con $k\in\mathbb{Z}$.
+\end{demostracion}
 
+\begin{proposicion}
+Si $(a:m)=1$ y $u\in\mathbb{Z}$ cumple $ua\equiv 1 \pmod m$, entonces
+\[
+ax\equiv b \pmod m \iff x\equiv ub \pmod m,
+\]
+es decir, $\{x\in\mathbb{Z} : ax\equiv b \pmod m\}=\{x\in\mathbb{Z} : x\equiv ub \pmod m\}$.
+\end{proposicion}
 
+\begin{demostracion}
+($\Rightarrow$) Si $ax\equiv b$, multiplicando por $u$:
+$x\equiv uax\equiv ub \pmod m$.
 
+($\Leftarrow$) Si $x\equiv ub$, multiplicando por $a$: $ax\equiv aub\equiv 1\cdot b=b \pmod m$.
+\end{demostracion}
 
+\begin{ejemplo}
+Resolver $4x\equiv 4 \pmod 8$. Tenemos $d=(4:8)=4\mid 4$, así que hay solución.
+Dividiendo todo por $4$ (Regla 1): $x\equiv 1 \pmod 2$. Luego las soluciones son
+los impares, y módulo $8$ son $d=4$ clases: $[1],[3],[5],[7]$.
+\end{ejemplo}
 
-a1' m1 k == b1' - a1' ub2 mod m'2
-d'' = (a,m2,m2')
-d'' | b1' - a1' ub2
-a1' m2 / d'' k == (b1' - a1' ub2)/d''' mod m2'/d''
-k == () mod m2'/d'''
+\begin{nota}
+\textbf{Método general para $ax\equiv b \pmod m$.}
+\begin{enumerate}
+    \item Calcular $d=(a:m)$ y verificar que $d\mid b$ (si no, no hay solución).
+    \item Simplificar: $a_1=a/d$, $b_1=b/d$, $m_1=m/d$. Entonces
+    $a_1x\equiv b_1 \pmod{m_1}$ tiene las mismas soluciones (Regla 1).
+    \item Como $(a_1:m_1)=1$, buscar $u$ con $a_1u\equiv 1 \pmod{m_1}$. Entonces las
+    soluciones son $x\equiv ub_1 \pmod{m_1}$.
+\end{enumerate}
+\end{nota}
 
-ejemplo:
-2*3 x == 6 mod 3*5
-5*7 x == 2*7 mod 3*7
+\section{Sistemas de dos congruencias con módulos no coprimos}
 
-x == 1 mod 5
+\begin{proposicion}
+Sean $n_1,n_2\ge 1$ y $g=(n_1:n_2)$. El sistema
+\[
+\begin{cases}
+x\equiv c_1 \pmod{n_1}\\
+x\equiv c_2 \pmod{n_2}
+\end{cases}
+\]
+tiene solución si y sólo si $g\mid c_2-c_1$. En ese caso, el conjunto de
+soluciones es una única clase módulo $[n_1:n_2]=\dfrac{n_1n_2}{g}$ (el mínimo
+común múltiplo).
+\end{proposicion}
 
-x == 1+3*5*7
+\begin{demostracion}
+($\Rightarrow$) Si $x$ es solución, $n_1\mid x-c_1$ y $n_2\mid x-c_2$, así que
+$g$ divide a ambos, y entonces $g\mid (x-c_1)-(x-c_2)=c_2-c_1$.
 
-teorema de reprocidad cuadratica
-x^2 == p mod q
-x^2 == q mod p
+($\Leftarrow$) Las soluciones de la primera ecuación son $x=c_1+n_1k$ con
+$k\in\mathbb{Z}$. Reemplazando en la segunda:
+\[
+c_1+n_1k\equiv c_2 \pmod{n_2} \iff n_1k\equiv c_2-c_1 \pmod{n_2}.
+\]
+Como $(n_1:n_2)=g\mid c_2-c_1$, esta ecuación tiene solución, y sus soluciones
+son una clase $k\equiv k_0 \pmod{n_2/g}$. Entonces $k=k_0+\frac{n_2}{g}j$ y
+\[
+x=c_1+n_1k_0+\frac{n_1n_2}{g}\,j, \qquad j\in\mathbb{Z},
+\]
+o sea $x\equiv c_1+n_1k_0 \pmod{n_1n_2/g}$.
+\end{demostracion}
 
-pequeno teorema de fermat
-a^(p-1) == 1 mod p
+\begin{nota}
+Si $g=1$ es el teorema chino del resto. Si $g>1$ puede no haber solución: la
+condición $g\mid c_2-c_1$ es la \emph{compatibilidad} de las dos ecuaciones.
+\end{nota}
 
-ejemplo:
-2 ^1000 1 mod 7
-1000  = 166 * 6 4
-2^1000 == 2^4 == 16 == 2 mod 7  
+\begin{nota}
+\textbf{Método para un sistema $a_ix\equiv b_i \pmod{m_i}$.} Primero se reduce
+cada ecuación a la forma $x\equiv c_i \pmod{n_i}$ (verificando que $(a_i:m_i)\mid b_i$),
+y después se juntan de a dos con la proposición anterior.
+\end{nota}
+
+\begin{ejemplo}
+Resolver
+\[
+\begin{cases}
+6x\equiv 6 \pmod{15}\\
+35x\equiv 14 \pmod{21}.
+\end{cases}
+\]
+\textbf{Primera ecuación.} $(6:15)=3\mid 6$. Dividiendo por $3$:
+$2x\equiv 2 \pmod 5$, y como $(2:5)=1$ queda $x\equiv 1 \pmod 5$.
+
+\textbf{Segunda ecuación.} $(35:21)=7\mid 14$. Dividiendo por $7$:
+$5x\equiv 2 \pmod 3$, o sea $2x\equiv 2 \pmod 3$, y queda $x\equiv 1 \pmod 3$.
+
+\textbf{Juntando.} $x\equiv 1 \pmod 5$ y $x\equiv 1 \pmod 3$, con $(5:3)=1$:
+por el teorema chino del resto $x\equiv 1 \pmod{15}$.
+
+\textbf{Chequeo.} $x=1$: $6\equiv 6 \pmod{15}$ y $35-14=21\equiv 0 \pmod{21}$. $\checkmark$
+\end{ejemplo}
+
+\begin{ejemplo}
+Módulos no coprimos. Resolver $x\equiv 1 \pmod 4$ y $x\equiv 3 \pmod 6$.
+
+Acá $g=(4:6)=2$ y $c_2-c_1=2$, que es divisible por $2$: hay solución. Escribimos
+$x=1+4k$ y reemplazamos: $4k\equiv 2 \pmod 6 \iff 2k\equiv 1 \pmod 3 \iff k\equiv 2 \pmod 3$.
+Entonces $x=1+4\cdot 2=9$, y la solución es $x\equiv 9 \pmod{12}$, pues
+$[4:6]=12$.
+
+En cambio, $x\equiv 1 \pmod 4$ y $x\equiv 2 \pmod 6$ no tiene solución, porque
+$g=2\nmid c_2-c_1=1$.
+\end{ejemplo}
+
+\section{Fermat y reciprocidad cuadrática}
+
+\begin{nota}
+\textbf{Pequeño teorema de Fermat.} Si $p$ es primo y $p\nmid a$, entonces
+$a^{p-1}\equiv 1 \pmod p$. Por lo tanto, $a^n\equiv a^{r_{p-1}(n)} \pmod p$ para
+todo $n\in\mathbb{N}_0$ (ver la sección del pequeño teorema de Fermat).
+\end{nota}
+
+\begin{ejemplo}
+Calcular el resto de dividir $2^{1000}$ por $7$.
+
+Como $7$ es primo y $7\nmid 2$, por Fermat $2^6\equiv 1 \pmod 7$. Dividiendo,
+$1000=6\cdot 166+4$, así que $r_6(1000)=4$ y
+\[
+2^{1000}\equiv 2^4=16\equiv 2 \pmod 7.
+\]
+El resto es $2$.
+\end{ejemplo}
+
+\begin{nota}
+\textbf{Ley de reciprocidad cuadrática} (enunciado, sin demostración). Sean $p\neq q$
+primos impares. Las ecuaciones
+\[
+x^2\equiv p \pmod q \qquad\text{y}\qquad x^2\equiv q \pmod p
+\]
+están relacionadas: si $p\equiv 1 \pmod 4$ o $q\equiv 1 \pmod 4$, ambas tienen
+solución o ambas no la tienen; si $p\equiv q\equiv 3 \pmod 4$, exactamente una de
+las dos tiene solución.
+\end{nota}

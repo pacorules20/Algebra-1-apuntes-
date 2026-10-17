@@ -1,0 +1,156 @@
+\chapter{Ecuaciones diofánticas}
+
+\section{Repaso: máximo común divisor, Euclides y Bézout}
+
+\begin{definicion}
+Sean $a,b\in\mathbb{Z}$ no ambos nulos. El \textbf{máximo común divisor} de $a$ y
+$b$, que se anota $(a:b)$, es el mayor entero positivo que divide a $a$ y a $b$.
+Decimos que $a$ y $b$ son \textbf{coprimos} si $(a:b)=1$.
+\end{definicion}
+
+\begin{proposicion}[{title={Lema de Euclides}}]
+Si $a=qb+r$ con $q,r\in\mathbb{Z}$, entonces $(a:b)=(b:r)$.
+\end{proposicion}
+
+\begin{demostracion}
+Si $x$ divide a $a$ y a $b$, entonces divide a $r=a-qb$. Recíprocamente, si $x$
+divide a $b$ y a $r$, entonces divide a $a=qb+r$. Entonces $a,b$ y $b,r$ tienen
+los mismos divisores comunes, y por lo tanto el mismo máximo.
+\end{demostracion}
+
+\begin{nota}
+\textbf{Algoritmo de Euclides.} Se dividen sucesivamente: $a=q_1b+r_1$,
+$b=q_2r_1+r_2$, $r_1=q_3r_2+r_3$, \dots, hasta que el resto sea $0$. Por el lema
+de Euclides, el último resto no nulo es $(a:b)$.
+\end{nota}
+
+\begin{proposicion}[{title={Lema de Bézout}}]
+Sean $a,b\in\mathbb{Z}$ no ambos nulos y $d=(a:b)$. Existen $u,v\in\mathbb{Z}$ tales
+que
+\[
+ua+vb=d.
+\]
+\end{proposicion}
+
+\begin{demostracion}
+Sea $L=\{ua+vb : u,v\in\mathbb{Z}\}\cap\mathbb{N}$. Es no vacío (contiene a $|a|$
+o a $|b|$), así que tiene un mínimo $e=u_0a+v_0b$. Dividimos $a=qe+r$ con
+$0\le r<e$. Entonces $r=a-qe=(1-qu_0)a+(-qv_0)b$ también es combinación de $a$ y
+$b$, y como $r<e$ y $e$ es el mínimo positivo, debe ser $r=0$. Luego $e\mid a$, y
+análogamente $e\mid b$, así que $e\le d$. Por otro lado $d$ divide a $a$ y a $b$,
+así que $d\mid u_0a+v_0b=e$, y entonces $d\le e$. Por lo tanto $e=d$.
+\end{demostracion}
+
+\begin{ejemplo}
+Calcular $(84:30)$ y escribirlo como combinación de $84$ y $30$.
+\[
+84=2\cdot 30+24, \qquad 30=1\cdot 24+6, \qquad 24=4\cdot 6+0.
+\]
+El último resto no nulo es $6$, así que $(84:30)=6$. Despejando hacia atrás:
+\[
+6=30-24=30-(84-2\cdot 30)=3\cdot 30-84,
+\]
+es decir, $6=(-1)\cdot 84+3\cdot 30$. Chequeo: $-84+90=6$. $\checkmark$
+\end{ejemplo}
+
+\section{Ecuaciones diofánticas lineales}
+
+\begin{definicion}
+Una \textbf{ecuación diofántica lineal} es una ecuación de la forma
+\[
+aX+bY=c, \qquad a,b,c\in\mathbb{Z},
+\]
+de la que buscamos las soluciones \emph{enteras} $(x,y)\in\mathbb{Z}\times\mathbb{Z}$.
+\end{definicion}
+
+\begin{proposicion}[{title={Criterio de existencia}}]
+Sean $a,b$ no ambos nulos y $d=(a:b)$. La ecuación $aX+bY=c$ tiene solución
+entera si y sólo si $d\mid c$.
+\end{proposicion}
+
+\begin{demostracion}
+($\Rightarrow$) Como $d\mid a$ y $d\mid b$, si $ax+by=c$ entonces $d\mid c$.
+
+($\Leftarrow$) Si $c=dc'$, por Bézout existen $u,v$ con $ua+vb=d$, y entonces
+$a(uc')+b(vc')=dc'=c$.
+\end{demostracion}
+
+\begin{ejemplo}
+$3X+6Y=5$ no tiene soluciones enteras. En efecto, $3x+6y=3(x+2y)$, así que
+tendría que ser $3\mid 5$, lo cual es absurdo. (Aquí $d=(3:6)=3\nmid 5$.)
+\end{ejemplo}
+
+\begin{nota}
+\textbf{Método para resolver $aX+bY=c$.}
+\begin{enumerate}
+    \item Calcular $d=(a:b)$. Si $d\nmid c$, no hay solución. Si $d\mid c$,
+    dividir toda la ecuación por $d$ (las soluciones no cambian) para obtener una
+    ecuación con coeficientes coprimos.
+    \item Buscar una \textbf{solución particular} $(x_0,y_0)$: a ojo, o con
+    Euclides y Bézout, multiplicando por el término independiente.
+    \item Resolver la \textbf{ecuación homogénea asociada} $aX+bY=0$.
+    \item La solución general es $S=S_0+S_p$, es decir, (solución homogénea) $+$
+    (solución particular).
+    \item Chequear reemplazando en la ecuación.
+\end{enumerate}
+\end{nota}
+
+\begin{ejemplo}
+Hallar todas las soluciones enteras de $84X+30Y=18$.
+
+\textbf{Paso 1.} $d=(84:30)=6\mid 18$, así que hay solución. Dividiendo por $6$:
+$14X+5Y=3$.
+
+\textbf{Paso 2.} Como $(14:5)=1$, buscamos $14u+5v=1$: $14\cdot(-1)+5\cdot 3=1$.
+Multiplicando por $3$:
+\[
+14\cdot(-3)+5\cdot 9=3,
+\]
+así que $(x_0,y_0)=(-3,9)$ es solución particular.
+
+\textbf{Paso 3.} Homogénea: $14x+5y=0$, es decir $14x=-5y$. Entonces $5\mid 14x$ y,
+como $(5:14)=1$, $5\mid x$, o sea $x=-5k$. Reemplazando, $y=14k$. Luego
+$S_0=\{(-5k,14k) : k\in\mathbb{Z}\}$.
+
+\textbf{Paso 4.}
+\[
+S=\{(-3-5k,\ 9+14k) : k\in\mathbb{Z}\}.
+\]
+
+\textbf{Paso 5.} $14(-3-5k)+5(9+14k)=-42-70k+45+70k=3$. $\checkmark$
+\end{ejemplo}
+
+\section{Soluciones con restricciones}
+
+\begin{ejemplo}
+Se quiere pagar exactamente $31$ pesos con monedas de $3$ y de $5$ pesos. ¿De
+cuántas maneras se puede hacer?
+
+Sean $x$ la cantidad de monedas de $3$ e $y$ la de $5$: buscamos $(x,y)$ enteros
+\textbf{no negativos} con $3x+5y=31$.
+
+Como $(3:5)=1\mid 31$ hay solución entera. Es $3\cdot 2+5\cdot(-1)=1$, así que
+multiplicando por $31$ una solución particular es $(62,-31)$. La solución general
+es
+\[
+(x,y)=(62-5k,\ -31+3k), \qquad k\in\mathbb{Z}.
+\]
+Pedimos $x\ge 0$ e $y\ge 0$:
+\[
+62-5k\ge 0 \iff k\le \tfrac{62}{5}=12{,}4 \iff k\le 12,
+\]
+\[
+-31+3k\ge 0 \iff k\ge \tfrac{31}{3}\approx 10{,}33 \iff k\ge 11.
+\]
+Luego $k\in\{11,12\}$, que da las soluciones $(x,y)=(7,2)$ y $(x,y)=(2,5)$.
+
+\textbf{Respuesta:} hay exactamente dos maneras: $7$ monedas de $3$ y $2$ de $5$
+($21+10=31$), o $2$ de $3$ y $5$ de $5$ ($6+25=31$).
+\end{ejemplo}
+
+\begin{nota}
+Cuando se piden soluciones en $\mathbb{N}$ o no negativas, se resuelve primero la
+ecuación en $\mathbb{Z}$ y después se imponen las desigualdades sobre $k$. Puede
+haber ninguna, una cantidad finita, o (si no hay restricciones) infinitas
+soluciones.
+\end{nota}

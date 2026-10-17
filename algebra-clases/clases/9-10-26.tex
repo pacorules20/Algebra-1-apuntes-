@@ -1,75 +1,134 @@
-\begin{definicion}
-    a, b, c $\in \mathbb{Z}$ 
-    ax + by = c 
-    a = b = 0 
-    algun de a o b no nulo 
-    hay soluciones si y solo si d = mcd (a,b) d|c 
-    a' x + b' y = c'
-    va' + vb'= 1 
-    c'u a' + cv'.b' = c'
-    x0 = c'u so = cv'
-    y en ese caso , si u,v in Z tq 
-    u-(a/d)+v(b/d) = 1 , hay una sol
-    particular que tiene (xo,yo) = (a/d u, b/d v)
-    mas aun, el conj de las sols de la ecuacion 
-    {
-        (x,y) = (xo -k(b/d) .k , yo + k(a/d)) 
-        k in Z
-    }
+\chapter{9-10-26}
 
-\end{definicion}
+\section{Ecuaciones diofánticas: solución general}
 
-\textbf{"ecuaciones de congruencia"}
-\begin{definicion}
-    a·x ≡ 0 (mod m)
-    supongo que hay una sol x0 in  Z 
-    axo $\equiv$ 0 (mod m)
-    m|a xo
+\begin{proposicion}
+Sean $a,b,c\in\mathbb{Z}$ con $a$ y $b$ no ambos nulos, y sea $d=(a:b)$. La
+ecuación
+\[
+ax+by=c
+\]
+tiene solución entera si y sólo si $d\mid c$.
 
-    sup m|a entonces ax $\equiv$ 0 mod m 
-    cualquier sea x in Z 
-    rta : sols = Z
+En ese caso, si $u,v\in\mathbb{Z}$ cumplen $ua+vb=d$ (o, equivalentemente,
+$u\frac{a}{d}+v\frac{b}{d}=1$), entonces
+\[
+(x_0,y_0)=\left(\frac{c}{d}\,u,\ \frac{c}{d}\,v\right)
+\]
+es una solución particular, y el conjunto de todas las soluciones es
+\[
+S=\left\{\left(x_0-k\frac{b}{d},\ y_0+k\frac{a}{d}\right) : k\in\mathbb{Z}\right\}.
+\]
+\end{proposicion}
 
-    15| 6x <-> 15|6x <-> 15|3*2x <-> 5|2x <-> 5|x 
-    ax == 0 mod m <-> m|ax = da' x 
-    d = mcd(a,m)
-    a' = a/d , m' = m/d 
-    m'|a'x <-> m'|x <-> x = k m' , k in Z
+\begin{nota}{.}
+Si $a=b=0$ la ecuación es $0=c$: no tiene solución si $c\neq 0$ y todo
+$(x,y)\in\mathbb{Z}^2$ es solución si $c=0$. Por eso pedimos que algún
+coeficiente sea no nulo.
+\end{nota}
 
-\end{definicion}
+\begin{demostracion}
+($\Rightarrow$) Como $d\mid a$ y $d\mid b$, si $ax+by=c$ entonces $d\mid c$.
+
+($\Leftarrow$) Si $c=dc'$, y $ua+vb=d$ (Bézout), entonces
+$a(uc')+b(vc')=dc'=c$, así que $(x_0,y_0)=(uc',vc')$ es solución particular.
+
+\textbf{Todas las soluciones.} Sean $a'=a/d$ y $b'=b/d$, que cumplen $(a':b')=1$.
+Cada elemento de $S$ es solución, pues
+\[
+a\left(x_0-k\tfrac{b}{d}\right)+b\left(y_0+k\tfrac{a}{d}\right)=ax_0+by_0-kab'+kba'=c,
+\]
+ya que $ab'=a\frac{b}{d}=ba'$. Recíprocamente, sea $(x,y)$ una solución
+(suponemos $b\neq 0$; si $b=0$ se intercambian los roles de $x$ e $y$).
+Restando $ax_0+by_0=c$:
+\[
+a(x-x_0)+b(y-y_0)=0 \iff a'(x-x_0)=-b'(y-y_0).
+\]
+Entonces $b'\mid a'(x-x_0)$ y, como $(a':b')=1$, por el lema de Gauss
+$b'\mid x-x_0$, o sea $x-x_0=-kb'$ para algún $k\in\mathbb{Z}$. Reemplazando,
+$a'(-kb')=-b'(y-y_0)$ y, cancelando $b'\neq 0$, $y-y_0=ka'$. Luego
+$(x,y)\in S$.
+\end{demostracion}
+
 \begin{ejemplo}
-    sean a in Z, m in Z
-    la ec ax== 0 mod m 
-    siempre tiene sols as aun , si d = mcd (a,m) y m' = m/d
-    entonces el conj de todas alas sols es {km' : k in Z} 
+Resolver $23x+11y=7$. Tenemos $d=(23:11)=1\mid 7$. Como
+$23\cdot 1+11\cdot(-2)=1$, es $u=1$, $v=-2$ y
+\[
+(x_0,y_0)=(7\cdot 1,\ 7\cdot(-2))=(7,-14).
+\]
+Entonces $S=\{(7-11k,\ -14+23k): k\in\mathbb{Z}\}$, que es lo que obtuvimos en el
+apunte del 02-10-26.
 \end{ejemplo}
-\begin{observacion}
-    sup que x es una sol y que y in Z tal que y == x mod m 
-    entonces y tambien es solcion ay == ax == 0 mod m
-\end{observacion}
+
+\section{La ecuación de congruencia $ax\equiv 0 \pmod m$}
+
+\begin{proposicion}
+Sean $a\in\mathbb{Z}$, $m\in\mathbb{Z}$ con $m\ge 1$, $d=(a:m)$ y $m'=m/d$.
+Entonces el conjunto de todas las soluciones de $ax\equiv 0 \pmod m$ es
+\[
+\{km' : k\in\mathbb{Z}\}.
+\]
+Siempre hay soluciones (por ejemplo $x=0$).
+\end{proposicion}
+
+\begin{demostracion}
+Sean $a'=a/d$ y $m'=m/d$, con $(a':m')=1$. Entonces
+\[
+m\mid ax \iff dm'\mid da'x \iff m'\mid a'x \iff m'\mid x,
+\]
+donde la segunda equivalencia es cancelar $d>0$ y la tercera usa
+$(a':m')=1$ y el lema de Gauss. Finalmente $m'\mid x\iff x=km'$ con
+$k\in\mathbb{Z}$.
+\end{demostracion}
+
+\begin{nota}{}
+Si $m\mid a$, entonces $d=m$, $m'=1$ y todo $x\in\mathbb{Z}$ es solución: es
+claro, pues $m\mid a\mid ax$.
+\end{nota}
+
 \begin{ejemplo}
-    3x == 0 mod 15 
-    m' = 15/3 = 5
-    el conj de soluciones es {5k : k in Z}
-    las clases de congruencia de mod 15 son sol son solo 3
-    la clase de [0], la clase de [5] y la clase de [10]
+Resolver $6x\equiv 0 \pmod{15}$:
+\[
+15\mid 6x \iff 15\mid 3\cdot 2x \iff 5\mid 2x \iff 5\mid x.
+\]
+Con la fórmula: $d=(6:15)=3$, $m'=15/3=5$, y las soluciones son $x=5k$.
+\end{ejemplo}
 
-    5x == 0 mod 15 m' = 15/5 = 3
-    el conj de soluciones es {3k : k in Z}
-    [0], [3], [6], [9], [12] son las clases de congruencia de mod 15 que son soluciones
+\begin{nota}{}
+Si $x$ es solución e $y\equiv x \pmod m$, entonces $y$ también es solución, pues
+$ay\equiv ax\equiv 0 \pmod m$. Así que el conjunto de soluciones es una unión
+de clases de congruencia módulo $m$.
+\end{nota}
 
-    2x == 0 mod 16 m' = 16/2 = 8
-    el conj de soluciones es {8k : k in Z}
-    [0], [8] son las clases de congruencia de mod 16 que son soluciones
+\begin{proposicion}
+Con la notación anterior, las soluciones de $ax\equiv 0 \pmod m$ forman
+exactamente $d$ clases módulo $m$, a saber
+\[
+[0],\ [m'],\ [2m'],\ \dots,\ [(d-1)m'].
+\]
+En particular, si $(a:m)=1$ la única clase solución es $[0]$, es decir
+$x\equiv 0 \pmod m$.
+\end{proposicion}
 
-    mas aun las sols se organizan en d clases 
-    [0], [m'], [2m'], ... , [(d-1)m']
-    sup que k in Z de manera que km' es una sol de la ec
-    sea q, r talque km' = qm + r , 0 <= r < m-1
-    ent [km'] = [r] como m'|km'-qm = r 
-    es tal que r= sm' sm' r < m s <m/m' = d 
-    solo tiene una solucion cuando el mcd = d es 1 osea son coprimos que pasa me qheda 
-    (1-1)m' = 
-    km' = _m+_ 
+\begin{demostracion}
+Sea $x=km'$ una solución, y dividimos $k$ por $d$: $k=qd+s$ con $0\le s<d$.
+Entonces
+\[
+x=km'=qdm'+sm'=qm+sm',
+\]
+así que $x\equiv sm' \pmod m$, y $0\le sm'\le (d-1)m'=m-m'<m$. Luego toda solución
+está en alguna de las clases $[sm']$ con $0\le s\le d-1$. Estas clases son
+distintas entre sí, porque los números $0,m',\dots,(d-1)m'$ son distintos y
+están entre $0$ y $m-1$ (restos distintos módulo $m$).
+\end{demostracion}
 
+\begin{ejemplo}
+\begin{itemize}
+    \item $3x\equiv 0 \pmod{15}$: $d=3$, $m'=5$. Soluciones: $x=5k$. Clases
+    módulo $15$: $[0],[5],[10]$ (son $d=3$).
+    \item $5x\equiv 0 \pmod{15}$: $d=5$, $m'=3$. Soluciones: $x=3k$. Clases
+    módulo $15$: $[0],[3],[6],[9],[12]$ (son $d=5$).
+    \item $2x\equiv 0 \pmod{16}$: $d=2$, $m'=8$. Soluciones: $x=8k$. Clases
+    módulo $16$: $[0],[8]$ (son $d=2$).
+\end{itemize}
 \end{ejemplo}
