@@ -1,0 +1,83 @@
+raices en f 
+sea z =re^io un elemento de c no nulo, y si a es un entero posible hay en c exactamente n raices nesimas de z a saber, los numeros 
+raizcuadrada (r.e^eOi/n) * e ^ 2pik/n con k=0 , n -1
+
+una forma de decir esto si z in C no es 0 entonces el polinomio x^n - 2 tinee exactamente n raices de C 
+
+pagerank
+
+la igualdad de los polinomios es la igualdad de sus coeficientes 
+el polinomio 0 tiene grado nulo 
+
+fg in k [x]
+
+f = sum de i= 0 hasta d de : a_i x^i
+
+f+g= a0+a1x....+ad x^d   + b0 +b1x + ..... bex^e
+
+f+g distinto 0 , gr(f+g) <= que el gr(g) o gr(f)
+aqui vale la igualdad si gr(f) distinto gr(g)
+o si gr g = gr f y ad distinto ba 
+
+f*g = sum de i = 0 a d de = a_1 x^i * sum de j = 0 a e de = b_1 x^j 
+
+sum de l = 0 a d+e de sum de i = 0 ... d , j=0......e , i+j = l  de = (a_i * b_j ) * x^l
+
+prop fg = 0 <-> alguno de f o g es nulo 
+si f g distinto 0 , entonces gr(fg) gr(f) + gr(g)
+
+sabemos por lo previo que es un anillo 
+ahora es un cuerpo? 
+k= Q f = q in Q
+f es inversible en Q[x]
+es un inverso de 1/q
+
+* gr(f) >= 1 
+g*f = 1? 
+
+0 = gr(gf) gr(f)+gr(g) > 1 + 0 
+no tiene casi ningun numero inversible dependen de que sean gr 0 
+
+definicion de division de polinomios 
+
+def f,g in K[x]
+f divide a g si hay un elemento h de k[x] talque g = f*h f|g 
+
+f,g in k[x] , talque f | g y g | f 
+hay u y v en k[x]
+g = fu y  f = gv 
+entonces g = fu = gvu asi que g(vu-1) = 0 
+como g distinto 0 , entonces vu -1 = 0 , vu= 1 
+rta v,u son contantes no nulas 
+
+Congruencia
+
+fijamos f in k[x] no nulos decimos que v,u in k[x] no constante ,son congruentes mod f si 
+f| v - u , v == u mod f 
+un polinomio f = k[x] es irreducible 
+si cada vez que f = vu con vu in k[x] alguno de v o u es inversible
+
+algoritmo de la vision 
+sea k un cuerpo si f,g in k [x]
+y g =distinto 0 , entonces hay una unica dorma de elegir polinomios ,q r in k [x]
+talque g = qf + r 
+r = 0 o gr(r) < gr(f)
+demostracion hagamos induccion , restpo al grado de g 
+p_n = si g es elemento de k [x] de grado n , entonces hay q, r in k[x] talque g = qr +r y r = 0 o gr(r) < gr(f)
+veamos que p0 vale sea g in k[x] de grado 0 , es decir, un elemento no nulo de k .
+en ese caso g= 0 f + g 
+esto funcion porque o bien g = 0 o bien gr(r) <g(f)
+
+sea n >= 0 y supongamos que  p0 , .... pn vale , quiero ver que pn+1 vale.
+
+supongamos que g = polinomio grado n+1 y f grado m 
+
+me va a quedar h=g --- an+1/bm X^n+1-m F 
+gr ((an+1/bm) X^n+1-m F) = gr(g)
+coeficinete de ppa/g = coeficniente fppa (an+1/bm)X^n+1-m f
+gr(h) = gr(g-an+1/bm X^n+1-m F)< gr(g)
+rta : gr(h) in {0,1,,,,, n} como pg(h) vale q1,r1 in k[x]  talque h = q1f+r1
+r1 = 0 o gr(r1) < gr(f)
+g = an+1/bm X^n+1-m f + q1 f + r1 
+g = q igual a este parentesis (an+1/bm X^n+1-m + q1 )f + r1 
+por lo tanto pn+1 vale 
