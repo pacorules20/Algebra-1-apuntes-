@@ -67,76 +67,94 @@ divide el módulo: $3\equiv 1 \pmod 2$.
 \end{nota}
 
 \section{Ecuaciones diofánticas lineales}
-
 \begin{definicion}
-Una \textbf{ecuación diofántica} es una ecuación polinómica con coeficientes enteros cuyas soluciones se buscan en $\mathbb Z$. Aquí estudiamos
+Una ecuación diofántica lineal es
 \[
-ax+by=c,\qquad a,b,c\in\mathbb Z.
+ax+by=c,\qquad a,b,c\in\mathbb Z,
 \]
-Sirve para problemas con cantidades enteras (monedas, paquetes, objetos) y para resolver congruencias: $ax\equiv c\pmod m$ equivale a $ax+my=c$ para algún $y\in\mathbb Z$.
+con soluciones buscadas en $\mathbb Z^2$.
 \end{definicion}
-
-\begin{proposicion}[{title={Condición de existencia}}]
-Si $a,b$ no son ambos nulos y $d=(a:b)$, entonces
+\begin{proposicion}[{title={Existencia y solución general}}]
+Si $a,b$ no son ambos nulos y $d=(a:b)$, hay solución si y sólo si $d\mid c$.
+Cuando $a,b\neq0$ y $d\mid c$, dividimos por $d$:
 \[
-ax+by=c\text{ tiene solución entera}\iff d\mid c.
+Ax+By=C,\qquad A=a/d,\quad B=b/d,\quad C=c/d,\quad(A:B)=1.
 \]
-En efecto, $d$ divide toda combinación $ax+by$; recíprocamente, Bézout permite escribir $d=au+bv$ y multiplicar por $c/d$.
+Las soluciones se obtienen en tres pasos:
+\begin{enumerate}
+\item \textbf{Homogénea:} $Ax+By=0$ da
+$S_0=\{(Bt,-At):t\in\mathbb Z\}$.
+\item \textbf{Particular:} elegir $(x_p,y_p)$ con $Ax_p+By_p=C$.
+Por Bézout, si $Au+Bv=1$, sirve $(x_p,y_p)=(Cu,Cv)$.
+\item \textbf{General:}
+\[
+\boxed{S_g=\{(x_p+Bt,y_p-At):t\in\mathbb Z\}.}
+\]
+\end{enumerate}
 \end{proposicion}
-
-\subsection{Los tres pasos: $S_0$, particular y general}
-Supongamos $a,b\neq0$. Si $d\mid c$, dividimos toda la ecuación por $d$:
+\begin{demostracion}
+Todo divisor común de $a,b$ divide $ax+by$; la recíproca se obtiene
+multiplicando una identidad de Bézout por $c/d$.
+En la homogénea, $Ax=-By$ y $(A:B)=1$ implican $A\mid y$.
+Finalmente, la diferencia de dos soluciones es una solución homogénea,
+por lo que la fórmula general da todas las soluciones.
+\end{demostracion}
+\begin{ejemplo}
+Resolver $6x+9y=30$. Dividiendo por $3$ queda $2x+3y=10$.
+Una particular es $(2,2)$, luego
 \[
-Ax+By=C,\qquad A=\frac ad,\quad B=\frac bd,\quad C=\frac cd,
-\qquad (A:B)=1.
+(x,y)=(2+3t,2-2t),\qquad t\in\mathbb Z.
 \]
-
-\begin{teoria}[{title={1. $S_0$: soluciones de la homogénea}}]
-Primero resolvemos $Ax+By=0$:
-\[
-Ax=-By\ \Longrightarrow\ A\mid By
-\ \underset{(A:B)=1}{\Longrightarrow}\ A\mid y.
-\]
-Entonces $y=Ak$ y, sustituyendo, $x=-Bk$. Con $t=-k$,
-\[
-S_0=\{(Bt,-At):t\in\mathbb Z\}.
-\]
-\end{teoria}
-
-\begin{nota}{El paso de divisibilidad}
-Se parte de la igualdad $Ax=-By$, no de $Ax\mid By$. Para pasar de $A\mid By$ a $A\mid y$ usamos el lema de Gauss y que $A,B$ son coprimos; por eso primero dividimos por el mcd.
+Si además $x,y\geq0$, las desigualdades obligan a $t=0$ o $1$:
+las soluciones son $(2,2)$ y $(5,0)$.
+\end{ejemplo}
+\begin{nota}{Particular y condiciones adicionales.}
+Para hallar una particular, se usa inspección o el algoritmo de Euclides
+seguido de sustitución hacia atrás para obtener Bézout.
+Si $r\mid x$, escribir $x=ru$; si hay congruencias o cotas,
+sustituir la solución general y resolver las condiciones sobre $t$.
+Si un coeficiente es cero, resolver para la otra variable y dejar la
+restante libre. Si $a=b=0$, todos los pares sirven cuando $c=0$ y
+ninguno cuando $c\neq0$.
 \end{nota}
 
-\begin{teoria}[{title={2. Particular: elegir una solución $(x_p,y_p)$}}]
-Buscamos un par fijo tal que $Ax_p+By_p=C$, por inspección o por Bézout:
+\section{Ecuaciones de congruencia lineales}
+\begin{proposicion}[{title={Existencia, reducción e inverso}}]
+Sean $m\geq1$, $a,c\in\mathbb Z$ y $d=(a:m)$. Entonces
 \[
-Au+Bv=1\ \Longrightarrow\ (x_p,y_p)=(Cu,Cv).
+ax\equiv c\pmod m\text{ tiene solución}\iff d\mid c.
 \]
-Con la notación $S_p$, podemos escribir $S_p=\{(x_p,y_p)\}$.
-\end{teoria}
-
-\begin{teoria}[{title={3. $S_g$: todas las soluciones}}]
-Sumamos la particular a las soluciones de la homogénea:
+Si $d\mid c$, se reduce a
 \[
-\boxed{S_g=\{(x_p+Bt,\ y_p-At):t\in\mathbb Z\}.}
+\frac ad x\equiv\frac cd\pmod{m/d}.
 \]
-Esto da todas: al restar dos soluciones de $Ax+By=C$ queda
-$A(x-x_p)+B(y-y_p)=0$, es decir, una solución de la homogénea.
-\end{teoria}
-
+Para un módulo $M\geq2$, un entero $A$ tiene inverso $u$ módulo $M$
+si y sólo si $(A:M)=1$. Se obtiene de Bézout: $Au+Mv=1$.
+En ese caso,
+\[
+Ax\equiv C\pmod M\iff x\equiv uC\pmod M.
+\]
+\end{proposicion}
+\begin{nota}{Cantidad de soluciones.}
+Si $d\mid c$, hay una única clase de soluciones módulo $m/d$ y
+exactamente $d$ clases módulo $m$. Si $x_0$ es una solución,
+\[
+x=x_0+\frac md t,\quad t\in\mathbb Z.
+\]
+Si el módulo reducido es $1$, todo entero sirve.
+La existencia se justifica porque la congruencia equivale a la
+diofántica $ax+my=c$ para algún entero $y$.
+\end{nota}
 \begin{ejemplo}
-Resolver $6x+9y=30$. Como $(6:9)=3\mid30$, dividimos por $3$ y queda $2x+3y=10$.
-\begin{enumerate}
-\item \textbf{Homogénea:} $2x=-3y\Rightarrow2\mid3y\Rightarrow2\mid y$. Luego $S_0=\{(3t,-2t):t\in\mathbb Z\}$.
-\item \textbf{Particular:} $(x_p,y_p)=(2,2)$, pues $2\cdot2+3\cdot2=10$.
-\item \textbf{General:} $S_g=\{(2+3t,2-2t):t\in\mathbb Z\}$.
-\end{enumerate}
-Si se requieren $x,y\geq0$, imponemos esas desigualdades: queda $t=0$ o $t=1$, con soluciones $(2,2)$ y $(5,0)$.
+\[
+14x\equiv8\pmod{20}\iff7x\equiv4\pmod{10}
+\iff x\equiv2\pmod{10},
+\]
+pues $7^{-1}\equiv3\pmod{10}$.
+Módulo $20$, las soluciones son las clases de $2$ y $12$.
+En cambio, $14x\equiv5\pmod{20}$ no tiene solución, porque $2\nmid5$.
 \end{ejemplo}
 
-\begin{nota}{Si algún coeficiente es cero}
-Si $a=0$, resolvemos $by=c$ y $x$ queda libre; si $b=0$, resolvemos $ax=c$ y $y$ queda libre. Si $a=b=0$, todo par sirve cuando $c=0$ y no hay soluciones cuando $c\neq0$.
-\end{nota}
 
 \section{Teorema chino del resto}
 \begin{proposicion}

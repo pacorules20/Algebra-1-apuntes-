@@ -1,0 +1,331 @@
+\chapter{Polinomios}
+
+\section{Definiciones y operaciones}
+\begin{definicion}
+Sea $K$ un cuerpo, por ejemplo $\mathbb Q$, $\mathbb R$, $\mathbb C$
+o $\mathbb F_p=\mathbb Z/p\mathbb Z$, con $p$ primo.
+Un \textbf{polinomio} de $K[X]$ es una expresión finita
+\[
+f=a_0+a_1X+\cdots+a_nX^n,\qquad a_i\in K.
+\]
+Si $a_n\neq0$, su \textbf{grado} es $\deg f=n$ y su
+\textbf{coeficiente principal} es $a_n$. Es \textbf{mónico} si $a_n=1$.
+El polinomio cero no tiene grado en la convención de este apunte.
+Dos polinomios son iguales si coinciden todos sus coeficientes.
+\end{definicion}
+\begin{proposicion}[{title={Operaciones y grados}}]
+La suma se hace coeficiente a coeficiente. En el producto,
+\[
+[X^k](fg)=\sum_{i+j=k}a_i b_j,
+\]
+donde $[X^k]f$ significa el coeficiente de $X^k$ en $f$.
+Para $f,g\neq0$:
+\[
+\deg(fg)=\deg f+\deg g.
+\]
+Si $f+g\neq0$, $\deg(f+g)\leq\max\{\deg f,\deg g\}$;
+hay igualdad si los grados son distintos. Si $g$ no es constante y
+$f\neq0$ tiene grado $n$, entonces $\deg(f\circ g)=n\deg g$.
+\end{proposicion}
+\begin{ejemplo}
+En $\mathbb Q[X]$, $\deg((X^2+1)^3)=6$.
+El coeficiente de $X^4$ en $(1+X)^6$ es $\binom64=15$.
+En $\mathbb F_2[X]$, $X+X=0$: reducir los coeficientes puede cambiar el grado.
+\end{ejemplo}
+\begin{nota}{Polinomio y función polinómica.}
+Evaluar en $\alpha\in K$ significa sustituir $X$ por $\alpha$.
+Sobre un cuerpo finito, dos polinomios distintos pueden dar la misma función:
+$X^p-X$ no es el polinomio cero, aunque se anula en todo $\mathbb F_p$.
+\end{nota}
+
+\section{División, divisibilidad y restos}
+\begin{proposicion}[{title={Algoritmo de división}}]
+Dados $f,g\in K[X]$ con $g\neq0$, existen únicos $q,r\in K[X]$ tales que
+\[
+f=qg+r,\qquad r=0\ \text{o}\ \deg r<\deg g.
+\]
+Se dice que $g$ \textbf{divide} a $f$, y se escribe $g\mid f$, si $r=0$.
+\end{proposicion}
+\begin{nota}{Cómo dividir.}
+Dividir el término de mayor grado del dividendo por el de $g$,
+añadirlo al cociente y restar su producto por $g$.
+Repetir hasta que el resto sea cero o tenga grado menor que $g$.
+Los divisores constantes no nulos son unidades: dividen a todo polinomio.
+\end{nota}
+\begin{proposicion}[{title={Teorema del resto y de la raíz}}]
+El resto de dividir $f$ por $X-\alpha$ es $f(\alpha)$. En particular,
+\[
+f(\alpha)=0\iff (X-\alpha)\mid f.
+\]
+Un polinomio no nulo de grado $n$ tiene a lo sumo $n$ raíces distintas en $K$.
+\end{proposicion}
+\begin{demostracion}
+En $f=(X-\alpha)q+r$, el resto es constante. Evaluando en $\alpha$,
+$r=f(\alpha)$. Cada raíz distinta aporta un factor lineal distinto;
+la suma de sus grados no puede superar $\deg f$.
+\end{demostracion}
+\begin{proposicion}[{title={Identidades útiles}}]
+Para $n\geq1$,
+\[
+X^n-a^n=(X-a)\sum_{j=0}^{n-1}X^{n-1-j}a^j.
+\]
+Sustituyendo $a$ por $-a$, se obtiene la factorización por $X+a$
+de $X^n+a^n$ si $n$ es impar, y de $X^n-a^n$ si $n$ es par.
+\end{proposicion}
+
+\subsection{Congruencias polinómicas}
+\begin{definicion}
+Si $h\neq0$, se define $f\equiv g\pmod h$ cuando $h\mid f-g$.
+Es una relación de equivalencia compatible con sumas, productos y
+potencias de exponente entero no negativo.
+El resto de $f$ módulo $h$ es el único representante $r$ con
+$r=0$ o $\deg r<\deg h$.
+\end{definicion}
+\begin{ejemplo}
+Módulo $X^2+1$ se tiene $X^2\equiv-1$ y $X^4\equiv1$.
+Por tanto $X^{2026}+X^3\equiv-1-X$; ése es el resto.
+\end{ejemplo}
+\begin{nota}{Restos por evaluación.}
+Si el divisor tiene grado $d$, escribir $r$ con grado menor que $d$.
+En cada raíz $\alpha$ del divisor se cumple $r(\alpha)=f(\alpha)$.
+Si hay $d$ raíces distintas, esas condiciones determinan el resto.
+Si hay raíces repetidas, también se necesitan condiciones sobre derivadas.
+Por ejemplo, sobre $\mathbb Q$, $\mathbb R$ o $\mathbb C$, el resto módulo
+$(X-\alpha)^m$ es
+\[
+r=\sum_{j=0}^{m-1}\frac{f^{(j)}(\alpha)}{j!}(X-\alpha)^j.
+\]
+\end{nota}
+\begin{ejemplo}
+Si $f(1)=2$ y $f(-1)=4$, el resto módulo $X^2-1$ es $r=aX+b$.
+De $a+b=2$, $-a+b=4$ resulta $r=-X+3$.
+\end{ejemplo}
+
+\section{Máximo común divisor y Bézout}
+\begin{definicion}
+Para $f,g\in K[X]$ no ambos nulos, su \textbf{mcd}, denotado $(f:g)$,
+es el divisor común mónico de mayor grado. Son \textbf{coprimos} si $(f:g)=1$.
+\end{definicion}
+\begin{proposicion}
+Si $f=qg+r$, entonces $(f:g)=(g:r)$.
+El algoritmo de Euclides calcula el mcd mediante divisiones sucesivas:
+es el último resto no nulo dividido por su coeficiente principal.
+Además existen $A,B\in K[X]$ tales que
+\[
+(f:g)=Af+Bg.
+\]
+En particular, $(f:g)=1$ si y sólo si existe una combinación $Af+Bg=1$.
+\end{proposicion}
+\begin{nota}{Raíces comunes.}
+Para $\alpha\in K$,
+\[
+f(\alpha)=g(\alpha)=0\iff(f:g)(\alpha)=0.
+\]
+Una dirección usa que el mcd divide a ambos; la otra se obtiene evaluando
+la identidad de Bézout.
+Si $f,g\in\mathbb C[X]$, ser coprimos equivale a no tener raíces comunes.
+Sobre otros cuerpos, no basta con buscar raíces sólo en ese cuerpo.
+\end{nota}
+\begin{ejemplo}
+Para $f=X^3-X$, $g=X^2-1$, se tiene $f=Xg$, luego $(f:g)=X^2-1$.
+Las raíces comunes son $1$ y $-1$.
+\end{ejemplo}
+
+\section{Derivadas y multiplicidad}
+\begin{definicion}
+La \textbf{derivada formal} de $f=\sum_{j=0}^n a_jX^j$ es
+$f'=\sum_{j=1}^n ja_jX^{j-1}$. Satisface las reglas usuales de suma
+y producto. Si $f\neq0$, $\alpha$ tiene \textbf{multiplicidad} $m\geq1$ si
+\[
+f=(X-\alpha)^m q,\qquad q(\alpha)\neq0.
+\]
+Es simple si $m=1$ y múltiple si $m\geq2$.
+\end{definicion}
+\begin{proposicion}[{title={Criterios de multiplicidad}}]
+Para $f\in K[X]$ no nulo, $\alpha$ es raíz múltiple si y sólo si
+$f(\alpha)=f'(\alpha)=0$.
+Sobre $\mathbb Q$, $\mathbb R$ o $\mathbb C$, tiene multiplicidad exacta $m$ si
+\[
+f(\alpha)=f'(\alpha)=\cdots=f^{(m-1)}(\alpha)=0,
+\qquad f^{(m)}(\alpha)\neq0.
+\]
+En estos cuerpos, una raíz de multiplicidad $m$ en $f$ tiene multiplicidad
+$m-1$ en $f'$ (para $m=1$, deja de ser raíz).
+\end{proposicion}
+\begin{demostracion}
+Derivando $f=(X-\alpha)^m q$ se obtiene
+\[
+f'=(X-\alpha)^{m-1}\bigl(mq+(X-\alpha)q'\bigr).
+\]
+En característica cero el factor entre paréntesis vale $mq(\alpha)\neq0$
+en $\alpha$. Derivando sucesivamente se obtiene el criterio completo.
+En cualquier característica, si $f=(X-\alpha)q$, se tiene
+$f'(\alpha)=q(\alpha)$, lo que prueba el criterio de raíz múltiple.
+\end{demostracion}
+\begin{nota}{Usar el mcd con la derivada.}
+En $\mathbb C[X]$, todas las raíces de $f$ son simples si y sólo si
+$(f:f')=1$. Si $f=c\prod_j(X-\alpha_j)^{m_j}$ con raíces distintas,
+\[
+(f:f')=\prod_j(X-\alpha_j)^{m_j-1}.
+\]
+Para buscar parámetros que produzcan raíces múltiples, resolver primero
+$f'(\alpha)=0$ y luego imponer $f(\alpha)=0$.
+En característica $p$ hay precauciones: $(X^p)'=0$; no aplicar sin revisar
+las reglas de multiplicidad que requieren característica cero.
+\end{nota}
+\begin{ejemplo}
+Sea $f=X^3-3X+a$. Como $f'=3(X^2-1)$, una raíz múltiple debe ser
+$1$ o $-1$. Se cumple $f(1)=a-2$ y $f(-1)=a+2$.
+Por tanto hay raíces múltiples exactamente para $a=2$ o $a=-2$.
+Son dobles, pues $f''(\pm1)\neq0$.
+\end{ejemplo}
+
+\section{Raíces y factorización según el cuerpo}
+\begin{proposicion}[{title={Raíces racionales: lema de Gauss}}]
+Sea $f=a_nX^n+\cdots+a_0\in\mathbb Z[X]$, con $a_na_0\neq0$.
+Si $u/v$, con $(u:v)=1$ y $v>0$, es raíz de $f$, entonces
+\[
+u\mid a_0,\qquad v\mid a_n.
+\]
+Para coeficientes racionales, primero multiplicar por un denominador común.
+Si $a_0=0$, extraer la potencia de $X$ antes de buscar otras raíces.
+\end{proposicion}
+\begin{ejemplo}
+En $f=2X^3-X^2-2X+1$, los candidatos racionales son
+$\pm1,\pm\tfrac12$. Agrupando,
+\[
+f=(2X-1)(X^2-1)=(2X-1)(X-1)(X+1).
+\]
+Los candidatos del lema deben probarse: no todos son necesariamente raíces.
+\end{ejemplo}
+\begin{proposicion}[{title={Factorización en $\mathbb C$, $\mathbb R$ y $\mathbb Q$}}]
+\begin{itemize}
+\item En $\mathbb C[X]$, todo polinomio no constante tiene una raíz
+(teorema fundamental del álgebra). Por tanto se factoriza completamente
+en factores lineales; hay $\deg f$ raíces contando multiplicidades.
+\item Si $f\in\mathbb R[X]$, las raíces no reales aparecen en pares conjugados
+con la misma multiplicidad. El par $a\pm bi$, $b\neq0$, aporta el factor
+$X^2-2aX+a^2+b^2$. Los irreducibles reales son los lineales y los
+cuadráticos con discriminante negativo.
+\item En $\mathbb Q[X]$, hay irreducibles de grados mayores. Si $\deg f=2$ o $3$,
+es irreducible si y sólo si no tiene raíces racionales.
+Para grado $4$ o mayor, no tener raíces racionales no es suficiente.
+\end{itemize}
+\end{proposicion}
+\begin{ejemplo}
+El polinomio $X^4-1$ se factoriza en $\mathbb Q[X]$ y $\mathbb R[X]$ como
+$(X-1)(X+1)(X^2+1)$; en $\mathbb C[X]$, el último factor es $(X-i)(X+i)$.
+Si $\alpha$ es una raíz de un polinomio racional, también es raíz
+$\overline\alpha$. Además, si $\sqrt2$ es raíz, $-\sqrt2$ también lo es:
+al evaluar, separar la parte racional y el coeficiente de $\sqrt2$.
+\end{ejemplo}
+\begin{nota}{Cambios de variable y raíces de la unidad.}
+Si sólo aparecen potencias múltiplos de $d$, usar $Y=X^d$.
+Por ejemplo $X^6+X^3-2=(X^3-1)(X^3+2)$:
+se resuelven $X^3=1$ y $X^3=-2$ con la fórmula de raíces complejas.
+También
+\[
+1+X+\cdots+X^n=\frac{X^{n+1}-1}{X-1}.
+\]
+Sobre $\mathbb C$, sus raíces son las de $G_{n+1}$ salvo $1$, todas simples.
+Si $f\in\mathbb C[X]$ tiene una raíz real y $f=u+iv$ con $u,v\in\mathbb R[X]$,
+esa raíz debe anular simultáneamente a $u$ y $v$: buscar su mcd.
+\end{nota}
+
+\subsection{Identidades notables: factorización de polinomios}
+
+\begin{proposicion}
+    \begin{itemize}
+        \item \textbf{Diferencia de cuadrados:}
+        \[
+            a^2-b^2=(a-b)(a+b)
+        \]
+
+        \item \textbf{Suma de cuadrados:}
+        No se factoriza en general en $\mathbb{R}$,
+        pero sí en $\mathbb{C}$:
+        \[
+            a^2+b^2=(a-bi)(a+bi)
+        \]
+
+        \item \textbf{Diferencia de cubos:}
+        \[
+            a^3-b^3=(a-b)(a^2+ab+b^2)
+        \]
+
+        \item \textbf{Suma de cubos:}
+        \[
+            a^3+b^3=(a+b)(a^2-ab+b^2)
+        \]
+    \end{itemize}
+\end{proposicion}
+
+
+\section{Irreducibilidad y cuerpos finitos}
+\begin{definicion}
+Un polinomio $f\in K[X]$ de grado positivo es \textbf{irreducible}
+si no se puede escribir como producto de dos polinomios de grados positivos.
+Todo polinomio no nulo se factoriza como una constante no nula por
+un producto de irreducibles mónicos, de manera única salvo el orden.
+\end{definicion}
+\begin{nota}{Criterios prácticos.}
+En cualquier cuerpo, un polinomio de grado $2$ o $3$ es irreducible
+si y sólo si no tiene raíces en ese cuerpo.
+Para grado $4$, además de descartar raíces, hay que descartar divisores
+cuadráticos irreducibles. En $\mathbb F_2[X]$, el único cuadrático
+mónico irreducible es $X^2+X+1$.
+No confundir un polinomio sin raíces en $K$ con uno irreducible de grado arbitrario.
+\end{nota}
+\begin{ejemplo}
+En $\mathbb F_2[X]$, $X^4+X+1$ no tiene raíces, y su resto al dividir
+por $X^2+X+1$ es $1$: es irreducible.
+En cambio $X^4+X^2+1=(X^2+X+1)^2$ es reducible y tampoco tiene raíces en $\mathbb F_2$.
+\end{ejemplo}
+\begin{proposicion}[{title={Conteo de cuadráticos mónicos}}]
+En $\mathbb F_p[X]$ hay $p^2$ polinomios mónicos de grado $2$.
+De ellos, $p(p+1)/2$ son reducibles y $p(p-1)/2$ son irreducibles.
+\end{proposicion}
+\begin{demostracion}
+Hay $p$ opciones para cada coeficiente de $X^2+aX+b$.
+Los reducibles corresponden a pares de raíces no ordenados:
+$\binom p2$ pares distintos y $p$ pares repetidos.
+Los restantes son irreducibles.
+\end{demostracion}
+
+\section{Relaciones entre raíces y coeficientes}
+\begin{proposicion}[{title={Fórmulas de Viète}}]
+Si $f=a_n\prod_{j=1}^n(X-\alpha_j)$, contando multiplicidades, entonces
+\[
+\sum_j\alpha_j=-\frac{a_{n-1}}{a_n},\qquad
+\sum_{i<j}\alpha_i\alpha_j=\frac{a_{n-2}}{a_n}\quad(n\geq2),\qquad
+\prod_j\alpha_j=(-1)^n\frac{a_0}{a_n}.
+\]
+Se obtienen expandiendo el producto e igualando coeficientes.
+\end{proposicion}
+\begin{ejemplo}
+Si $a,b,c$ son las raíces de $2X^3-3X^2+4X+1$, entonces
+\[
+a+b+c=\frac32,\qquad ab+ac+bc=2,\qquad abc=-\frac12.
+\]
+No hace falta hallar las raíces por separado.
+\end{ejemplo}
+
+\section{Cómo elegir el método}
+\begin{nota}{Guía breve.}
+\begin{enumerate}
+\item \textbf{Grado o coeficiente:} identificar términos principales y
+sumar sólo los productos que aportan a la potencia buscada.
+\item \textbf{Resto:} usar congruencias polinómicas o escribir un resto
+de grado menor que el divisor e imponer evaluaciones y, si hace falta, derivadas.
+\item \textbf{Raíces comunes:} calcular el mcd por Euclides.
+\item \textbf{Multiplicidad o parámetros:} combinar $f(\alpha)=0$ con
+$f'(\alpha)=0$; seguir derivando para conocer la multiplicidad exacta.
+\item \textbf{Factorización:} fijar el cuerpo, extraer factores evidentes,
+buscar raíces racionales o usar un cambio de variable; conservar el coeficiente principal.
+\item \textbf{Grado mínimo:} reunir todas las raíces forzadas, sus conjugadas
+y sus multiplicidades; después ajustar la constante con las evaluaciones dadas.
+\item \textbf{Sucesiones de polinomios:} usar inducción, comparando grados,
+coeficientes o derivadas según la recurrencia.
+\item \textbf{Sumas y productos de raíces:} usar Viète antes de intentar resolver el polinomio.
+\end{enumerate}
+\end{nota}
