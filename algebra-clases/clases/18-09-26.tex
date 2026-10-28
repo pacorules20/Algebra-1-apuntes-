@@ -1,0 +1,240 @@
+\chapter{18-09-26}
+
+\section{Máximo común divisor: definición y propiedades}
+Para $a,b\in\mathbb Z$, consideramos
+\[
+\operatorname{Div}_{\geq0}(a,b)=\{c\in\mathbb N_0:c\mid a,\ c\mid b\}.
+\]
+Si alguno de $a,b$ es no nulo, este conjunto es no vacío y finito: contiene a $1$ y sus elementos están acotados por el valor absoluto de cualquier componente no nula.
+\begin{definicion}[{title={Máximo común divisor}}]
+Para $a,b$ no simultáneamente nulos, definimos
+\[
+\operatorname{mcd}(a,b)=\max\operatorname{Div}_{\geq0}(a,b).
+\]
+Además, adoptamos $\operatorname{mcd}(0,0)=0$. También usamos $(a:b)$ para el máximo común divisor.
+\end{definicion}
+\begin{proposicion}
+Para $a,b\in\mathbb Z$:
+\begin{enumerate}
+\item $\operatorname{mcd}(a,b)=\operatorname{mcd}(b,a)$.
+\item $\operatorname{mcd}(a,0)=|a|$.
+\item $\operatorname{mcd}(a,b)=\operatorname{mcd}(-a,b)=\operatorname{mcd}(a,-b)=\operatorname{mcd}(|a|,|b|)$.
+\item $\operatorname{mcd}(a,b)=|a|$ si y solo si $a\mid b$.
+\end{enumerate}
+\end{proposicion}
+\begin{demostracion}
+La simetría y la invariancia por signos se siguen de la igualdad de los conjuntos de divisores comunes. Si $a\neq0$, los divisores comunes no negativos de $a$ y $0$ son los divisores positivos de $a$, cuyo máximo es $|a|$. Para $a=0$ vale la convención adoptada.
+Si $a\mid b$ y $a\neq0$, $|a|$ es divisor común y ningún divisor positivo de $a$ lo supera. Recíprocamente, si el máximo común divisor es $|a|$, entonces $|a|\mid b$ y, por tanto, $a\mid b$. Para $a=0$, ambos enunciados equivalen a $b=0$.
+\end{demostracion}
+
+\subsection{Invariancia al restar un múltiplo}
+\begin{proposicion}
+Para $a,b,c\in\mathbb Z$,
+\[
+\operatorname{mcd}(a,b)=\operatorname{mcd}(a,b-ca).
+\]
+\end{proposicion}
+\begin{demostracion}
+Para cualquier entero $t$,
+\[
+t\mid a,\ t\mid b\quad\Longleftrightarrow\quad t\mid a,\ t\mid(b-ca).
+\]
+La implicación directa usa la resta; la recíproca usa $b=(b-ca)+ca$. Luego los conjuntos de divisores comunes no negativos coinciden. Si $(a,b)\neq(0,0)$, también $(a,b-ca)\neq(0,0)$: de $a=0$ y $b-ca=0$ se deduce $b=0$. Los máximos existen y son iguales. Si $a=b=0$, se aplica la convención $\operatorname{mcd}(0,0)=0$.
+\end{demostracion}
+\begin{teoria}[{title={Algoritmo de Euclides}}]
+Si $a>0$ y $b=ca+r$, con $c\in\mathbb Z$ y $0\leq r<a$, entonces
+\[
+\operatorname{mcd}(a,b)=\operatorname{mcd}(a,r).
+\]
+Se repite la división, intercambiando los argumentos cuando sea necesario. Los restos no nulos disminuyen estrictamente; el último resto no nulo es el máximo común divisor.
+\end{teoria}
+\begin{ejemplo}
+Como $102=4\cdot24+6$ y $24=4\cdot6$, resulta
+\[
+\operatorname{mcd}(102,24)=\operatorname{mcd}(6,24)=\operatorname{mcd}(6,0)=6.
+\]
+\end{ejemplo}
+
+\section{Combinaciones lineales e identidad de Bézout}
+\begin{proposicion}
+Sean $a,b\in\mathbb Z$ no simultáneamente nulos. El conjunto
+\[
+S(a,b)=\{xa+yb:x,y\in\mathbb Z,\ xa+yb>0\}
+\]
+es un subconjunto no vacío de $\mathbb N$ y
+\[
+\min S(a,b)=\operatorname{mcd}(a,b).
+\]
+\end{proposicion}
+\begin{demostracion}
+Todo elemento de $S(a,b)$ es un entero positivo. Si $a\neq0$, $|a|\in S(a,b)$: se toma $x=1$ o $x=-1$ según su signo, e $y=0$. Si $a=0$, entonces $b\neq0$ y, de igual manera, $|b|\in S(a,b)$. Por tanto, $S(a,b)$ no es vacío.
+
+Por el principio del buen orden existe $d=\min S(a,b)>0$. Existen $x,y\in\mathbb Z$ con $d=xa+yb$. Veamos que $d\mid a$. Dividimos $a$ por $d$:
+\[
+a=qd+r,\qquad 0\leq r<d.
+\]
+Si $r>0$, entonces
+\[
+r=a-qd=a-q(xa+yb)=(1-qx)a+(-qy)b\in S(a,b),
+\]
+lo cual contradice $r<d=\min S(a,b)$. Luego $r=0$ y $d\mid a$. Dividiendo $b$ por $d$ y repitiendo el argumento, se obtiene $d\mid b$. Así, $d$ es divisor común positivo y $d\leq\operatorname{mcd}(a,b)$.
+
+Sea $e=\operatorname{mcd}(a,b)>0$. Como $e\mid a$ y $e\mid b$, se tiene $e\mid xa+yb=d$. Puesto que $d>0$, resulta $e\leq d$. Ambas desigualdades dan $d=e$.
+\end{demostracion}
+\begin{proposicion}[{title={Identidad de Bézout}}]
+Para todos $a,b\in\mathbb Z$ existen $x,y\in\mathbb Z$ tales que
+\[
+xa+yb=\operatorname{mcd}(a,b).
+\]
+\end{proposicion}
+\begin{demostracion}
+Si $(a,b)\neq(0,0)$, el mínimo anterior pertenece a $S(a,b)$. Si $a=b=0$, basta tomar $x=y=0$.
+\end{demostracion}
+\begin{ejemplo}
+Para $a=3$ y $b=2$:
+\[
+1\cdot3+(-1)\cdot2=1,\qquad (-1)\cdot3+2\cdot2=1.
+\]
+Los coeficientes de Bézout no son necesariamente únicos.
+\end{ejemplo}
+\begin{ejemplo}
+\textbf{Retroceder en el algoritmo de Euclides.} Para $11$ y $3$:
+\[
+11=3\cdot3+2,\qquad3=1\cdot2+1,\qquad2=2\cdot1+0.
+\]
+Luego $\operatorname{mcd}(11,3)=1$ y
+\[
+1=3-2=3-(11-3\cdot3)=4\cdot3-11.
+\]
+Así, $x=-1$ e $y=4$ satisfacen $11x+3y=1$.
+\end{ejemplo}
+
+\section{Caracterización y corolarios del máximo común divisor}
+\begin{proposicion}
+Sean $a,b\in\mathbb Z$. El número $d=\operatorname{mcd}(a,b)$ es el único entero no negativo que satisface:
+\begin{enumerate}
+\item $d\mid a$ y $d\mid b$;
+\item todo divisor común de $a$ y $b$ divide a $d$.
+\end{enumerate}
+\end{proposicion}
+\begin{demostracion}
+El máximo común divisor divide a ambos números, incluso para $(a,b)=(0,0)$, pues $0\mid0$. Si $e\mid a$ y $e\mid b$, Bézout da $e\mid xa+yb=d$.
+Para la unicidad, si $d'$ también cumple las propiedades, entonces $d'\mid d$ y $d\mid d'$. Dos enteros no negativos que se dividen mutuamente son iguales; luego $d=d'$.
+\end{demostracion}
+\begin{proposicion}[{title={Corolario: compatibilidad con la divisibilidad}}]
+Si $a\mid a'$ y $b\mid b'$, entonces
+\[
+\operatorname{mcd}(a,b)\mid\operatorname{mcd}(a',b').
+\]
+\end{proposicion}
+\begin{demostracion}
+Si $e=\operatorname{mcd}(a,b)$, entonces $e\mid a\mid a'$ y $e\mid b\mid b'$. Por tanto $e$ es divisor común de $a',b'$ y divide a su máximo común divisor.
+\end{demostracion}
+\begin{proposicion}[{title={Corolario: multiplicación por un factor común}}]
+Para $a,b,c\in\mathbb Z$,
+\[
+\operatorname{mcd}(ac,bc)=|c|\operatorname{mcd}(a,b).
+\]
+\end{proposicion}
+\begin{demostracion}
+Primero supongamos $c>0$ y $(a,b)\neq(0,0)$. Sean $d=\operatorname{mcd}(a,b)$ y $e=\operatorname{mcd}(ac,bc)$. Por Bézout existen $x,y\in\mathbb Z$ con $d=xa+yb$; luego
+\[
+dc=x(ac)+y(bc),
+\]
+y por tanto $e\mid dc$. Por otro lado, $d\mid a$ y $d\mid b$ implican $dc\mid ac$ y $dc\mid bc$, así que $dc\mid e$. Como $e,dc>0$, se concluye $e=dc$.
+Si $c<0$, la invariancia por signos permite reemplazarlo por $|c|$. Si $c=0$ o $a=b=0$, ambos miembros son cero.
+\end{demostracion}
+\begin{nota}{Precisión sobre el signo}
+En el pizarrón aparece la fórmula con el factor $c$. Esa versión requiere $c\geq0$. Para admitir cualquier entero $c$, el factor correcto es $|c|$.
+\end{nota}
+
+\section{Coprimalidad y números primos}
+\begin{definicion}[{title={Enteros coprimos}}]
+Dos enteros $a,b$ son \textbf{coprimos} si $\operatorname{mcd}(a,b)=1$.
+\end{definicion}
+\begin{nota}{Bézout y coprimalidad}
+Como consecuencia de Bézout, $a,b$ son coprimos si y solo si existen enteros $x,y$ con $xa+yb=1$. Para la recíproca, cualquier divisor común divide a $1$, por lo que el máximo común divisor es $1$.
+\end{nota}
+\begin{definicion}[{title={Número primo}}]
+Un entero $p\geq2$ es \textbf{primo} si sus únicos divisores positivos son $1$ y $p$. Un entero $n\geq2$ que no es primo es \textbf{compuesto}.
+\end{definicion}
+\begin{proposicion}[{title={Lema}}]
+Sea $p$ primo y $a\in\mathbb Z$. Entonces
+\[
+\operatorname{mcd}(a,p)=\begin{cases}1,&p\nmid a,\\p,&p\mid a.\end{cases}
+\]
+\end{proposicion}
+\begin{demostracion}
+El máximo común divisor es un divisor positivo de $p$: es $1$ o $p$. Es $p$ exactamente cuando $p$ divide también a $a$.
+\end{demostracion}
+\begin{proposicion}[{title={Lema: existencia de un divisor primo}}]
+Todo entero $n\geq2$ es primo o es divisible por un primo menor que él. En particular, todo entero $n\geq2$ tiene un divisor primo.
+\end{proposicion}
+\begin{demostracion}
+Hacemos inducción fuerte. Para $n=2$ vale porque $2$ es primo. Sea $m>2$ y supongamos el resultado para $2,\dots,m-1$.
+Si $m$ es primo, ya está. Si no, tiene un divisor $k$ con $1<k<m$. Por la hipótesis inductiva, o bien $k$ es primo, o bien hay un primo $p<k$ que lo divide. En el primer caso, $k$ es un divisor primo de $m$ menor que $m$. En el segundo, $p\mid k\mid m$ y $p<m$. Esto prueba el resultado.
+\end{demostracion}
+\subsection{La criba de Eratóstenes}
+Se listan los enteros desde $2$, se conserva el menor aún no tachado y se tachan sus múltiplos mayores que él. Se repite con el siguiente número no tachado. En el ejemplo del pizarrón, entre $1$ y $24$, los primos son
+\[
+2,3,5,7,11,13,17,19,23.
+\]
+El $1$ no es primo. Todo compuesto se elimina porque tiene un divisor primo menor que él; ningún primo se elimina como múltiplo propio de otro entero mayor que $1$.
+
+\section{Teorema de Euclides: infinitud de los primos}
+\begin{proposicion}[{title={Teorema de Euclides}}]
+Existen infinitos números primos.
+\end{proposicion}
+\begin{demostracion}
+Supongamos que hay solamente una cantidad finita. Sean $p_1<\cdots<p_M$ todos ellos y consideremos
+\[
+A=p_1p_2\cdots p_M+1\geq2.
+\]
+Por el lema anterior, $A$ es primo o tiene un divisor primo.
+Si $A$ es primo, debería coincidir con alguno de los $p_i$, pero $A>p_M$, lo que es imposible. Si $A$ es compuesto, tiene un divisor primo $p_i$ de la lista. Entonces $p_i\mid A$ y $p_i\mid p_1\cdots p_M$, por lo que
+\[
+p_i\mid A-p_1\cdots p_M=1.
+\]
+Esto contradice $p_i\geq2$. En ambos casos hay contradicción; por tanto, existen infinitos primos.
+\end{demostracion}
+\begin{nota}{El producto más uno no siempre es primo}
+La prueba no afirma que $p_1\cdots p_M+1$ sea siempre primo. Si es compuesto, alguno de sus divisores primos queda fuera de la lista propuesta; eso basta para la contradicción.
+\end{nota}
+
+\section{Otros ejercicios fotografiados ese día}
+\subsection{Ejercicio de parcial: valores posibles de un mcd}
+\begin{ejercicio}
+Sean $a,b\in\mathbb Z$ tales que $(a:b)=7$ y $b\equiv1\pmod3$. Hallar los posibles valores de $\operatorname{mcd}(63a-b^2,42)$ y dar un ejemplo para cada caso.
+\end{ejercicio}
+\begin{solucion}
+La resolución siguiente completa el enunciado fotografiado. Como $7\mid a$ y $7\mid b$, se tiene $7\mid63a-b^2$. Además,
+\[
+63a-b^2\equiv-1\equiv2\pmod3,
+\]
+pues $b\equiv1\pmod3$. Por tanto $3\nmid63a-b^2$.
+Los divisores positivos de $42=2\cdot3\cdot7$ que son múltiplos de $7$ y no de $3$ son $7$ y $14$. Ambos se alcanzan:
+\[
+\begin{array}{c|c|c|c}
+a&b&63a-b^2&\operatorname{mcd}(63a-b^2,42)\\\hline
+14&7&833&7\\7&7&392&14
+\end{array}
+\]
+En ambos casos $(a:b)=7$ y $b\equiv1\pmod3$. Los valores posibles son $\boxed{7\text{ y }14}$.
+\end{solucion}
+
+\subsection{Fragmento de un ejercicio de divisibilidad}
+En dos fotos aparece el siguiente desarrollo, sin que se vea el enunciado completo. Para $a,b\in\mathbb Z\setminus\{0\}$:
+\begin{align*}
+\frac{3(a+b)}{a}+\frac6b\in\mathbb Z
+&\Longleftrightarrow\frac{3(a+b)b+6a}{ab}\in\mathbb Z\\
+&\Longleftrightarrow\frac{3b^2+6a}{ab}\in\mathbb Z\\
+&\Longleftrightarrow ab\mid3b^2+6a.
+\end{align*}
+En el segundo paso se restó el entero $3$. De la última condición se deduce $a\mid3b^2$ y $b\mid6a$.
+\begin{nota}{Hipótesis que no se puede omitir}
+En general, exigir que $a$ y $b$ dividan a un número no garantiza que su producto lo divida. La equivalencia
+\[
+ab\mid N\quad\Longleftrightarrow\quad a\mid N\text{ y }b\mid N
+\]
+es válida si $a,b$ son coprimos. Sin esa hipótesis, la implicación recíproca puede fallar: $2\mid2$ y $2\mid2$, pero $4\nmid2$. Como no se ve el enunciado, no se presupone que $a,b$ sean coprimos ni se inventa una clasificación de soluciones.
+\end{nota}

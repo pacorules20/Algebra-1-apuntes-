@@ -1,76 +1,227 @@
-como los numeros complejos con finalmente numeros en R x R 
-plano de argande:
+\chapter{20-10-26}
+\section{Números complejos y plano de Argand}
 
-coordenas polares 
+Identificamos el conjunto $\mathbb C$ con $\mathbb R^2$ mediante
+$x+iy\longleftrightarrow(x,y)$, donde $i^2=-1$. La suma es la suma
+coordenada a coordenada, mientras que el producto está dado por
+\[
+(x+iy)(u+iv)=(xu-yv)+i(xv+yu).
+\]
+Esta representación geométrica se llama \defterm{plano de Argand}.
 
-trazo la recta que va del origen al punto (x,y) y esa distancia es r
-tambien puedo calcularlo el angulo theta 
+\begin{definicion}[{title={Módulo y argumento}}]
+Sea $z=x+iy\neq0$. Su \textbf{módulo} es la distancia al origen:
+\[
+r=|z|=\sqrt{x^2+y^2}>0.
+\]
+Un \textbf{argumento} de $z$ es un ángulo $\theta\in\mathbb R$ tal que
+\[
+\cos\theta=\frac{x}{r},\qquad \sin\theta=\frac{y}{r}.
+\]
+Así, $z=r(\cos\theta+i\sin\theta)$ es su \textbf{forma polar}.
+\end{definicion}
 
-tg $\theta$ = y/x 
-sen $\theta$ = y/r
-cos $\theta$ = x/r
+\begin{nota}{El argumento no es único}
+Si $\theta$ es un argumento de $z$, todos sus argumentos son
+$\theta+2k\pi$, con $k\in\mathbb Z$. Escribimos
+\[
+\arg(z)=\{\theta+2k\pi:k\in\mathbb Z\}.
+\]
+El \textbf{argumento principal}, denotado $\operatorname{Arg}(z)$, es el
+único argumento en $(-\pi,\pi]$. El número $0$ tiene módulo $0$, pero
+no tiene argumento definido.
+\end{nota}
 
-como se que el arcotangente de theta me da el theta? 
-depende de las coordenadas de (x,y)
+\subsection{Cómo recuperar el ángulo}
+Si $x\neq0$, entonces $\tan\theta=y/x$. Sin embargo,
+$\arctan(y/x)$ toma valores en $(-\pi/2,\pi/2)$ y por sí sola no
+distingue puntos en cuadrantes opuestos. Con la convención anterior:
+\[
+\operatorname{Arg}(x+iy)=
+\begin{cases}
+\arctan(y/x),&x>0,\\
+\arctan(y/x)+\pi,&x<0,\ y\geq0,\\
+\arctan(y/x)-\pi,&x<0,\ y<0,\\
+\pi/2,&x=0,\ y>0,\\
+-\pi/2,&x=0,\ y<0.
+\end{cases}
+\]
+\begin{ejemplo}
+Para $z=-1+i$, se tiene $r=\sqrt2$ y $\arctan(y/x)=-\pi/4$.
+Como el punto está en el segundo cuadrante, el argumento principal
+es $3\pi/4$. Por lo tanto
+$z=\sqrt2(\cos(3\pi/4)+i\sin(3\pi/4))$.
+\end{ejemplo}
 
-676767676767676767676767
-a>1 r,s in Q
-n <= m -> a^n a^m 
+\section{Fórmula de Euler y producto en forma polar}
+\begin{proposicion}[{title={Fórmula de Euler}}]
+Para todo $\theta\in\mathbb R$,
+\[
+e^{i\theta}=\cos\theta+i\sin\theta.
+\]
+Por lo tanto, la forma polar también se escribe $z=re^{i\theta}$.
+\end{proposicion}
 
-z = r e^itheta = r cos thetha + i sen thetha
-w = s e^ialfa = s(cos alfa + i sen alfa)
+\begin{nota}{Justificación de la fórmula de Euler}
+Si la exponencial compleja se define por su serie de potencias,
+la igualdad se obtiene separando los términos pares e impares:
+\[
+e^{i\theta}
+=\sum_{j=0}^{\infty}\frac{(-1)^j\theta^{2j}}{(2j)!}
++i\sum_{j=0}^{\infty}\frac{(-1)^j\theta^{2j+1}}{(2j+1)!}
+=\cos\theta+i\sin\theta.
+\]
+La separación es válida por la convergencia absoluta de la serie.
+\end{nota}
 
-teorema de euler
-e^itetha =  cos theta + i sen theta
-zw = r(cos tetha + i sen theta) * s(cos alfa + i sen alfa)
-rs(cos o con alf - sen 0 sen alf) + i (cos 0 sen alf + sen 0 cos alf)
-rs ( cos(0+alf) + isen(0+alf))
+\begin{proposicion}
+Sean $z=re^{i\theta}$ y $w=se^{i\alpha}$ no nulos. Entonces
+\[
+zw=rs e^{i(\theta+\alpha)},\qquad |zw|=|z||w|.
+\]
+En particular, $\theta+\alpha$ es un argumento de $zw$.
+\end{proposicion}
+\begin{demostracion}
+Por las fórmulas de adición del seno y del coseno,
+\begin{align*}
+zw&=rs(\cos\theta+i\sin\theta)(\cos\alpha+i\sin\alpha)\\
+&=rs\bigl(\cos\theta\cos\alpha-\sin\theta\sin\alpha
++i(\cos\theta\sin\alpha+\sin\theta\cos\alpha)\bigr)\\
+&=rs\bigl(\cos(\theta+\alpha)+i\sin(\theta+\alpha)\bigr).
+\end{align*}
+\end{demostracion}
+\begin{nota}{Suma de argumentos}
+La identidad para argumentos principales se interpreta módulo $2\pi$:
+\[
+\operatorname{Arg}(zw)\equiv
+\operatorname{Arg}(z)+\operatorname{Arg}(w)\pmod{2\pi}.
+\]
+Aquí $a\equiv b\pmod{2\pi}$ significa $a-b\in2\pi\mathbb Z$.
+Por ejemplo, $\operatorname{Arg}((-1)(-1))=0$, pero
+$\operatorname{Arg}(-1)+\operatorname{Arg}(-1)=2\pi$.
+\end{nota}
 
-rs * e^i(0+alf)
-arg(zw) = arg(z)+arg(w)
-z tiene varios args??
+\begin{proposicion}[{title={Fórmula de De Moivre}}]
+Para $n\in\mathbb Z$ y $\theta\in\mathbb R$,
+\[
+(\cos\theta+i\sin\theta)^n=\cos(n\theta)+i\sin(n\theta).
+\]
+En consecuencia, si $z=re^{i\theta}\neq0$,
+$z^n=r^n e^{in\theta}$.
+\end{proposicion}
+\begin{demostracion}
+Para exponentes positivos se aplica reiteradamente la fórmula del
+producto. Para $n=0$ ambos miembros son $1$. Para exponentes negativos
+se usa $(e^{i\theta})^{-1}=e^{-i\theta}$ y el caso positivo.
+\end{demostracion}
 
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+\section{Raíces de números complejos}
+\subsection{Raíces cuadradas}
+Sea $z=re^{i\theta}\neq0$. Si $w=\rho e^{i\varphi}$ satisface $w^2=z$,
+entonces
+\[
+\rho^2=r,\qquad 2\varphi-\theta=2k\pi\quad(k\in\mathbb Z).
+\]
+Luego $\rho=\sqrt r$ y $\varphi=\theta/2+k\pi$. Los valores $k=0,1$
+dan las dos raíces distintas:
+\[
+w_0=\sqrt r\,e^{i\theta/2},\qquad
+w_1=\sqrt r\,e^{i(\theta/2+\pi)}=-w_0.
+\]
+Al aumentar $k$ en $2$, el ángulo aumenta en $2\pi$ y se repite la raíz.
 
-(cos 0 + isen)elevado n =  z ^ n = e^in0 = cos 0n + isen 0n
+\begin{proposicion}[{title={Raíces $n$-ésimas}}]
+Sea $n\geq1$ entero y $z=re^{i\theta}\neq0$. La ecuación $w^n=z$
+tiene exactamente $n$ soluciones distintas:
+\[
+w_k=\sqrt[n]{r}\,e^{i(\theta+2k\pi)/n},
+\qquad k=0,1,\dots,n-1.
+\]
+\end{proposicion}
+\begin{demostracion}
+Escribiendo $w=\rho e^{i\varphi}$, la igualdad $w^n=z$ equivale a
+$\rho^n=r$ y $n\varphi-\theta=2k\pi$ para algún entero $k$.
+Así se obtiene la fórmula, y cada valor indicado satisface $w_k^n=z$.
+Además,
+\[
+w_k=w_\ell\quad\Longleftrightarrow\quad
+ e^{2\pi i(k-\ell)/n}=1
+\quad\Longleftrightarrow\quad n\mid(k-\ell).
+\]
+Entre $0$ y $n-1$ esto solo ocurre si $k=\ell$. Cualquier otro entero
+$k$ da la misma raíz que su resto módulo $n$; no hay más soluciones.
+\end{demostracion}
 
-z = r e ^i0  , w^2 = z 
-sup que w = S e^ietha . lo que quioer ver que S^2 * e^i2etha = w^2 = z = re^io
-2etha - tetha = 2kpi
+\begin{nota}{El cero y la notación radical}
+Para $z=0$, la única raíz $n$-ésima distinta es $0$ (con multiplicidad
+$n$ como raíz del polinomio $X^n$). Para $z\neq0$, el símbolo
+$\sqrt[n]{z}$ no designa una raíz única sin elegir una convención.
+En cambio, $\sqrt[n]{r}$ con $r>0$ designa la raíz real positiva.
+Las $n$ raíces complejas están sobre la circunferencia de radio
+$\sqrt[n]{r}$, separadas por ángulos de $2\pi/n$.
+\end{nota}
 
-S = raiz cuadrada r 
-etha = theta/ 2 + pik  / k in Z
+\begin{ejemplo}
+Las raíces cúbicas de $1$ son
+\[
+1,\qquad e^{2\pi i/3}=-\frac12+i\frac{\sqrt3}{2},\qquad
+ e^{4\pi i/3}=-\frac12-i\frac{\sqrt3}{2}.
+\]
+\end{ejemplo}
 
-k= 0 etha = thetha/2
-k= 1 etha = theta / 2 +pi
-k=2  etha = theta / 2 +2pi
-se vuelve a repetir  
+\section{El grupo de las raíces de la unidad}
+\begin{definicion}
+Para un entero $n\geq1$, definimos
+\[
+G_n=\{w\in\mathbb C:w^n=1\}.
+\]
+Sus elementos se llaman \textbf{raíces $n$-ésimas de la unidad}.
+\end{definicion}
+Por la fórmula de las raíces,
+\[
+G_n=\{e^{2\pi ik/n}:k=0,1,\dots,n-1\},\qquad |G_n|=n.
+\]
 
-los numeros impares n.esja de orden par
-todo numero complejo tiene exactamente n-raices e-nesimas , que son 
+\begin{proposicion}
+El conjunto $G_n$ es un grupo abeliano para el producto de complejos.
+Además, es cíclico: si $\zeta_n=e^{2\pi i/n}$, entonces
+$G_n=\{1,\zeta_n,\dots,\zeta_n^{n-1}\}$.
+\end{proposicion}
+\begin{demostracion}
+Si $z,w\in G_n$, entonces $(zw)^n=z^nw^n=1$, de modo que
+$zw\in G_n$. El neutro $1$ pertenece a $G_n$. Como $z^n=1$ implica
+$z\neq0$, existe $z^{-1}$ y $(z^{-1})^n=(z^n)^{-1}=1$.
+La asociatividad y la conmutatividad se heredan de $\mathbb C$.
+Finalmente, la descripción explícita de $G_n$ muestra que todos sus
+elementos son potencias de $\zeta_n$.
+\end{demostracion}
 
-$\raiz enesima de r * e^io/n , raiz enemsima de r * e^i/thata/n *2pi/n$
+\begin{proposicion}[{title={Inclusión entre grupos de raíces de la unidad}}]
+Para enteros positivos $n,m$,
+\[
+G_n\subseteq G_m\quad\Longleftrightarrow\quad n\mid m.
+\]
+Como ambos son grupos con la misma operación, esta inclusión también
+se escribe $G_n\leq G_m$.
+\end{proposicion}
+\begin{demostracion}
+Si $m=qn$ y $z\in G_n$, entonces $z^m=(z^n)^q=1$, luego
+$z\in G_m$. Recíprocamente, si $G_n\subseteq G_m$, entonces
+$\zeta_n=e^{2\pi i/n}\in G_m$. Por lo tanto
+$e^{2\pi im/n}=1$, lo que equivale a $m/n\in\mathbb Z$; es decir,
+$n\mid m$.
+\end{demostracion}
+\begin{ejemplo}
+$G_2\leq G_4$ porque $2\mid4$. En cambio, aunque $2<3$,
+$G_2\nsubseteq G_3$, ya que $-1\in G_2$ pero $(-1)^3=-1\neq1$.
+\end{ejemplo}
 
-
-raiz enesima de r * e^i(0/n * k 2pi/n) = CUIDADO CALAVERITA = raiz enesima Z 
-
-1 = 1 * e^iO 
-las raices nesimas de 1 son los numeros de la forma :
-e^i2pik/n 
-def : 
-Gn = { w in C : w^n = 1 ^ n}
-tema : |G | = n 
-Gn =  {e^i2pik/n} 
-
-es cerrado para el producto , si uno tiene dos raices para la unidad
-si z , w in Gn entonces zw in Gn 
-z^n = 1 = w ^ n -> (zw)^n = z^n * w^n = 1*1 = 1 
-(z^-1)^n = z^-n = 1/1 = 1 
-1 in Gn 
-Gn es un grupo Abeliano para el producto 
-entonces , Gn <= Gm , z in Gn z^n = 1 z^2n = (z^n)^2 = 1^2 = 1 , si y solo si n | m
-
-si Gn <= Gm entonces n|m , 
-si que 1 = (e^i2pi/n)^m = e^i2pim/n
-entonces hay un entero tal que 2pi - 0 = 2kpi
-m/n = k  -> n = k*m asi que n|m
+\begin{nota}{Fragmentos incompletos de los apuntes originales}
+La anotación sobre potencias reales puede precisarse así: si $a>1$
+y $u,v\in\mathbb Q$ con $u\leq v$, entonces $a^u\leq a^v$.
+Es una observación separada de la teoría de argumentos.
+La frase sobre números impares y orden par no permite reconstruir
+un enunciado inequívoco; no se incorpora como afirmación matemática.
+La inclusión final entre $G_n$ y $G_m$ se completó con la condición
+necesaria y suficiente $n\mid m$ y su demostración.
+\end{nota}

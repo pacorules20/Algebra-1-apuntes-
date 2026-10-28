@@ -59,11 +59,83 @@ módulo $5$:
 \]
 \end{ejemplo}
 
-\begin{nota}
+\begin{nota}{Cancelación de factores}
 Si $(k:m)\neq 1$ no se puede dividir sólo a los lados sin cambiar el módulo. Por
 ejemplo $2\cdot 3\equiv 2\cdot 1 \pmod 4$ (pues $6\equiv 2$), pero
 $3\not\equiv 1 \pmod 4$. Lo correcto en ese caso es la Regla 1, que también
 divide el módulo: $3\equiv 1 \pmod 2$.
+\end{nota}
+
+\section{Ecuaciones diofánticas lineales}
+
+\begin{definicion}
+Una \textbf{ecuación diofántica} es una ecuación polinómica con coeficientes enteros cuyas soluciones se buscan en $\mathbb Z$. Aquí estudiamos
+\[
+ax+by=c,\qquad a,b,c\in\mathbb Z.
+\]
+Sirve para problemas con cantidades enteras (monedas, paquetes, objetos) y para resolver congruencias: $ax\equiv c\pmod m$ equivale a $ax+my=c$ para algún $y\in\mathbb Z$.
+\end{definicion}
+
+\begin{proposicion}[{title={Condición de existencia}}]
+Si $a,b$ no son ambos nulos y $d=(a:b)$, entonces
+\[
+ax+by=c\text{ tiene solución entera}\iff d\mid c.
+\]
+En efecto, $d$ divide toda combinación $ax+by$; recíprocamente, Bézout permite escribir $d=au+bv$ y multiplicar por $c/d$.
+\end{proposicion}
+
+\subsection{Los tres pasos: $S_0$, particular y general}
+Supongamos $a,b\neq0$. Si $d\mid c$, dividimos toda la ecuación por $d$:
+\[
+Ax+By=C,\qquad A=\frac ad,\quad B=\frac bd,\quad C=\frac cd,
+\qquad (A:B)=1.
+\]
+
+\begin{teoria}[{title={1. $S_0$: soluciones de la homogénea}}]
+Primero resolvemos $Ax+By=0$:
+\[
+Ax=-By\ \Longrightarrow\ A\mid By
+\ \underset{(A:B)=1}{\Longrightarrow}\ A\mid y.
+\]
+Entonces $y=Ak$ y, sustituyendo, $x=-Bk$. Con $t=-k$,
+\[
+S_0=\{(Bt,-At):t\in\mathbb Z\}.
+\]
+\end{teoria}
+
+\begin{nota}{El paso de divisibilidad}
+Se parte de la igualdad $Ax=-By$, no de $Ax\mid By$. Para pasar de $A\mid By$ a $A\mid y$ usamos el lema de Gauss y que $A,B$ son coprimos; por eso primero dividimos por el mcd.
+\end{nota}
+
+\begin{teoria}[{title={2. Particular: elegir una solución $(x_p,y_p)$}}]
+Buscamos un par fijo tal que $Ax_p+By_p=C$, por inspección o por Bézout:
+\[
+Au+Bv=1\ \Longrightarrow\ (x_p,y_p)=(Cu,Cv).
+\]
+Con la notación $S_p$, podemos escribir $S_p=\{(x_p,y_p)\}$.
+\end{teoria}
+
+\begin{teoria}[{title={3. $S_g$: todas las soluciones}}]
+Sumamos la particular a las soluciones de la homogénea:
+\[
+\boxed{S_g=\{(x_p+Bt,\ y_p-At):t\in\mathbb Z\}.}
+\]
+Esto da todas: al restar dos soluciones de $Ax+By=C$ queda
+$A(x-x_p)+B(y-y_p)=0$, es decir, una solución de la homogénea.
+\end{teoria}
+
+\begin{ejemplo}
+Resolver $6x+9y=30$. Como $(6:9)=3\mid30$, dividimos por $3$ y queda $2x+3y=10$.
+\begin{enumerate}
+\item \textbf{Homogénea:} $2x=-3y\Rightarrow2\mid3y\Rightarrow2\mid y$. Luego $S_0=\{(3t,-2t):t\in\mathbb Z\}$.
+\item \textbf{Particular:} $(x_p,y_p)=(2,2)$, pues $2\cdot2+3\cdot2=10$.
+\item \textbf{General:} $S_g=\{(2+3t,2-2t):t\in\mathbb Z\}$.
+\end{enumerate}
+Si se requieren $x,y\geq0$, imponemos esas desigualdades: queda $t=0$ o $t=1$, con soluciones $(2,2)$ y $(5,0)$.
+\end{ejemplo}
+
+\begin{nota}{Si algún coeficiente es cero}
+Si $a=0$, resolvemos $by=c$ y $x$ queda libre; si $b=0$, resolvemos $ax=c$ y $y$ queda libre. Si $a=b=0$, todo par sirve cuando $c=0$ y no hay soluciones cuando $c\neq0$.
 \end{nota}
 
 \section{Teorema chino del resto}
@@ -77,7 +149,7 @@ x\equiv c_2 \pmod{m_2}\\
 x\equiv c_n \pmod{m_n}
 \end{cases}
 \]
-si $(m_i:m_j)=1$ para todo $i\neq j$ (los módulos son coprimos dos a dos),
+si $m_1,\dots,m_n\geq1$ y $(m_i:m_j)=1$ para todo $i\neq j$ (los módulos son coprimos dos a dos),
 entonces el sistema tiene una única solución $x_0$ tal que
 \[
 0\le x_0<m_1m_2\cdots m_n.

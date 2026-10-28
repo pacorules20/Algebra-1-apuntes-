@@ -1,83 +1,239 @@
-raices en f 
-sea z =re^io un elemento de c no nulo, y si a es un entero posible hay en c exactamente n raices nesimas de z a saber, los numeros 
-raizcuadrada (r.e^eOi/n) * e ^ 2pik/n con k=0 , n -1
+\chapter{23-10-26}
+\section{Raíces en $\mathbb C$: repaso}
+\begin{proposicion}
+Sea $z=re^{i\theta}\in\mathbb C$ no nulo, con $r>0$, y sea $n\geq1$
+un entero. Existen exactamente $n$ raíces $n$-ésimas distintas de $z$:
+\[
+w_k=\sqrt[n]{r}\,e^{i\theta/n}e^{2\pi ik/n}
+=\sqrt[n]{r}\,e^{i(\theta+2\pi k)/n},\qquad k=0,\dots,n-1.
+\]
+Equivalentemente, el polinomio $X^n-z$ tiene exactamente $n$ raíces
+distintas en $\mathbb C$.
+\end{proposicion}
+\begin{demostracion}
+Cada número indicado satisface $w_k^n=re^{i\theta}=z$.
+Recíprocamente, si $w=\rho e^{i\varphi}$ y $w^n=z$, entonces
+$\rho^n=r$ y $n\varphi=\theta+2\pi k$ para algún $k\in\mathbb Z$.
+La fórmula anterior describe, por lo tanto, todas las raíces.
+Además, $w_k=w_j$ equivale a $n\mid(k-j)$, lo cual para
+$0\leq k,j<n$ equivale a $k=j$.
+\end{demostracion}
+\begin{nota}{Notación}
+El radical $\sqrt[n]{r}$ es la raíz real positiva de $r$; no se trata
+de una raíz cuadrada salvo cuando $n=2$. Si $z=0$, el polinomio
+$X^n$ tiene una única raíz distinta, $0$, de multiplicidad $n$.
+\end{nota}
 
-una forma de decir esto si z in C no es 0 entonces el polinomio x^n - 2 tinee exactamente n raices de C 
+\section{Polinomios sobre un cuerpo}
+En adelante, $K$ es un cuerpo y $K[X]$ es el conjunto de polinomios
+con coeficientes en $K$. Usamos $X$ como indeterminada.
 
-pagerank
+\begin{definicion}
+Un polinomio es una suma formal finita
+\[
+f=\sum_{i=0}^{d}a_iX^i,\qquad a_i\in K.
+\]
+Dos polinomios son iguales si y solo si sus coeficientes de cada
+potencia de $X$ son iguales, completando con ceros cuando sea necesario.
+Si $f\neq0$, su \textbf{grado}, denotado $\deg f$, es el mayor índice
+$i$ para el cual $a_i\neq0$; ese $a_i$ es su \textbf{coeficiente principal}.
+\end{definicion}
+\begin{nota}{Grado del polinomio cero}
+El polinomio cero tiene todos sus coeficientes nulos y no tiene grado
+como entero no negativo. Puede adoptarse la convención
+$\deg0=-\infty$. En particular, el polinomio cero no tiene grado $0$:
+los polinomios de grado $0$ son las constantes no nulas.
+\end{nota}
+\begin{nota}{Polinomios y funciones}
+La igualdad formal se refiere a coeficientes. Sobre un cuerpo finito,
+dos polinomios distintos pueden definir la misma función. Por ejemplo,
+sobre $\mathbb F_2$, los polinomios $X^2$ y $X$ coinciden al evaluarlos
+en cada elemento del cuerpo, pero no son iguales en $\mathbb F_2[X]$.
+\end{nota}
 
-la igualdad de los polinomios es la igualdad de sus coeficientes 
-el polinomio 0 tiene grado nulo 
+\subsection{Suma y grado}
+Si $f=\sum_{i=0}^{d}a_iX^i$ y $g=\sum_{i=0}^{e}b_iX^i$, tomando
+$N=\max\{d,e\}$ y completando con coeficientes nulos, definimos
+\[
+f+g=\sum_{i=0}^{N}(a_i+b_i)X^i.
+\]
+\begin{proposicion}
+Si $f,g$ son no nulos y $f+g\neq0$, entonces
+\[
+\deg(f+g)\leq\max\{\deg f,\deg g\}.
+\]
+Hay igualdad si $\deg f\neq\deg g$. Si ambos tienen grado $d$, hay
+igualdad si y solo si $a_d+b_d\neq0$.
+\end{proposicion}
+\begin{demostracion}
+No aparecen términos de grado superior al máximo de los grados.
+Si los grados son distintos, el término de mayor grado de la suma
+proviene de un solo sumando y no puede cancelarse. Si son iguales,
+el coeficiente de $X^d$ en la suma es $a_d+b_d$.
+\end{demostracion}
+\begin{ejemplo}
+En $\mathbb Q[X]$, si $f=X^2+1$ y $g=-X^2+X$, entonces $f+g=X+1$:
+el grado baja porque se cancelan los coeficientes principales.
+\end{ejemplo}
 
-fg in k [x]
+\subsection{Producto y grado}
+El producto se obtiene distribuyendo y agrupando potencias iguales:
+\[
+fg=\left(\sum_{i=0}^{d}a_iX^i\right)
+\left(\sum_{j=0}^{e}b_jX^j\right)
+=\sum_{\ell=0}^{d+e}\left(
+\sum_{\substack{0\leq i\leq d,\ 0\leq j\leq e\\i+j=\ell}}
+a_ib_j\right)X^\ell.
+\]
+\begin{proposicion}
+Si $f,g\neq0$, entonces $fg\neq0$ y
+\[
+\deg(fg)=\deg f+\deg g.
+\]
+En consecuencia, $fg=0$ si y solo si $f=0$ o $g=0$.
+\end{proposicion}
+\begin{demostracion}
+Si $\deg f=d$ y $\deg g=e$, el coeficiente de $X^{d+e}$ en $fg$ es
+$a_db_e$. Como $K$ es un cuerpo y ambos factores son no nulos,
+$a_db_e\neq0$. No hay términos de grado mayor que $d+e$.
+Si algún factor es cero, el producto es cero; el recíproco se sigue
+del caso de factores no nulos.
+\end{demostracion}
+Así, con estas operaciones, $K[X]$ es un anillo conmutativo con unidad
+$1$ y sin divisores de cero: un \defterm{dominio de integridad}.
 
-f = sum de i= 0 hasta d de : a_i x^i
+\section{Elementos inversibles y divisibilidad}
+\begin{proposicion}
+Los elementos inversibles de $K[X]$ son exactamente las constantes
+no nulas, es decir, los elementos de $K^\times=K\setminus\{0\}$.
+En particular, $K[X]$ no es un cuerpo.
+\end{proposicion}
+\begin{demostracion}
+Si $c\in K$ es no nulo, su inverso $c^{-1}\in K$ también pertenece a
+$K[X]$. Si $fg=1$, ambos factores son no nulos y
+\[
+0=\deg1=\deg(fg)=\deg f+\deg g.
+\]
+Como ambos grados son no negativos, los dos son $0$. Por lo tanto,
+$f$ y $g$ son constantes no nulas. El polinomio $X$, por ejemplo,
+no es inversible, aunque es no nulo.
+\end{demostracion}
+\begin{ejemplo}
+En $\mathbb Q[X]$, una constante $q\in\mathbb Q\setminus\{0\}$ tiene
+inverso $1/q$. En cambio, $X$ y $X+1$ no tienen inverso en $\mathbb Q[X]$.
+\end{ejemplo}
 
-f+g= a0+a1x....+ad x^d   + b0 +b1x + ..... bex^e
+\begin{definicion}[{title={Divisibilidad de polinomios}}]
+Dados $f,g\in K[X]$, decimos que $f$ \textbf{divide} a $g$, y escribimos
+$f\mid g$, si existe $h\in K[X]$ tal que $g=fh$.
+\end{definicion}
+\begin{proposicion}
+Si $f,g\in K[X]$ son no nulos, entonces
+\[
+f\mid g\ \text{y}\ g\mid f
+\quad\Longleftrightarrow\quad
+ g=cf\ \text{para algún }c\in K^\times.
+\]
+En este caso se dice que $f$ y $g$ son \textbf{asociados}.
+\end{proposicion}
+\begin{demostracion}
+Si $g=fu$ y $f=gv$, entonces $g=gvu$ y $g(vu-1)=0$.
+Como $g\neq0$ y no hay divisores de cero, $vu=1$.
+Así, $u,v$ son constantes no nulas y $g=uf$.
+Recíprocamente, si $g=cf$ con $c\neq0$, entonces $f=c^{-1}g$,
+por lo que se cumplen ambas divisibilidades.
+\end{demostracion}
 
-f+g distinto 0 , gr(f+g) <= que el gr(g) o gr(f)
-aqui vale la igualdad si gr(f) distinto gr(g)
-o si gr g = gr f y ad distinto ba 
+\section{Congruencia e irreducibilidad}
+\begin{definicion}[{title={Congruencia módulo un polinomio}}]
+Fijado $f\in K[X]$ no nulo, decimos que $u,v\in K[X]$ son
+\textbf{congruentes módulo $f$} si $f\mid(u-v)$. Escribimos
+\[
+u\equiv v\pmod f.
+\]
+\end{definicion}
+No es necesario que $u$ y $v$ sean no constantes. Si $f$ es una
+constante no nula, todos los polinomios son congruentes entre sí.
+La congruencia es una relación de equivalencia y es compatible con
+la suma y el producto: si $u\equiv v\pmod f$ y $s\equiv t\pmod f$,
+entonces $u+s\equiv v+t\pmod f$ y $us\equiv vt\pmod f$.
+En efecto, $(u+s)-(v+t)=(u-v)+(s-t)$ y
+$us-vt=s(u-v)+v(s-t)$ son múltiplos de $f$.
 
-f*g = sum de i = 0 a d de = a_1 x^i * sum de j = 0 a e de = b_1 x^j 
+\begin{definicion}[{title={Polinomio irreducible}}]
+Un polinomio $p\in K[X]$ es \textbf{irreducible} si es no nulo, no
+inversible y, para toda factorización $p=uv$ con $u,v\in K[X]$, alguno
+de los factores es inversible.
+\end{definicion}
+Equivalentemente, $\deg p\geq1$ y $p$ no puede escribirse como producto
+de dos polinomios de grado positivo.
+\begin{ejemplo}
+Todo polinomio de grado $1$ es irreducible. La irreducibilidad depende
+del cuerpo: $X^2+1$ es irreducible en $\mathbb R[X]$, pero en
+$\mathbb C[X]$ se factoriza como $(X-i)(X+i)$.
+\end{ejemplo}
 
-sum de l = 0 a d+e de sum de i = 0 ... d , j=0......e , i+j = l  de = (a_i * b_j ) * x^l
+\section{Algoritmo de la división de polinomios}
+\begin{proposicion}[{title={Algoritmo de la división}}]
+Sea $K$ un cuerpo. Dados $g,f\in K[X]$, con $f\neq0$, existen únicos
+polinomios $q,r\in K[X]$ tales que
+\[
+g=qf+r,\qquad r=0\ \text{o}\ \deg r<\deg f.
+\]
+El polinomio $g$ es el dividendo, $f$ el divisor, $q$ el cociente y
+$r$ el resto.
+\end{proposicion}
+\begin{demostracion}
+\textbf{Existencia.} Si $g=0$, tomamos $q=r=0$.
+Si $\deg f=0$, el divisor es una constante no nula y podemos tomar
+$q=f^{-1}g$ y $r=0$. Supongamos entonces $m=\deg f\geq1$.
 
-prop fg = 0 <-> alguno de f o g es nulo 
-si f g distinto 0 , entonces gr(fg) gr(f) + gr(g)
+Hacemos inducción fuerte sobre $n=\deg g$ para dividendos no nulos.
+Si $n=0$, tomamos $q=0$ y $r=g$, pues $0=\deg g<m$.
+Supongamos que el resultado vale para todos los grados menores que
+$n$ y consideremos $g$ de grado $n$. Si $n<m$, nuevamente $q=0$ y
+$r=g$ sirven. Si $n\geq m$, escribimos los términos principales como
+$a_nX^n$ y $b_mX^m$, con $a_n,b_m\neq0$, y definimos
+\[
+t=\frac{a_n}{b_m}X^{n-m},\qquad h=g-tf.
+\]
+Los términos de grado $n$ se cancelan, por lo que $h=0$ o
+$\deg h<n$. Si $h=0$, tomamos $q=t$ y $r=0$.
+Si $h\neq0$, la hipótesis inductiva da $h=q_1f+r_1$, con
+$r_1=0$ o $\deg r_1<m$. Entonces
+\[
+g=tf+h=(t+q_1)f+r_1.
+\]
+Así, $q=t+q_1$ y $r=r_1$ satisfacen lo requerido.
 
-sabemos por lo previo que es un anillo 
-ahora es un cuerpo? 
-k= Q f = q in Q
-f es inversible en Q[x]
-es un inverso de 1/q
-
-* gr(f) >= 1 
-g*f = 1? 
-
-0 = gr(gf) gr(f)+gr(g) > 1 + 0 
-no tiene casi ningun numero inversible dependen de que sean gr 0 
-
-definicion de division de polinomios 
-
-def f,g in K[x]
-f divide a g si hay un elemento h de k[x] talque g = f*h f|g 
-
-f,g in k[x] , talque f | g y g | f 
-hay u y v en k[x]
-g = fu y  f = gv 
-entonces g = fu = gvu asi que g(vu-1) = 0 
-como g distinto 0 , entonces vu -1 = 0 , vu= 1 
-rta v,u son contantes no nulas 
-
-Congruencia
-
-fijamos f in k[x] no nulos decimos que v,u in k[x] no constante ,son congruentes mod f si 
-f| v - u , v == u mod f 
-un polinomio f = k[x] es irreducible 
-si cada vez que f = vu con vu in k[x] alguno de v o u es inversible
-
-algoritmo de la vision 
-sea k un cuerpo si f,g in k [x]
-y g =distinto 0 , entonces hay una unica dorma de elegir polinomios ,q r in k [x]
-talque g = qf + r 
-r = 0 o gr(r) < gr(f)
-demostracion hagamos induccion , restpo al grado de g 
-p_n = si g es elemento de k [x] de grado n , entonces hay q, r in k[x] talque g = qr +r y r = 0 o gr(r) < gr(f)
-veamos que p0 vale sea g in k[x] de grado 0 , es decir, un elemento no nulo de k .
-en ese caso g= 0 f + g 
-esto funcion porque o bien g = 0 o bien gr(r) <g(f)
-
-sea n >= 0 y supongamos que  p0 , .... pn vale , quiero ver que pn+1 vale.
-
-supongamos que g = polinomio grado n+1 y f grado m 
-
-me va a quedar h=g --- an+1/bm X^n+1-m F 
-gr ((an+1/bm) X^n+1-m F) = gr(g)
-coeficinete de ppa/g = coeficniente fppa (an+1/bm)X^n+1-m f
-gr(h) = gr(g-an+1/bm X^n+1-m F)< gr(g)
-rta : gr(h) in {0,1,,,,, n} como pg(h) vale q1,r1 in k[x]  talque h = q1f+r1
-r1 = 0 o gr(r1) < gr(f)
-g = an+1/bm X^n+1-m f + q1 f + r1 
-g = q igual a este parentesis (an+1/bm X^n+1-m + q1 )f + r1 
-por lo tanto pn+1 vale 
+\textbf{Unicidad.} Supongamos que
+$g=qf+r=q'f+r'$, con ambos restos admisibles. Entonces
+\[
+(q-q')f=r'-r.
+\]
+Si $q\neq q'$, el miembro izquierdo es no nulo y tiene grado
+$\deg(q-q')+\deg f\geq\deg f$. El miembro derecho, si es no nulo,
+tiene grado menor que $\deg f$; si es cero, tampoco puede ser igual
+al miembro izquierdo no nulo. Esto es una contradicción.
+Luego $q=q'$ y, sustituyendo, $r=r'$.
+\end{demostracion}
+\begin{nota}{Por qué se requiere un cuerpo}
+El paso que elimina el término principal utiliza $a_n/b_m$.
+En un cuerpo todo coeficiente $b_m\neq0$ tiene inverso.
+Sobre un anillo arbitrario este paso puede fallar; por ejemplo, en
+$\mathbb Z[X]$ no se puede dividir $X$ por $2X$ con resto cero
+o de grado menor que $1$ y cociente de coeficientes enteros.
+\end{nota}
+\begin{ejemplo}
+En $\mathbb Q[X]$, al dividir $g=X^3+1$ por $f=X^2+1$ resulta
+\[
+X^3+1=X(X^2+1)+(1-X).
+\]
+Por lo tanto $q=X$ y $r=1-X$, con $\deg r=1<2=\deg f$.
+En particular, $X^3+1\equiv1-X\pmod{X^2+1}$.
+\end{ejemplo}
+\begin{nota}{Fragmento aislado}
+La palabra ``PageRank'' aparece sin desarrollo en la transcripción.
+No se incorpora como contenido de esta clase porque no hay un
+enunciado que permita determinar su relación con estos apuntes.
+\end{nota}
