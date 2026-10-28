@@ -1,0 +1,96 @@
+def sea f ,g dos elementos de k[x], no simultaneamente no nulos llamamos max comun divisor de f y g 
+al polinomio monico de grado mas grande ,maximo que divide a f y a g 
+observacion si f,g in k[x] no son los dos nulos, entonces hay un mcd para f y g-
+f = x^2 +1 
+g = x^2 + 2 
+mod (f+g) = a(x^2+1)
+
+mcd(x,x-1)
+los divisores monicos de x son 1, x
+el mcd (X,x-1) = 1 
+
+D(f,g) = {n in k[x] : h|f y h|g}
+sea d (f,g) = {gr h: h in D (f,g)}
+c{0,1,--,grf}
+como es finito podemos considerar los numero delta = max d(f,g)
+como delta in d(f,g) , hay un elemento de h in D (f,g) 
+talque gr h = delta
+sup que h' es otro elemnto de D(f,s) talque gr h' = delta
+
+
+identidad de bezout para polinomios :
+D(f,g) = D(f-gh,g)
+l in D(f,g) entonces l| f y l|g
+y entonces l | f-gh
+l in D(f-gh,g) , l|(f-gh ,g) entonces l|gh
+y entonces l|(f-gh)+ gh = f 
+moster que D|(hg) tiene un unico eleento de grado maximo haciendo ineuccion con resto a gr(f) + gr(g)
+si f,g in k[x] son no nulos  y gr(f)+gr(g) = n , entonces d(f,g) tieme un unico elemnyo de grado maximo
+caso base po ? so f,g in k[x] talque gr(f) + gr(g) = 0 . emtpmces D(f,g) tiene un unico elemento de grado maximo
+entomces, fg son constantes, no nulos. y D(f,g) ={1} , po vale
+paso inductivo sea n in N y supongamos que vale po, pn-1 y probemos que vale pn sea f,g in k[x] talque g(f) + sf(g) = n supongamos que gr(f) >= gr(g) 
+y sea q,r el cociente y el resto de dividr a f pos g : f= qg+r y que r= 0 y gr(r) <gr(g) 
+D(f,g) = D(f-qg,g) = D(r,g) 
+.Si r= , D(r,g) = D(0,g) 
+y g/cp(g) es el unico elemnyo de gr max de D (0,g) 
+si r es distinc 0 , gr(r) + gr(g) < gr(g) +gr(g) < g(f) +g(g) = n
+la hipotesis inductivo pm vale, por lo tanto D(r,g) tiene un unico elemento de grado maximo
+
+la identidaaa de bezout para pols 
+
+si f,g in K[x] entonces hay v , u in k[x] talque vf + ug = mcd(f,g)
+para cada n in N0 sea la afirmacion si f y g son polinomios no nulos talques la suma de los grados de g y f es n 
+esntonces hay pol u y v talque uf + vg = mcd(f,g)
+
+caso base : p0 sean f y g dos pols 
+talque la suma de los grados de f y g = 0 , son entonces f y g son constantes no nulos y mcd(f,g) = 1 
+1/f f + g0 = 1 = mcd(f,g)
+
+paso inductivo : sea n in N , y suongamos que elemento po, p.... pn-1 y mostremos que pn tambien vale . sea f y g polinomios talque gr(f) + gr(g) = n 
+supng que gr(f) >= gr(g) resto al dividir a f por g 
+f = qg+r
+r= 0  gr(f) < gr(g) 
+supongo 1ro que r= 0 , se que f =qg y mcd(f,g) = g/cp(g) 
+si ponemos v= 0 y r = 1/cp(g)
+entonces vf + rg = g/cp(g) = mcd(f,g) 
+supongo que r not in 0 . gr(r) < gr(g) <gr(f) 
+asi que m = gr(r) +gr(g) < gr(f) +gr(g)
+entonces pm vale para la hi 
+entonces hay v0 y u0 in k[x] talque 
+u0r + v0g = mcd(r,g) 
+u0(f-qg) +v0g 
+u0f + (v0-u0q) g 
+por lo que pn vale 
+
+ejemplo de mcd(r,g)
+
+bezout ejemplo
+vamos a contar divisores monicos 
+def un polinomio p un k [X]
+es irreducible (no es constante es monico) si y sus unicas divisores monicos es 1 y p 
+
+tema: un polinomio monico p es irreducible si y solo si siempre que f,g in k[X]
+taque p|fg, entonces p|f y p|g
+dem : supongamos que p es irreducible y que f, g in k[x] talque p|f,g y pno divide f , entonces mcd(p,f) = 1 
+y el lema de bezout nos dice que hay u,v in k[x] talque up +vf = 1
+ upg + vfg = g 
+ entonces p|upg+ vfg = g 
+ entonces p|g 
+ supongamos que p tiene esa propiedad y que p no es irreducible de ,amera que hay un polinomio monuico qdif q ,p talque q|p , hay un v en k[x]
+ talque p = qv entonces p|qv , asiq que p|q y p|v ento es abs . porque gr(p) = gr(q) + gr(u)
+
+
+
+ teorema fundamental para polinomios 
+ todo polimomio no nulo f in k[x] no nulo se puede escribir exactamente una forma como producto de una constante no nula y polinomios irreducibles
+
+ demostracion existencia . para cada n in N0 sea pn = si f in k[X] no nulo de grado n , entonces f tiene una factorizacion como * 
+ caso de p0 sea f im k[x] no nulo de grado 0 entonce f es constante a f = a es una factorizacion
+
+ paso inductivo : sea n in N supongaos que vale Po ,,, pn-1 y probemos que vale pn sea f in k[x] no nulo 
+ talque g(f) = n sea g = f/cp(f) que es monico si g es irreducible entonces f= cp(f) * g esto es una factorizacion
+ caso g no irreducible : que hay un un polinomio de grado menos que lo divide 
+ supo que g no es irreducible, de manera que hay un pol h que 0<gr(h) < gr(g) y h|g
+ hay un pol u in k[x] tq  g = uh
+ como gr(u) , gr(h) < gr(f)
+ entonces vale 
