@@ -29,6 +29,37 @@ multiplicativo en $\mathbb{Z}$.
 \section{Números complejos}
 
 \subsection{Forma binomial}
+\chapter{Números complejos}
+
+\section{Cuerpos}
+
+\begin{definicion}
+Sea $K$ un conjunto y sean $+,\cdot : K\times K\to K$ dos operaciones en $K$.
+Se dice que $(K,+,\cdot)$ es un \textbf{cuerpo} si se cumple:
+\begin{enumerate}
+    \item $+$ y $\cdot$ son asociativas y conmutativas.
+    \item Existe un elemento neutro para la suma, $0\in K$, tal que $x+0=x$
+    para todo $x\in K$.
+    \item Existe un elemento neutro para el producto, $1\in K$, con $1\neq 0$,
+    tal que $x\cdot 1=x$ para todo $x\in K$.
+    \item Cualquiera sea $x\in K$, existe un inverso aditivo u \textbf{opuesto}
+    $-x\in K$ tal que $x+(-x)=0$.
+    \item Cualquiera sea $x\in K$ con $x\neq 0$, existe un inverso
+    multiplicativo $x^{-1}\in K$ tal que $x\cdot x^{-1}=1$.
+    \item El producto es distributivo sobre la suma:
+    $x\cdot(a+b)=x\cdot a+x\cdot b$ para todos $x,a,b\in K$.
+\end{enumerate}
+\end{definicion}
+
+\begin{ejemplo}
+$\mathbb{Q}$, $\mathbb{R}$ y $\mathbb{C}$ son cuerpos con la suma y el producto
+usuales. $\mathbb{Z}$ no lo es: por ejemplo $2\in\mathbb{Z}$ no tiene inverso
+multiplicativo en $\mathbb{Z}$.
+\end{ejemplo}
+
+\section{Números complejos}
+
+\subsection{Forma binomial}
 
 \begin{definicion}
 El conjunto de los \textbf{números complejos} es
@@ -59,17 +90,7 @@ Sea $z\in\mathbb{C}$. Entonces:
 \end{enumerate}
 \end{proposicion}
 
-\begin{demostracion}
-Sea $z=a+bi$ con $a,b\in\mathbb{R}$.
 
-(1) $z\overline{z}=(a+bi)(a-bi)=a^2-abi+abi-b^2i^2=a^2+b^2=|z|^2$, usando $i^2=-1$.
-
-(2) Si $z\neq 0$ entonces $|z|^2=a^2+b^2\neq 0$, y por (1)
-\[
-z\cdot\frac{\overline{z}}{|z|^2}=\frac{z\overline{z}}{|z|^2}=\frac{|z|^2}{|z|^2}=1,
-\]
-así que $\overline{z}/|z|^2$ es el inverso multiplicativo de $z$.
-\end{demostracion}
 
 \begin{ejemplo}
 Calcular $\dfrac{1}{3+4i}$. Como $|3+4i|^2=9+16=25$,
@@ -401,48 +422,6 @@ z^n=\begin{cases}
 Se reduce el ángulo módulo $2\pi$, pero el factor $2^n$ se conserva.
 \end{ejemplo}
 
-\subsection{Argumentos y congruencias angulares}
-\begin{definicion}
-Para ángulos reales escribimos
-\[
-\alpha\equiv\beta\pmod{2\pi}
-\quad\Longleftrightarrow\quad
-\alpha-\beta=2k\pi\text{ para algún }k\in\mathbb Z.
-\]
-\end{definicion}
-\begin{proposicion}[{title={Reglas para los argumentos}}]
-Sean $z,w\neq0$ y $n\in\mathbb Z$. Entonces
-\begin{align*}
-\arg(zw)&\equiv\arg(z)+\arg(w)\pmod{2\pi},\\
-\arg(z/w)&\equiv\arg(z)-\arg(w)\pmod{2\pi},\\
-\arg(z^n)&\equiv n\arg(z)\pmod{2\pi},\\
-\arg(\overline z)&\equiv-\arg(z)\pmod{2\pi}.
-\end{align*}
-En cada caso, $\arg$ designa el representante único en $[0,2\pi)$.
-\end{proposicion}
-\begin{nota}{No perder soluciones.}
-No se pueden reemplazar estas congruencias por igualdades reales sin
-considerar las vueltas completas. De $m\theta\equiv\alpha\pmod{2\pi}$,
-con $m\geq1$ entero, resulta
-\[
-\theta=\frac\alpha m+\frac{2k\pi}{m},\qquad k\in\mathbb Z.
-\]
-Hay $m$ direcciones distintas módulo $2\pi$.
-Tampoco debe usarse solamente $\arctan(b/a)$ para hallar un argumento:
-hay que verificar el cuadrante, y considerar por separado $a=0$.
-\end{nota}
-\begin{ejemplo}
-Hallar $n\in\mathbb N$ tales que $(\sqrt3-i)^n$ sea real negativo.
-Como $\sqrt3-i=2e^{-i\pi/6}$, la condición es
-\[
--\frac{n\pi}{6}\equiv\pi\pmod{2\pi}
-\iff -n\equiv6\pmod{12}
-\iff n\equiv6\pmod{12}.
-\]
-Por lo tanto $n=6+12t$, con $t\in\mathbb N_0$.
-Si hay dos condiciones angulares, se resuelven simultáneamente las
-congruencias obtenidas, sin descartar ninguna.
-\end{ejemplo}
 
 \section{Raíces de números complejos}
 \begin{definicion}
@@ -573,32 +552,635 @@ Si $w\in G_n$, siempre es válido reducir exponentes módulo $n$;
 si se conoce su orden $d$, también pueden reducirse módulo $d$.
 \end{nota}
 
-\subsection{Inclusiones e intersecciones}
-\begin{proposicion}
-Para $n,m\geq1$ enteros,
+
+\subsection{Sumas geométricas}
+\begin{proposicion}[{title={Suma geométrica finita}}]
+Si $q\in\mathbb C$ y $N\in\mathbb N_0$, entonces
 \[
-G_n\subseteq G_m\iff n\mid m,
-\qquad
-G_n\cap G_m=G_{\gcd(n,m)}.
+\sum_{k=0}^{N}q^k=
+\begin{cases}
+\dfrac{q^{N+1}-1}{q-1},&q\neq1,\\[4pt]
+N+1,&q=1.
+\end{cases}
+\]
+En particular, si $w\in G_n$ y $w\neq1$,
+\[
+1+w+\cdots+w^{n-1}=0.
 \]
 \end{proposicion}
 \begin{demostracion}
-Si $m=qn$ y $w\in G_n$, entonces $w^m=(w^n)^q=1$.
-Recíprocamente, si $G_n\subseteq G_m$, entonces $e^{2\pi i/n}\in G_m$,
-de modo que $e^{2\pi im/n}=1$, lo que implica $m/n\in\mathbb Z$.
-Para la intersección, sea $d=\gcd(n,m)$. Como $d$ divide a ambos,
-$G_d\subseteq G_n\cap G_m$. Por Bézout existen $a,b\in\mathbb Z$
-con $d=an+bm$. Si $w\in G_n\cap G_m$, entonces
-$w^d=(w^n)^a(w^m)^b=1$, luego $w\in G_d$.
+Si $S=1+q+\cdots+q^N$, restando $S$ de $qS$ se obtiene
+$(q-1)S=q^{N+1}-1$. Para $q\neq1$ se divide por $q-1$.
+Si $q=1$, se suman $N+1$ términos iguales a $1$.
+\end{demostracion}
+\begin{nota}{La razón de la suma.}
+En $\sum_{k=A}^{B}w^{ak+b}$, la razón es $q=w^a$.
+Hay que separar el caso $w^a=1$, aunque $w\neq1$.
+Para $0\leq A\leq B$ y $w\neq0$,
+\[
+\sum_{k=A}^{B}w^{ak+b}
+=w^{aA+b}\sum_{j=0}^{B-A}(w^a)^j.
+\]
+La suma de todos los elementos de $G_n$ es $0$ para $n\geq2$;
+para $G_1=\{1\}$ es $1$.
+\end{nota}
+\begin{ejemplo}
+Sea $w\in G_{36}$ con $w^4\neq1$. Para $q=w^4$ se tiene $q^9=1$.
+En la suma
+\[
+\sum_{k=7}^{60}w^{4k}=q^7\sum_{j=0}^{53}q^j
+=q^7\frac{q^{54}-1}{q-1}=0,
+\]
+porque $54=6\cdot9$.
+\end{ejemplo}
+
+\section{Métodos de demostración y aplicaciones}
+\subsection{Reconocer números reales e imaginarios}
+\begin{proposicion}
+Para $z\in\mathbb C$,
+\[
+z\in\mathbb R\iff\overline z=z,
+\qquad
+\operatorname{Re}(z)=0\iff\overline z=-z.
+\]
+Si $z\neq0$, además
+\[
+z\in\mathbb R_{>0}\iff\arg(z)=0,
+\qquad
+z\in\mathbb R_{<0}\iff\arg(z)=\pi.
+\]
+\end{proposicion}
+\begin{demostracion}
+Escribiendo $z=a+bi$, la primera igualdad equivale a $b=0$ y la
+segunda a $a=0$. Para un real no nulo, el signo distingue las direcciones
+$0$ y $\pi$.
+\end{demostracion}
+\begin{nota}{El caso cero y las potencias impares.}
+La igualdad $\operatorname{Re}(z)=0$ permite que $z=0$.
+Si se exige un imaginario puro no nulo, hay que verificar también $z\neq0$.
+Si $z=bi$ con $b\in\mathbb R$, toda potencia impar de $z$ tiene parte real
+cero: $z^{2j+1}=(-1)^jb^{2j+1}i$ para $j\in\mathbb N_0$.
+No debe justificarse esto suponiendo que
+$\operatorname{Re}(z^m)=(\operatorname{Re}z)^m$, identidad que es falsa en general.
+\end{nota}
+\begin{ejemplo}
+Si $w\in G_7$ y
+\[
+u=w+w^2-w^3+w^4-w^5-w^6,
+\]
+entonces, usando $\overline w=w^{-1}$ y reduciendo exponentes módulo $7$,
+\[
+\overline u=w^6+w^5-w^4+w^3-w^2-w=-u.
+\]
+Por tanto $\operatorname{Re}(u)=0$, y lo mismo ocurre con $u^3$ y $u^5$.
+Este argumento, por sí solo, no demuestra que $u$ sea distinto de cero.
+\end{ejemplo}
+
+\subsection{Sucesiones e inducción}
+\begin{ejemplo}
+Sea $\omega=e^{2\pi i/3}$ y definamos
+\[
+z_1=1+\omega,\qquad z_{n+1}=1+z_n^2.
+\]
+Como $1+\omega=e^{i\pi/3}$, el primer término está en $G_6$.
+Además
+\[
+1+(e^{i\pi/3})^2=e^{i\pi/3},
+\]
+por lo que, por inducción, $z_n=e^{i\pi/3}$ para todo $n\geq1$.
+La comprobación del primer paso de la recurrencia permite decidir si
+una fórmula propuesta es compatible con la sucesión.
+\end{ejemplo}
+\begin{nota}{Esquema de una prueba por inducción.}
+Para demostrar una fórmula de $z_n$ se comprueba el caso inicial;
+se supone válida para un $n$ arbitrario y se sustituye esa expresión
+en la recurrencia para obtener la fórmula de $z_{n+1}$.
+Si la fórmula distingue paridad, el paso debe considerar ambos casos.
+No alcanza con comprobar varios términos.
+\end{nota}
+
+\section{Cómo elegir un método}
+\begin{nota}{Guía de trabajo.}
+\begin{enumerate}
+\item \textbf{Sumas, restas y ecuaciones con conjugados:} probar primero
+$z=a+bi$ e igualar partes reales e imaginarias.
+\item \textbf{Productos, cocientes, potencias y raíces:} probar forma polar;
+separar la ecuación del módulo y la condición angular.
+\item \textbf{Condiciones sobre exponentes enteros:} convertir la condición
+angular en una congruencia y resolver las restricciones simultáneamente.
+\item \textbf{Si $w\in G_n$:} usar $w^n=1$, reducir exponentes y sustituir
+$\overline w=w^{-1}$ antes de expandir.
+\item \textbf{Sumas de potencias:} identificar la razón geométrica y
+separar el caso en que vale $1$ antes de dividir.
+\item \textbf{Ecuaciones factorizadas:} considerar cada factor nulo;
+no dividir por expresiones que podrían anularse.
+\item \textbf{Regiones:} traducir a coordenadas o a módulo y argumento;
+marcar fronteras y verificar si el origen pertenece.
+\item \textbf{Clases de equivalencia:} parametrizar los elementos, traducir
+la relación a ángulos o exponentes y mantener la condición de pertenencia
+al conjunto donde se definió la relación.
+\end{enumerate}
+\end{nota}
+\begin{nota}{Comprobaciones finales.}
+Sustituir las soluciones en la ecuación original; verificar que los argumentos
+elegidos estén en $[0,2\pi)$; distinguir soluciones distintas de multiplicidades;
+y comprobar por separado los casos excluidos al dividir.
+Esta ampliación conserva el texto inicial y agrega teoría y ejemplos para la
+práctica 6. Los cálculos se desarrollan directamente, sin tomar como válidas
+las erratas del solucionario.
+\end{nota}
+
+\begin{definicion}
+El conjunto de los \textbf{números complejos} es
+\[
+\mathbb{C}=\{a+bi : a,b\in\mathbb{R}\},
+\]
+donde $i$ es un símbolo que cumple $i^2=-1$, con la suma y el producto
+usuales (distribuyendo y usando $i^2=-1$).
+\end{definicion}
+
+\begin{definicion}
+Dado $z\in\mathbb{C}$, la expresión $z=a+bi$ con $a,b\in\mathbb{R}$ se llama la
+\textbf{forma binomial} de $z$. Su \textbf{parte real} es $\operatorname{Re}(z)=a$
+y su \textbf{parte imaginaria} es $\operatorname{Im}(z)=b$.
+
+Dado $z=a+bi$ con $a,b\in\mathbb{R}$:
+\begin{itemize}
+    \item el \textbf{conjugado} de $z$ es $\overline{z}=a-bi\in\mathbb{C}$;
+    \item el \textbf{módulo} de $z$ es $|z|=\sqrt{a^2+b^2}\in\mathbb{R}_{\ge 0}$.
+\end{itemize}
+\end{definicion}
+
+\begin{proposicion}
+Sea $z\in\mathbb{C}$. Entonces:
+\begin{enumerate}
+    \item $z\cdot\overline{z}=|z|^2$.
+    \item Si $z\neq 0$, entonces $z^{-1}=\dfrac{\overline{z}}{|z|^2}$.
+\end{enumerate}
+\end{proposicion}
+
+
+
+\begin{ejemplo}
+Calcular $\dfrac{1}{3+4i}$. Como $|3+4i|^2=9+16=25$,
+\[
+(3+4i)^{-1}=\frac{3-4i}{25}=\frac{3}{25}-\frac{4}{25}i.
+\]
+\end{ejemplo}
+
+\begin{proposicion}[{title={Propiedades del conjugado y del módulo}}]
+Sean $z,w\in\mathbb{C}$. Entonces:
+
+\textbf{Conjugado.}
+\begin{enumerate}
+    \item $\overline{z+w}=\overline{z}+\overline{w}$.
+    \item $\overline{zw}=\overline{z}\,\overline{w}$. En particular,
+    $\overline{z^n}=\overline{z}^{\,n}$ para todo $n\in\mathbb{N}$.
+    \item $\overline{\overline{z}}=z$.
+    \item $z=\overline{z}\iff z\in\mathbb{R}$.
+    \item $z+\overline{z}=2\operatorname{Re}(z)$ y
+    $z-\overline{z}=2i\operatorname{Im}(z)$.
+\end{enumerate}
+
+\textbf{Módulo.}
+\begin{enumerate}
+    \setcounter{enumi}{5}
+    \item $|z|\ge 0$, y $|z|=0\iff z=0$.
+    \item $|\overline{z}|=|z|$.
+    \item $|zw|=|z|\,|w|$. En particular, si $z\neq 0$, $|z^{-1}|=\dfrac{1}{|z|}$.
+    \item $|\operatorname{Re}(z)|\le|z|$ y $|\operatorname{Im}(z)|\le|z|$.
+    \item (Desigualdad triangular) $|z+w|\le|z|+|w|$.
+\end{enumerate}
+\end{proposicion}
+
+
+
+\begin{proposicion}[{title={Parte real e imaginaria del inverso}}]
+Sea $z=a+bi\neq 0$ con $a,b\in\mathbb{R}$. Entonces
+\[
+z^{-1}=\frac{\overline{z}}{|z|^2}=\frac{a-bi}{a^2+b^2},
+\]
+y por lo tanto
+\[
+\operatorname{Re}(z^{-1})=\frac{a}{a^2+b^2},
+\qquad
+\operatorname{Im}(z^{-1})=-\frac{b}{a^2+b^2}.
+\]
+\end{proposicion}
+
+\begin{demostracion}
+Es la fórmula $z^{-1}=\overline{z}/|z|^2$ vista antes (multiplicar arriba y abajo
+por $\overline{z}$ para sacar la $i$ del denominador), escribiendo
+$\overline{z}=a-bi$ y $|z|^2=a^2+b^2$ y separando parte real e imaginaria.
+\end{demostracion}
+
+\begin{proposicion}[{title={Multiplicar por $i$}}]
+Sea $z=a+bi$ con $a,b\in\mathbb{R}$. Entonces
+\[
+i\cdot z=-b+ai,
+\]
+y por lo tanto
+\[
+\operatorname{Re}(iz)=-\operatorname{Im}(z),
+\qquad
+\operatorname{Im}(iz)=\operatorname{Re}(z).
+\]
+\end{proposicion}
+
+\begin{demostracion}
+$i\cdot z=i(a+bi)=ai+bi^2=-b+ai$, usando $i^2=-1$. Como $-b$ y $a$ son reales,
+$\operatorname{Re}(iz)=-b=-\operatorname{Im}(z)$ e $\operatorname{Im}(iz)=a=\operatorname{Re}(z)$.
+\end{demostracion}
+
+\begin{nota}{}
+Geométricamente, multiplicar por $i$ gira al punto $(a,b)$ un ángulo de
+$90^\circ$ alrededor del origen, y lo manda a $(-b,a)$.
+\end{nota}
+
+\begin{proposicion}[{title={Potencias de $i$}}]
+Las potencias de $i$ se repiten en un ciclo de $4$ resultados:
+\[
+i^1=i,\qquad i^2=-1,\qquad i^3=-i,\qquad i^4=1.
+\]
+Más aún, para todo $n\in\mathbb{N}_0$,
+\[
+i^n=i^{r_4(n)},
+\]
+donde $r_4(n)\in\{0,1,2,3\}$ es el resto de dividir $n$ por $4$.
+\end{proposicion}
+
+\begin{demostracion}
+$i^2=-1$ por definición, $i^3=i^2\cdot i=-i$ e $i^4=i^2\cdot i^2=(-1)(-1)=1$.
+
+Por el algoritmo de la división, $n=4q+r$ con $r=r_4(n)$ y $0\le r<4$. Entonces
+\[
+i^n=i^{4q+r}=(i^4)^q\, i^r=1^q\, i^r=i^r.
+\]
+\end{demostracion}
+
+\begin{ejemplo}
+Calcular $i^{2026}$. Como $2026=4\cdot 506+2$, se tiene $r_4(2026)=2$ y
+\[
+i^{2026}=i^2=-1.
+\]
+\end{ejemplo}
+
+
+ 
+\subsection{Forma trigonométrica}
+ 
+\begin{nota}{Periodicidad.}
+Las funciones seno y coseno son periódicas de período
+$2\pi$: al sumarle a un ángulo $\theta$ cualquier cantidad de vueltas completas
+$2k\pi$ (con $k\in\mathbb{Z}$), el valor no cambia:
+\[
+\cos\theta=\cos(\theta+2k\pi), \qquad
+\operatorname{sen}\theta=\operatorname{sen}(\theta+2k\pi), \qquad \forall k\in\mathbb{Z}.
+\]
+\end{nota}
+ 
+\begin{definicion}
+Sea $z\in\mathbb{C}$, $z\neq 0$. Una escritura de la forma
+\[
+z=r(\cos\theta+i\operatorname{sen}\theta), \qquad r\in\mathbb{R}_{>0},\ \theta\in\mathbb{R},
+\]
+se llama una \textbf{forma trigonométrica} (o \textbf{polar}) de $z$. Aquí $r$ es
+el \textbf{módulo} de $z$ (la distancia al origen, por eso es estrictamente
+positivo) y $\theta$ es un \textbf{argumento} de $z$ (un ángulo en radianes).
+\end{definicion}
+ 
+\begin{proposicion}
+Sea $z=a+bi\in\mathbb{C}$ con $z\neq 0$. Entonces $z$ admite una forma
+trigonométrica $z=r(\cos\theta+i\operatorname{sen}\theta)$, y necesariamente
+$r=|z|$.
+\end{proposicion}
+ 
+\begin{demostracion}
+\textbf{El módulo.} Si $z=r(\cos\theta+i\operatorname{sen}\theta)$ con $r>0$, entonces
+\[
+|z|=r\sqrt{\cos^2\theta+\operatorname{sen}^2\theta}=r.
+\]
+ 
+\textbf{Existencia.} Tomamos $r=|z|>0$. Como
+$\left(\tfrac{a}{r}\right)^2+\left(\tfrac{b}{r}\right)^2=\tfrac{a^2+b^2}{r^2}=1$,
+el punto $\left(\tfrac{a}{r},\tfrac{b}{r}\right)$ está en la circunferencia
+unitaria, así que existe $\theta\in\mathbb{R}$ con $\cos\theta=\tfrac{a}{r}$ y
+$\operatorname{sen}\theta=\tfrac{b}{r}$. Entonces
+$r(\cos\theta+i\operatorname{sen}\theta)=a+bi=z$.
+\end{demostracion}
+ 
+\begin{proposicion}[{title={Igualdad en forma trigonométrica}}]
+Sean $z,w\in\mathbb{C}$ no nulos con
+\[
+z=r(\cos\theta+i\operatorname{sen}\theta), \qquad
+w=s(\cos\varphi+i\operatorname{sen}\varphi),
+\]
+donde $r,s\in\mathbb{R}_{>0}$ y $\theta,\varphi\in\mathbb{R}$. Entonces
+\[
+w=z \iff
+\begin{cases}
+r=s\\
+\varphi=\theta+2k\pi \ \text{ para algún } k\in\mathbb{Z}.
+\end{cases}
+\]
+\end{proposicion}
+ 
+\begin{demostracion}
+($\Leftarrow$) Si $r=s$ y $\varphi=\theta+2k\pi$, por la periodicidad
+$\cos\varphi=\cos\theta$ y $\operatorname{sen}\varphi=\operatorname{sen}\theta$,
+así que $w=z$.
+ 
+($\Rightarrow$) Si $w=z$, entonces $|w|=|z|$, es decir $s=r$. Cancelando $r>0$ en
+$r(\cos\theta+i\operatorname{sen}\theta)=r(\cos\varphi+i\operatorname{sen}\varphi)$
+e igualando partes real e imaginaria queda
+\[
+\cos\varphi=\cos\theta, \qquad \operatorname{sen}\varphi=\operatorname{sen}\theta.
+\]
+Entonces
+\[
+\cos(\varphi-\theta)=\cos\varphi\cos\theta+\operatorname{sen}\varphi\operatorname{sen}\theta
+=\cos^2\theta+\operatorname{sen}^2\theta=1,
+\]
+y como $\cos x=1$ si y sólo si $x=2k\pi$ con $k\in\mathbb{Z}$, resulta
+$\varphi=\theta+2k\pi$ para algún $k\in\mathbb{Z}$.
+\end{demostracion}
+ 
+\begin{definicion}
+Por la proposición anterior, los argumentos de un $z\neq 0$ están determinados
+salvo múltiplos de $2\pi$, y hay exactamente uno con $0\le\theta<2\pi$. Ese
+único valor se llama el \textbf{argumento} de $z$ y se anota $\arg(z)$.
+\end{definicion}
+ 
+\begin{nota}{Valores notables.}
+\begin{center}
+\renewcommand{\arraystretch}{1.8}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+$\theta$ & $0$ & $\frac{\pi}{6}$ & $\frac{\pi}{4}$ & $\frac{\pi}{3}$ & $\frac{\pi}{2}$ & $\pi$ \\
+\hline
+$\cos\theta$ & $1$ & $\frac{\sqrt{3}}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{1}{2}$ & $0$ & $-1$ \\
+\hline
+$\operatorname{sen}\theta$ & $0$ & $\frac{1}{2}$ & $\frac{\sqrt{2}}{2}$ & $\frac{\sqrt{3}}{2}$ & $1$ & $0$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{nota}
+ 
+\begin{ejemplo}
+Escribir en forma trigonométrica $z=1+i$ y $w=1+\sqrt{3}\,i$.
+ 
+Para $z$: $|z|=\sqrt{1+1}=\sqrt{2}$, y buscamos $\theta$ con
+$\cos\theta=\tfrac{1}{\sqrt{2}}=\tfrac{\sqrt{2}}{2}$ y
+$\operatorname{sen}\theta=\tfrac{\sqrt{2}}{2}$, que es $\theta=\tfrac{\pi}{4}$. Luego
+\[
+1+i=\sqrt{2}\left(\cos\tfrac{\pi}{4}+i\operatorname{sen}\tfrac{\pi}{4}\right),
+\qquad \arg(z)=\tfrac{\pi}{4}.
+\]
+ 
+Para $w$: $|w|=\sqrt{1+3}=2$, con $\cos\theta=\tfrac{1}{2}$ y
+$\operatorname{sen}\theta=\tfrac{\sqrt{3}}{2}$, que es $\theta=\tfrac{\pi}{3}$. Luego
+\[
+1+\sqrt{3}\,i=2\left(\cos\tfrac{\pi}{3}+i\operatorname{sen}\tfrac{\pi}{3}\right),
+\qquad \arg(w)=\tfrac{\pi}{3}.
+\]
+\end{ejemplo}
+ 
+\begin{proposicion}[{title={Conjugado e inverso en forma trigonométrica}}]
+Sea $z=r(\cos\theta+i\operatorname{sen}\theta)$ con $r>0$ y $\theta\in\mathbb{R}$.
+Entonces:
+\begin{enumerate}
+    \item $\overline{z}=r\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr)$.
+    \item $z^{-1}=\dfrac{1}{r}\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr)$.
+\end{enumerate}
+\end{proposicion}
+ 
+\begin{demostracion}
+(1) Por definición de conjugado,
+\[
+\overline{z}=r(\cos\theta-i\operatorname{sen}\theta)
+=r\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr),
+\]
+pues el coseno es par ($\cos(-\theta)=\cos\theta$) y el seno es impar
+($\operatorname{sen}(-\theta)=-\operatorname{sen}\theta$).
+ 
+(2) Como $|z|=r$, por la fórmula $z^{-1}=\overline{z}/|z|^2$ y por (1),
+\[
+z^{-1}=\frac{\overline{z}}{|z|^2}
+=\frac{r\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr)}{r^2}
+=\frac{1}{r}\bigl(\cos(-\theta)+i\operatorname{sen}(-\theta)\bigr).
+\]
+\end{demostracion}
+ 
+\begin{nota}{}
+Geométricamente, $\overline{z}$ es el simétrico de $z$ respecto del eje real: tiene
+el mismo módulo $r$ y el argumento opuesto $-\theta$. Si $\theta\in(0,2\pi)$,
+el argumento de $\overline{z}$ en $[0,2\pi)$ es $2\pi-\theta$. Y $z^{-1}$ tiene
+módulo $1/r$ y también argumento $-\theta$.
+\end{nota}
+ 
+
+\subsection{Notación exponencial y operaciones en forma polar}
+\begin{definicion}
+Para $\theta\in\mathbb R$, usamos la notación
+\[
+e^{i\theta}=\cos\theta+i\operatorname{sen}\theta.
+\]
+Así, la forma polar de un complejo no nulo se escribe $z=re^{i\theta}$,
+con $r=|z|>0$. Esta notación satisface
+$e^{i(\theta+2k\pi)}=e^{i\theta}$ para $k\in\mathbb Z$.
+\end{definicion}
+\begin{proposicion}[{title={Producto y cociente en forma polar}}]
+Si $z=re^{i\theta}$ y $w=se^{i\varphi}$, con $r,s>0$, entonces
+\[
+zw=rs\,e^{i(\theta+\varphi)},\qquad
+\frac zw=\frac rs e^{i(\theta-\varphi)}.
+\]
+En particular, $|z/w|=|z|/|w|$.
+\end{proposicion}
+\begin{demostracion}
+Por las fórmulas de adición del seno y del coseno,
+\begin{align*}
+(\cos\theta+i\operatorname{sen}\theta)
+(\cos\varphi+i\operatorname{sen}\varphi)
+&=\cos(\theta+\varphi)+i\operatorname{sen}(\theta+\varphi).
+\end{align*}
+Esto demuestra la fórmula del producto. La del cociente se obtiene
+multiplicando por $w^{-1}=s^{-1}e^{-i\varphi}$.
+\end{demostracion}
+\begin{nota}{Interpretación geométrica.}
+Multiplicar por $se^{i\varphi}$ multiplica las distancias al origen por $s$
+y gira los puntos un ángulo $\varphi$. Si $s=1$, es solamente un giro.
+La suma de complejos se representa como suma de vectores; el opuesto
+$-z$ es el simétrico de $z$ respecto del origen.
+\end{nota}
+\begin{ejemplo}
+Como $1+\sqrt3 i=2e^{i\pi/3}$ y $1-i=\sqrt2e^{-i\pi/4}$,
+\[
+\frac{1+\sqrt3 i}{1-i}=\sqrt2e^{i7\pi/12}.
+\]
+El módulo es $\sqrt2$ y el argumento elegido en $[0,2\pi)$ es $7\pi/12$.
+\end{ejemplo}
+
+\subsection{Potencias: fórmula de De Moivre}
+\begin{proposicion}[{title={Fórmula de De Moivre}}]
+Sea $z=re^{i\theta}\neq0$. Para todo $n\in\mathbb Z$,
+\[
+z^n=r^ne^{in\theta}
+=r^n\bigl(\cos(n\theta)+i\operatorname{sen}(n\theta)\bigr).
+\]
+En particular, $|z^n|=|z|^n$.
+\end{proposicion}
+\begin{demostracion}
+Para $n\geq1$ se aplica reiteradamente la fórmula del producto
+(o se demuestra por inducción). Para $n=0$ ambos miembros valen $1$.
+Si $n=-m<0$, se aplica el caso positivo a
+$z^{-1}=r^{-1}e^{-i\theta}$.
 \end{demostracion}
 \begin{ejemplo}
-$G_{12}\cap G_{18}=G_6$, y $G_4\subseteq G_{20}$.
-Si $w=e^{2k\pi i/n}$, una condición como $w^a\in G_m$ se traduce en
 \[
-w^{am}=1\iff n\mid kam.
+(1+i)^8=(\sqrt2)^8e^{i2\pi}=16.
 \]
-Esto permite transformar condiciones sobre complejos en divisibilidad.
+También, si $z=-1+\sqrt3i=2e^{i2\pi/3}$, para $n\in\mathbb N_0$:
+\[
+z^n=\begin{cases}
+2^n,&n\equiv0\pmod3,\\
+2^{n-1}(-1+\sqrt3i),&n\equiv1\pmod3,\\
+2^{n-1}(-1-\sqrt3i),&n\equiv2\pmod3.
+\end{cases}
+\]
+Se reduce el ángulo módulo $2\pi$, pero el factor $2^n$ se conserva.
 \end{ejemplo}
+
+
+\section{Raíces de números complejos}
+\begin{definicion}
+Sea $n\geq1$ entero y $z\in\mathbb C$. Una \textbf{raíz $n$-ésima}
+de $z$ es un número $w\in\mathbb C$ tal que $w^n=z$.
+\end{definicion}
+\begin{proposicion}[{title={Todas las raíces $n$-ésimas}}]
+Si $z=re^{i\theta}\neq0$, sus raíces $n$-ésimas son exactamente
+\[
+w_k=\sqrt[n]{r}\,e^{i(\theta+2k\pi)/n},\qquad k=0,1,\ldots,n-1.
+\]
+Son $n$ números distintos. Si $z=0$, la única raíz es $w=0$.
+\end{proposicion}
+\begin{demostracion}
+Si $w=se^{i\varphi}$, entonces $w^n=z$ equivale a
+\[
+s^n=r,\qquad n\varphi=\theta+2k\pi\text{ para algún }k\in\mathbb Z.
+\]
+Como $s>0$, se tiene $s=\sqrt[n]r$. Dos índices $k,\ell$ dan la
+misma raíz si y sólo si $(k-\ell)/n$ es entero. Por eso basta tomar
+los $n$ restos módulo $n$.
+Si $w^n=0$, entonces $|w|^n=0$, de donde $w=0$.
+\end{demostracion}
+\begin{nota}{Geometría y notación.}
+Para $z\neq0$, todas las raíces tienen módulo $\sqrt[n]{|z|}$ y sus
+ángulos consecutivos difieren en $2\pi/n$. Si $n\geq3$, forman los
+vértices de un polígono regular centrado en el origen.
+La expresión ``las raíces'' se refiere a todas las soluciones, no a
+una sola raíz elegida. Las raíces de un complejo arbitrario no tienen
+por qué venir en pares conjugados; esto sí ocurre si el número es real.
+\end{nota}
+\begin{ejemplo}
+Para resolver $w^3=-8=8e^{i\pi}$, obtenemos
+\[
+w_k=2e^{i(\pi+2k\pi)/3},\qquad k=0,1,2.
+\]
+En forma binomial: $1+\sqrt3i$, $-2$, $1-\sqrt3i$.
+\end{ejemplo}
+\begin{ejemplo}
+Resolver $3z^5+2|z|^5+32=0$. El caso $z=0$ no satisface la ecuación.
+Para $z=re^{i\theta}$, $r>0$,
+\[
+r^5(3e^{i5\theta}+2)=-32.
+\]
+Igualando partes imaginarias, $\operatorname{sen}(5\theta)=0$,
+así que $e^{i5\theta}=1$ o $-1$. El primer caso daría $5r^5=-32$,
+imposible. El segundo da $-r^5=-32$, es decir $r=2$.
+Por tanto las cinco soluciones son
+\[
+z_k=2e^{i(\pi+2k\pi)/5},\qquad k=0,1,2,3,4.
+\]
+\end{ejemplo}
+\begin{nota}{Contar soluciones sin contar multiplicidades.}
+Antes de dividir por una potencia de $z$, separar el caso $z=0$.
+Por ejemplo, para $n\geq3$,
+\[
+z^n+iz^2=z^2(z^{n-2}+i)=0
+\]
+tiene la solución $z=0$ y las $n-2$ raíces distintas, no nulas, de $-i$:
+en total $n-1$ soluciones distintas. Para $n=1$ y $n=2$ se estudia
+la ecuación original por separado; no se aplica este conteo.
+\end{nota}
+
+\section{Raíces de la unidad}
+\begin{definicion}
+Para $n\geq1$ entero, se define
+\[
+G_n=\{w\in\mathbb C:w^n=1\}
+=\left\{e^{2k\pi i/n}:k=0,\ldots,n-1\right\}.
+\]
+Sus elementos se llaman \textbf{raíces $n$-ésimas de la unidad}.
+\end{definicion}
+\begin{proposicion}[{title={Propiedades de $G_n$}}]
+Sean $w,z\in G_n$. Entonces:
+\begin{enumerate}
+\item $|w|=1$, $1\in G_n$ y $w\neq0$.
+\item $wz\in G_n$ y $w^{-1}=\overline w\in G_n$.
+\item Si $a,b\in\mathbb Z$ y $a\equiv b\pmod n$, entonces $w^a=w^b$.
+\item $-1\in G_n$ si y sólo si $n$ es par.
+\end{enumerate}
+En particular, $(G_n,\cdot)$ es un grupo abeliano: el producto es
+asociativo y conmutativo, tiene neutro $1$ y cada elemento tiene inverso.
+\end{proposicion}
+\begin{demostracion}
+De $w^n=1$ se obtiene $|w|^n=1$, luego $|w|=1$.
+Además $(wz)^n=w^nz^n=1$ y $(w^{-1})^n=1$.
+Como $w\overline w=|w|^2=1$, se tiene $\overline w=w^{-1}$.
+Si $a-b=qn$, entonces $w^a=w^b(w^n)^q=w^b$.
+Finalmente $(-1)^n=1$ equivale a que $n$ sea par.
+Las restantes propiedades se heredan de $\mathbb C$.
+\end{demostracion}
+\begin{ejemplo}
+\[
+G_2=\{1,-1\},\quad G_3=\{1,e^{2\pi i/3},e^{4\pi i/3}\},
+\quad G_4=\{1,i,-1,-i\}.
+\]
+Si $w\in G_7$, entonces $w^{2026}=w^3$, $w^{-1}=w^6$ y
+$\overline{w^2}=w^{-2}=w^5$.
+\end{ejemplo}
+
+\subsection{Orden y raíces primitivas}
+\begin{definicion}
+El \textbf{orden} de una raíz de la unidad $w$ es el menor entero positivo
+$d$ tal que $w^d=1$. Una raíz de $G_n$ es \textbf{primitiva} si tiene orden $n$.
+\end{definicion}
+\begin{proposicion}
+Si $w\in G_n$ tiene orden $d$, entonces $d\mid n$ y, para $m\in\mathbb Z$,
+\[
+w^m=1\iff d\mid m.
+\]
+Si $w=e^{2k\pi i/n}$, entonces
+\[
+\operatorname{ord}(w)=\frac{n}{\gcd(n,k)}.
+\]
+Por tanto $w$ es primitiva si y sólo si $\gcd(n,k)=1$.
+\end{proposicion}
+\begin{demostracion}
+Por división entera, $m=qd+r$ con $0\leq r<d$.
+Si $w^m=1$, también $w^r=1$, y la minimalidad de $d$ obliga a $r=0$.
+La recíproca es inmediata. Se aplica esto también a $m=n$.
+Para la fórmula explícita, $w^m=1$ equivale a $n\mid km$.
+Escribiendo $n=gn'$, $k=gk'$ con $g=\gcd(n,k)$ y
+$\gcd(n',k')=1$, esto equivale a $n'\mid m$.
+\end{demostracion}
+\begin{nota}{Pertenecer a $G_n$ no implica tener orden $n$.}
+Por ejemplo, $-1\in G_6$ pero su orden es $2$.
+Si $w\in G_n$, siempre es válido reducir exponentes módulo $n$;
+si se conoce su orden $d$, también pueden reducirse módulo $d$.
+\end{nota}
+
 
 \subsection{Sumas geométricas}
 \begin{proposicion}[{title={Suma geométrica finita}}]

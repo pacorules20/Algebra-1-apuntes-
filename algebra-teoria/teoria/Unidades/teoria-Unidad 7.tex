@@ -1,5 +1,4 @@
 \chapter{Polinomios}
-
 \section{Definiciones y operaciones}
 \begin{definicion}
 Sea $K$ un cuerpo, por ejemplo $\mathbb Q$, $\mathbb R$, $\mathbb C$
@@ -18,7 +17,7 @@ La suma se hace coeficiente a coeficiente. En el producto,
 \[
 [X^k](fg)=\sum_{i+j=k}a_i b_j,
 \]
-donde $[X^k]f$ significa el coeficiente de $X^k$ en $f$.
+donde $X^kf$ significa el coeficiente de $X^k$ en $f$.
 Para $f,g\neq0$:
 \[
 \deg(fg)=\deg f+\deg g.
@@ -37,7 +36,6 @@ Evaluar en $\alpha\in K$ significa sustituir $X$ por $\alpha$.
 Sobre un cuerpo finito, dos polinomios distintos pueden dar la misma función:
 $X^p-X$ no es el polinomio cero, aunque se anula en todo $\mathbb F_p$.
 \end{nota}
-
 \section{División, divisibilidad y restos}
 \begin{proposicion}[{title={Algoritmo de división}}]
 Dados $f,g\in K[X]$ con $g\neq0$, existen únicos $q,r\in K[X]$ tales que
@@ -72,7 +70,6 @@ X^n-a^n=(X-a)\sum_{j=0}^{n-1}X^{n-1-j}a^j.
 Sustituyendo $a$ por $-a$, se obtiene la factorización por $X+a$
 de $X^n+a^n$ si $n$ es impar, y de $X^n-a^n$ si $n$ es par.
 \end{proposicion}
-
 \subsection{Congruencias polinómicas}
 \begin{definicion}
 Si $h\neq0$, se define $f\equiv g\pmod h$ cuando $h\mid f-g$.
@@ -100,7 +97,6 @@ r=\sum_{j=0}^{m-1}\frac{f^{(j)}(\alpha)}{j!}(X-\alpha)^j.
 Si $f(1)=2$ y $f(-1)=4$, el resto módulo $X^2-1$ es $r=aX+b$.
 De $a+b=2$, $-a+b=4$ resulta $r=-X+3$.
 \end{ejemplo}
-
 \section{Máximo común divisor y Bézout}
 \begin{definicion}
 Para $f,g\in K[X]$ no ambos nulos, su \textbf{mcd}, denotado $(f:g)$,
@@ -130,7 +126,6 @@ Sobre otros cuerpos, no basta con buscar raíces sólo en ese cuerpo.
 Para $f=X^3-X$, $g=X^2-1$, se tiene $f=Xg$, luego $(f:g)=X^2-1$.
 Las raíces comunes son $1$ y $-1$.
 \end{ejemplo}
-
 \section{Derivadas y multiplicidad}
 \begin{definicion}
 La \textbf{derivada formal} de $f=\sum_{j=0}^n a_jX^j$ es
@@ -162,24 +157,12 @@ en $\alpha$. Derivando sucesivamente se obtiene el criterio completo.
 En cualquier característica, si $f=(X-\alpha)q$, se tiene
 $f'(\alpha)=q(\alpha)$, lo que prueba el criterio de raíz múltiple.
 \end{demostracion}
-\begin{nota}{Usar el mcd con la derivada.}
-En $\mathbb C[X]$, todas las raíces de $f$ son simples si y sólo si
-$(f:f')=1$. Si $f=c\prod_j(X-\alpha_j)^{m_j}$ con raíces distintas,
-\[
-(f:f')=\prod_j(X-\alpha_j)^{m_j-1}.
-\]
-Para buscar parámetros que produzcan raíces múltiples, resolver primero
-$f'(\alpha)=0$ y luego imponer $f(\alpha)=0$.
-En característica $p$ hay precauciones: $(X^p)'=0$; no aplicar sin revisar
-las reglas de multiplicidad que requieren característica cero.
-\end{nota}
 \begin{ejemplo}
 Sea $f=X^3-3X+a$. Como $f'=3(X^2-1)$, una raíz múltiple debe ser
 $1$ o $-1$. Se cumple $f(1)=a-2$ y $f(-1)=a+2$.
 Por tanto hay raíces múltiples exactamente para $a=2$ o $a=-2$.
 Son dobles, pues $f''(\pm1)\neq0$.
 \end{ejemplo}
-
 \section{Raíces y factorización según el cuerpo}
 \begin{proposicion}[{title={Raíces racionales: lema de Gauss}}]
 Sea $f=a_nX^n+\cdots+a_0\in\mathbb Z[X]$, con $a_na_0\neq0$.
@@ -212,6 +195,57 @@ es irreducible si y sólo si no tiene raíces racionales.
 Para grado $4$ o mayor, no tener raíces racionales no es suficiente.
 \end{itemize}
 \end{proposicion}
+\begin{proposicion}[{title={Raíces complejas conjugadas en $\mathbb R[X]$}}]
+Sea $f\in\mathbb R[X]$. Si $\alpha=a+bi$, con $a,b\in\mathbb R$ y $b\neq0$,
+es raíz de $f$ de multiplicidad $m$, entonces su conjugado
+$\overline\alpha=a-bi$ también es raíz de multiplicidad $m$.
+\[
+(X-\alpha)^m(X-\overline\alpha)^m
+=\bigl(X^2-2aX+a^2+b^2\bigr)^m\mid f.
+\]
+\end{proposicion}
+\begin{ejemplo}
+Si $2+3i$ es raíz de $f\in\mathbb R[X]$, entonces $2-3i$ también lo es y
+\[
+X^2-4X+13\mid f.
+\]
+\end{ejemplo}
+\begin{proposicion}[{title={Radicales conjugados en $\mathbb Q[X]$}}]
+Sea $f\in\mathbb Q[X]$ y sea $d\in\mathbb Q_{>0}$ tal que
+$\sqrt d\notin\mathbb Q$. Si $\alpha=a+b\sqrt d$, con
+$a,b\in\mathbb Q$ y $b\neq0$, es raíz de $f$ de multiplicidad
+$m$, entonces $\beta=a-b\sqrt d$ también es raíz de multiplicidad $m$.
+En consecuencia,
+\[
+\bigl((X-\alpha)(X-\beta)\bigr)^m
+=\bigl(X^2-2aX+a^2-b^2d\bigr)^m\mid f.
+\]
+La condición $\sqrt d\notin\mathbb Q$ es indispensable.
+\end{proposicion}
+\begin{ejemplo}
+Si $3+\sqrt5$ es raíz de $f\in\mathbb Q[X]$, también lo es
+$3-\sqrt5$. Por lo tanto,
+\[
+X^2-6X+4\mid f.
+\]
+\end{ejemplo}
+\begin{proposicion}[{title={Potencias de raíces de la unidad en $\mathbb Q[X]$}}]
+Sea $f\in\mathbb Q[X]$ y sea $\alpha\in\mathbb C$ una raíz de la unidad
+con orden exacto $n$ (esto es, $\alpha^n=1$ y $n$ es el menor
+entero positivo con esa propiedad). Si $f(\alpha)=0$, entonces
+\[
+f(\alpha^k)=0\qquad\text{para todo }k\in\mathbb Z
+\text{ tal que }\operatorname{mcd}(k,n)=1.
+\]
+Estas raíces tienen la misma multiplicidad. No se puede concluir que
+$\alpha^k$ sea raíz para cualquier $k$: es esencial que $k$ sea
+coprimo con el orden $n$.
+\end{proposicion}
+\begin{ejemplo}
+Si $\alpha=e^{2\pi i/5}$ es raíz de $f\in\mathbb Q[X]$, también lo son
+$\alpha^2,\alpha^3,\alpha^4$, porque $1,2,3,4$ son coprimos con $5$.
+No se deduce que $\alpha^5=1$ sea raíz de $f$.
+\end{ejemplo}
 \begin{ejemplo}
 El polinomio $X^4-1$ se factoriza en $\mathbb Q[X]$ y $\mathbb R[X]$ como
 $(X-1)(X+1)(X^2+1)$; en $\mathbb C[X]$, el último factor es $(X-i)(X+i)$.
@@ -231,36 +265,29 @@ Sobre $\mathbb C$, sus raíces son las de $G_{n+1}$ salvo $1$, todas simples.
 Si $f\in\mathbb C[X]$ tiene una raíz real y $f=u+iv$ con $u,v\in\mathbb R[X]$,
 esa raíz debe anular simultáneamente a $u$ y $v$: buscar su mcd.
 \end{nota}
-
 \subsection{Identidades notables: factorización de polinomios}
-
 \begin{proposicion}
     \begin{itemize}
         \item \textbf{Diferencia de cuadrados:}
-        \[
+\[
             a^2-b^2=(a-b)(a+b)
-        \]
-
+\]
         \item \textbf{Suma de cuadrados:}
         No se factoriza en general en $\mathbb{R}$,
         pero sí en $\mathbb{C}$:
-        \[
+\[
             a^2+b^2=(a-bi)(a+bi)
-        \]
-
+\]
         \item \textbf{Diferencia de cubos:}
-        \[
+\[
             a^3-b^3=(a-b)(a^2+ab+b^2)
-        \]
-
+\]
         \item \textbf{Suma de cubos:}
-        \[
+\[
             a^3+b^3=(a+b)(a^2-ab+b^2)
-        \]
+\]
     \end{itemize}
 \end{proposicion}
-
-
 \section{Irreducibilidad y cuerpos finitos}
 \begin{definicion}
 Un polinomio $f\in K[X]$ de grado positivo es \textbf{irreducible}
@@ -291,7 +318,6 @@ Los reducibles corresponden a pares de raíces no ordenados:
 $\binom p2$ pares distintos y $p$ pares repetidos.
 Los restantes son irreducibles.
 \end{demostracion}
-
 \section{Relaciones entre raíces y coeficientes}
 \begin{proposicion}[{title={Fórmulas de Viète}}]
 Si $f=a_n\prod_{j=1}^n(X-\alpha_j)$, contando multiplicidades, entonces
@@ -309,7 +335,6 @@ a+b+c=\frac32,\qquad ab+ac+bc=2,\qquad abc=-\frac12.
 \]
 No hace falta hallar las raíces por separado.
 \end{ejemplo}
-
 \section{Cómo elegir el método}
 \begin{nota}{Guía breve.}
 \begin{enumerate}
