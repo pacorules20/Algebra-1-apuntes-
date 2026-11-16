@@ -186,3 +186,138 @@ Este tipo de casos se utiliza para calcula subconjunto, como son una agrupación
     Lo cual completa el paso inductivo, y por lo tanto la fórmula vale para todo $n \in \mathbb{N}_0$.
 \end{demostracion}
 
+
+\begin{definicion}
+Sea $A$ un conjunto y $x \in A$.
+
+Los subconjuntos de $A$ se pueden dividir en
+dos grupos disjuntos:
+
+\begin{itemize}
+    \item Los subconjuntos que contienen a $x$.
+    \item Los subconjuntos que no contienen a $x$.
+\end{itemize}
+
+Estos dos grupos abarcan todos los subconjuntos
+posibles de $A$.
+
+Por lo tanto, por conteo por complemento:
+
+\[
+\boxed{
+\text{Al menos uno}
+=
+\text{Total}
+-
+\text{Ninguno}
+}
+\]
+\end{definicion}
+
+\begin{definicion}
+\textbf{Elección de posiciones en problemas de combinatoria}
+
+Sea $A$ un conjunto de posiciones o casillas. Podemos distinguir dos situaciones:
+
+\begin{enumerate}
+    \item \textbf{Las posiciones no están fijadas:}
+    El enunciado nos pide elegir $k$ posiciones entre $n$ disponibles.
+    Si el orden de elección no importa, utilizamos combinaciones:
+
+    \[
+        \binom{n}{k}
+    \]
+
+    \item \textbf{Las posiciones ya están fijadas:}
+    El enunciado indica específicamente qué casillas debemos utilizar.
+    No necesitamos contar las formas de elegirlas, porque ya están determinadas.
+\end{enumerate}
+
+\end{definicion}
+
+\begin{nota}
+    \textbf{Importante:} Aunque las posiciones estén fijadas, puede ser necesario contar de cuántas maneras podemos asignarles valores.
+\end{nota}
+
+\begin{ejemplo}
+
+\begin{itemize}
+    \item \textbf{HIPOPOTAMO:} Elegimos 2 posiciones entre 10 para colocar I y A, por eso usamos $\binom{10}{2}$.
+
+    \item \textbf{Funciones:} En $f(1)<f(3)<f(5)$, las posiciones 1, 3 y 5 ya están determinadas. No usamos $\binom{10}{3}$, pero sí $\binom{12}{3}$ para elegir sus imágenes.
+\end{itemize}
+
+
+\end{ejemplo}
+
+
+\begin{definicion}
+\textbf{Principio de inclusión-exclusión en combinatoria}
+
+Cuando queremos contar los elementos que cumplen ciertas condiciones, podemos utilizar el \textbf{método del complemento}: contar todos los casos posibles y restar los que no queremos.
+
+\begin{enumerate}
+    \item \textbf{Una condición:}
+
+    Si $U$ es el conjunto universal y $A$ representa los casos que queremos excluir, entonces:
+
+    \[
+        |A^c| = |U| - |A|
+    \]
+
+    Es decir, restamos del total los casos que no queremos contar.
+
+    \item \textbf{Dos condiciones:}
+
+    Si queremos excluir los casos que pertenecen a $A$ o a $B$, debemos tener cuidado con los elementos que pertenecen a ambos conjuntos.
+
+    \[
+        |U \setminus (A \cup B)|
+        = |U| - |A| - |B| + |A \cap B|
+    \]
+
+    \textbf{¿Por qué sumamos la intersección?}
+
+    Porque al restar $|A|$ y $|B|$, los elementos de $A \cap B$ se restan dos veces. Por eso debemos sumarlos una vez para corregir el conteo.
+
+    \item \textbf{Cuando no hay intersección:}
+
+    Si $A \cap B = \varnothing$, entonces:
+
+    \[
+        |U \setminus (A \cup B)|
+        = |U| - |A| - |B|
+    \]
+
+    No necesitamos sumar ninguna intersección porque los conjuntos son disjuntos.
+\end{enumerate}
+
+\textbf{Regla importante:}
+
+\begin{itemize}
+    \item Si hay una sola condición que queremos excluir, restamos sus casos del total.
+    \item Si hay dos condiciones cuyos casos se superponen, debemos sumar nuevamente la intersección.
+    \item Si los casos no se superponen, podemos restarlos directamente.
+    \item Con tres o más conjuntos, el principio se generaliza alternando sumas y restas de las intersecciones.
+\end{itemize}
+
+\textbf{Ejemplo:}
+
+Si queremos contar anagramas que no tengan dos vocales juntas ni dos consonantes juntas, podemos considerar:
+
+\begin{itemize}
+    \item $A$: anagramas con al menos dos vocales juntas.
+    \item $B$: anagramas con al menos dos consonantes juntas.
+\end{itemize}
+
+Entonces:
+
+\[
+    \boxed{
+    |U| - |A| - |B| + |A \cap B|
+    }
+\]
+
+\textbf{Conclusión:} Al utilizar el método del complemento, solo podemos restar los casos que fueron incluidos en nuestro conteo inicial. Si restamos conjuntos que se superponen, debemos corregir las intersecciones para evitar contar o excluir elementos más de una vez.
+
+\end{definicion}

@@ -3,6 +3,25 @@
 
 \section{Divisibilidad }
 
+\begin{teoria}[title=Propiedad div que el divisor es multiplicacion]
+Una regla importante de divisibilidad es que, si tenemos
+dos enteros $a,b \neq 0$ tales que $ab \mid c$, entonces
+necesariamente $a \mid c$ y $b \mid c$.
+
+\[
+ab \mid c \implies a \mid c \land b \mid c
+\]
+\end{teoria}
+
+\begin{teoria}[title=Propiedad division de suma de terminos ]
+otra regla es si $p \mid a+b$ entonces no necesariamente $p \mid a \land p \mid b$
+pero si 
+
+\[
+ p \mid a \land p \mid b \implies p \mid a+b 
+\]
+\end{teoria}
+
 \section{Resto y Algoritmo de la División}
 
 \begin{definicion}
@@ -29,10 +48,39 @@ La conexión principal con las congruencias es que $a \equiv r \pmod{d}$ si y so
 \end{definicion}
 
 \section{Primos} 
-\begin{teoria}[title=Propiedades de los primos]
+\begin{teoria}[title=Potencias con igual exponente]
+    Sean $a,p \in \mathbb{Z}$, con $p \neq 0$,
+    y $n \geq 1$. Se cumple que:
+    \[
+        \boxed{p^n \mid a^n \iff p \mid a}
+    \]
+
+    Es decir, si una potencia divide a otra potencia
+    con el mismo exponente, entonces sus bases
+    también cumplen esa divisibilidad, y viceversa.
+
+\end{teoria}
+\begin{ejemplo}
+        Por ejemplo:
+    \[
+        2^3 \mid 6^3 \iff 2 \mid 6
+    \]
+\end{ejemplo}
+\begin{teoria}[title=Propiedades de los primos: Euclides]
 \begin{listapropiedades}
   \item[lema euclides] Si asumimos que el primo $p$ divide a la multiplicación $a \cdot b$, pero no divide a $a$, entonces necesariamente $p$ divide a $b$
-  \item[corolario del lema de euclides] $p$ divide a un producto de dos enteros 
+  \item[corolario del lema de euclides]
+    Si $p$ es primo, $a \in \mathbb{Z}$ y $n \geq 1$,
+    entonces:
+    \[
+        \boxed{p \mid a^n \iff p \mid a}
+    \]
+
+    Esto se deduce del lema de Euclides, ya que
+    $a^n$ es un producto de $n$ factores iguales
+    a $a$.
+  
+  $p$ divide a un producto de dos enteros 
   ($p \mid a \cdot b$), entonces $p$ tiene que dividir obligatoriamente a 
   $a$ o dividir a $b$. Si extendemos esto a una potencia, 
   que no es más que multiplicar el mismo número varias veces ($a^n = a \cdot a \cdot \dots \cdot a$), concluimos que si el primo $p$ divide a todo ese bloque ($p \mid a^n$), necesariamente tiene que dividir a la base ($p \mid a$).

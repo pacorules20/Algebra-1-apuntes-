@@ -450,23 +450,52 @@ w^m=1\iff d\mid m.
 \]
 Si $w=e^{2k\pi i/n}$, entonces
 \[
-\operatorname{ord}(w)=\frac{n}{\gcd(n,k)}.
+\operatorname{ord}(w)=\frac{n}{mcd(n,k)}.
 \]
-Por tanto $w$ es primitiva si y sólo si $\gcd(n,k)=1$.
+Por tanto $w$ es primitiva si y sólo si $mcd(n,k)=1$.
 \end{proposicion}
 \begin{demostracion}
 Por división entera, $m=qd+r$ con $0\leq r<d$.
 Si $w^m=1$, también $w^r=1$, y la minimalidad de $d$ obliga a $r=0$.
 La recíproca es inmediata. Se aplica esto también a $m=n$.
 Para la fórmula explícita, $w^m=1$ equivale a $n\mid km$.
-Escribiendo $n=gn'$, $k=gk'$ con $g=\gcd(n,k)$ y
-$\gcd(n',k')=1$, esto equivale a $n'\mid m$.
+Escribiendo $n=gn'$, $k=gk'$ con $g=mcd(n,k)$ y
+$mcd(n',k')=1$, esto equivale a $n'\mid m$.
 \end{demostracion}
 \begin{nota}{Pertenecer a $G_n$ no implica tener orden $n$.}
 Por ejemplo, $-1\in G_6$ pero su orden es $2$.
 Si $w\in G_n$, siempre es válido reducir exponentes módulo $n$;
 si se conoce su orden $d$, también pueden reducirse módulo $d$.
 \end{nota}
+
+subsection{Inclusiones e intersecciones}
+\begin{proposicion}
+Para $n,m\geq1$ enteros,
+\[
+G_n\subseteq G_m\iff n\mid m,
+\qquad
+G_n\cap G_m=G_{cmd(n,m)}.
+\]
+\end{proposicion}
+\begin{demostracion}
+Si $m=qn$ y $w\in G_n$, entonces $w^m=(w^n)^q=1$.
+Recíprocamente, si $G_n\subseteq G_m$, entonces $e^{2\pi i/n}\in G_m$,
+de modo que $e^{2\pi im/n}=1$, lo que implica $m/n\in\mathbb Z$.
+Para la intersección, sea $d=cmd(n,m)$. Como $d$ divide a ambos,
+$G_d\subseteq G_n\cap G_m$. Por Bézout existen $a,b\in\mathbb Z$
+con $d=an+bm$. Si $w\in G_n\cap G_m$, entonces
+$w^d=(w^n)^a(w^m)^b=1$, luego $w\in G_d$.
+\end{demostracion}
+\begin{ejemplo}
+$G_{12}\cap G_{18}=G_6$, y $G_4\subseteq G_{20}$.
+Si $w=e^{2k\pi i/n}$, una condición como $w^a\in G_m$ se traduce en
+\[
+w^{am}=1\iff n\mid kam.
+\]
+Esto permite transformar condiciones sobre complejos en divisibilidad.
+\end{ejemplo}
+
+
 \subsection{Sumas geométricas}
 \begin{proposicion}[{title={Suma geométrica finita}}]
 Si $q\in\mathbb C$ y $N\in\mathbb N_0$, entonces
@@ -487,17 +516,7 @@ Si $S=1+q+\cdots+q^N$, restando $S$ de $qS$ se obtiene
 $(q-1)S=q^{N+1}-1$. Para $q\neq1$ se divide por $q-1$.
 Si $q=1$, se suman $N+1$ términos iguales a $1$.
 \end{demostracion}
-\begin{nota}{La razón de la suma.}
-En $\sum_{k=A}^{B}w^{ak+b}$, la razón es $q=w^a$.
-Hay que separar el caso $w^a=1$, aunque $w\neq1$.
-Para $0\leq A\leq B$ y $w\neq0$,
-\[
-\sum_{k=A}^{B}w^{ak+b}
-=w^{aA+b}\sum_{j=0}^{B-A}(w^a)^j.
-\]
-La suma de todos los elementos de $G_n$ es $0$ para $n\geq2$;
-para $G_1=\{1\}$ es $1$.
-\end{nota}
+
 \begin{ejemplo}
 Sea $w\in G_{36}$ con $w^4\neq1$. Para $q=w^4$ se tiene $q^9=1$.
 En la suma
